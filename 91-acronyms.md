@@ -1,4 +1,4 @@
-# 91 - Acronyms
+# Acronyms
 
 > **Note:** AI-generated content, not yet vetted for accuracy. See the README for details.
 

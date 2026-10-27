@@ -1,4 +1,4 @@
-# 90 - Ports and Protocols
+# Ports and Protocols
 
 > **Note:** AI-generated content, not yet vetted for accuracy. See the README for details.
 

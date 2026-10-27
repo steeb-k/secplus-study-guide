@@ -1,4 +1,4 @@
-# 92 - Formulas and Numbers
+# Formulas and Numbers
 
 > **Note:** AI-generated content, not yet vetted for accuracy. See the README for details.
 

@@ -9,6 +9,8 @@ A compact, exam-focused study kit for CompTIA Security+ **SY0-701**. It assumes 
 
 ## File index
 
+Want it all in one place? **[STUDY-GUIDE-FULL.md](STUDY-GUIDE-FULL.md)** is every chapter and reference sheet in a single file (regenerate with `python3 meta/build-full.py`).
+
 | File | Contents |
 |---|---|
 | `00-exam-overview.md` | Exam facts, domain weights, scoring, PBQ strategy, question patterns, time management, logistics, 2- and 4-week schedules |
