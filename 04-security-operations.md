@@ -51,7 +51,7 @@ Core hardening list: remove/disable unnecessary software, accounts and services;
 
 | Method | Security implication |
 |---|---|
-| **Cellular** | Carrier network, encrypted to the tower but **outside corporate control/monitoring**; a phone on cellular bypasses corporate firewall/DLP. Risks: rogue base stations (IMSI catchers, SIM swap). Use VPN/ZTNA and MDM. |
+| **Cellular** | Carrier network, encrypted to the tower but **outside corporate control/monitoring**; a phone on cellular bypasses corporate firewall/DLP. Risks: rogue base stations (IMSI catchers/stingrays); SIM swapping (attacker social-engineers the carrier to port the number, hijacking SMS codes). Use VPN/ZTNA and MDM. |
 | **Wi-Fi** | Untrusted public hotspots, evil twin/rogue AP, on-path attacks. Use WPA3/802.1X on corporate Wi-Fi, always-on VPN elsewhere, disable auto-join. |
 | **Bluetooth** | Short-range PAN. Attacks: bluejacking (unsolicited messages), bluesnarfing (data theft), bluebugging (device control). Disable discoverable mode, require pairing PIN, turn off when unused. |
 | Others | NFC (centimetres, contactless pay, relay risk), USB/tethering/hotspot (bridges networks, bypasses controls), infrared, point-to-point/ad hoc. Disable unused radios via MDM. |
@@ -62,7 +62,7 @@ Core hardening list: remove/disable unnecessary software, accounts and services;
 - **WPA3:** Personal uses **SAE** (Simultaneous Authentication of Equals, "Dragonfly") instead of WPA2-PSK, so a captured handshake cannot be brute-forced offline; per-session keys give forward secrecy; **PMF** (protected management frames) mandatory, stopping deauth attacks; Enterprise offers a 192-bit (CNSA, GCMP-256) mode. **OWE** (Opportunistic Wireless Encryption, "Enhanced Open") encrypts open/guest networks without a password.
 - **WPA2:** AES-CCMP. **WPA:** TKIP (deprecated). **WEP:** RC4, broken.
 - **AAA / RADIUS:** 802.1X port-based access control. Supplicant (client) -> authenticator (AP/switch) -> authentication server (RADIUS). RADIUS = UDP 1812/1813, encrypts only password; TACACS+ = TCP 49, encrypts entire payload, separates AAA, Cisco-origin (device admin). Diameter is RADIUS successor.
-- **Cryptographic protocols:** WPA2 = AES-**CCMP**; WPA3 = AES-CCMP (Personal) or **GCMP-256** (Enterprise 192-bit). TKIP and WEP/RC4 are the wrong answers. TLS is used inside EAP methods.
+- **Cryptographic protocols:** WPA2 = AES-**CCMP**; WPA3 = AES-CCMP (Personal) or **GCMP-256** (Enterprise 192-bit). TKIP and WEP/RC4 are the wrong answers. TLS is used inside EAP methods. Exam framing: questions usually pair **WPA2 → CCMP** and **WPA3 → GCMP**; if GCMP is offered for WPA3, take it.
 - **Authentication protocols (EAP family):**
 
 | Method | Server cert | Client cert | Tunnel | Notes |
@@ -70,7 +70,7 @@ Core hardening list: remove/disable unnecessary software, accounts and services;
 | EAP-TLS | Yes | **Yes** (mutual) | TLS | Strongest; requires PKI on every client |
 | PEAP | Yes | No | TLS tunnel protects inner (MS-CHAPv2) | Microsoft/Cisco/RSA; username+password inside tunnel |
 | EAP-TTLS | Yes | No (optional) | TLS tunnel | Like PEAP; supports more inner methods (PAP, CHAP) |
-| EAP-FAST | No (uses PAC) | No | Protected Access Credential tunnel | Cisco; replaced LEAP; no certs needed |
+| EAP-FAST | Optional (PAC normally replaces it) | No | Protected Access Credential tunnel | Cisco; replaced LEAP; no client cert, PAC instead |
 | LEAP | - | - | None | Cisco legacy, crackable, avoid |
 
 > **Exam tip:** "Certificates on both client and server" = EAP-TLS. "Cisco, no certificates, PAC" = EAP-FAST. "Tunnel + password only client" = PEAP/EAP-TTLS.
@@ -103,8 +103,8 @@ Continuous collection of logs and telemetry from hardened resources (SIEM, EDR, 
   - **Enumeration:** discovering and listing assets (network scans, agents, NAC).
   - Also tag/barcode/RFID, lifecycle tracking, license tracking.
 - **Disposal/decommissioning:**
-  - **Sanitization:** make data unrecoverable while device may be reused (overwrite, crypto erase, secure erase for SSDs, degauss for magnetic media). Standard: NIST SP 800-88 (clear, purge, destroy).
-  - **Destruction:** physically destroy media (shred, pulverize, incinerate, disintegrate). Required for highest sensitivity or non-sanitizable media. Degaussing does not work on SSDs.
+  - **Sanitization:** make data unrecoverable, normally so the media can be reused (overwrite, cryptographic erase, ATA/NVMe secure erase for SSDs). Standard: NIST SP 800-88 (clear, purge, destroy).
+  - **Destruction:** physically destroy media (shred, pulverize, incinerate, disintegrate). Required for highest sensitivity or non-sanitizable media. **Degaussing** (strong magnetic field) erases magnetic media; it also wipes an HDD's servo tracks, so the drive is unusable afterwards (tape survives). Useless on SSDs/flash.
   - **Certification:** documented proof (certificate of destruction/sanitization), often from a third-party vendor, for audit/compliance.
   - **Data retention:** keep data only as long as legal/business need requires, then dispose per policy; retain disposal records. Over-retention = liability; premature deletion = compliance violation (and legal hold overrides schedules).
 
@@ -146,7 +146,7 @@ Continuous collection of logs and telemetry from hardened resources (SIEM, EDR, 
 | 7.0 – 8.9 | High |
 | 9.0 – 10.0 | Critical |
 
-- **CVE:** standardized identifier for a publicly known vuln (CVE-YYYY-NNNN). NVD enriches with CVSS. **CWE** = weakness type. CVSS = how severe; CVE = what/which.
+- **CVE:** standardized identifier for a publicly known vuln (CVE-YYYY-NNNN, four or more digits, e.g. CVE-2021-44228). NVD enriches with CVSS. **CWE** = weakness type. CVSS = how severe; CVE = what/which.
 - **Vulnerability classification:** by type/category (e.g., misconfiguration, zero-day, injection, outdated software).
 - **Exposure factor:** % of asset value lost if exploited (feeds SLE).
 - **Environmental variables:** your specifics: internet-facing or not, compensating controls, data on system.
@@ -159,7 +159,7 @@ Continuous collection of logs and telemetry from hardened resources (SIEM, EDR, 
 - **Insurance:** risk transfer for residual risk (does not remove vuln).
 - **Segmentation:** isolate vulnerable system when it cannot be patched.
 - **Compensating controls:** alternative control reducing risk when primary fix unavailable (WAF, IPS virtual patch, extra monitoring).
-- **Exceptions and exemptions:** formally documented, time-limited, risk-accepted, approved by owner/management.
+- **Exceptions and exemptions:** both are documented, approved forms of risk acceptance. An exception is a time-boxed deviation with compensating controls; an exemption releases a system from the requirement (see 5.2).
 
 ### Validation of remediation
 - **Rescanning:** confirm vuln gone. **Audit:** verify process/config. **Verification:** manual confirmation that the fix works and nothing broke.
@@ -174,7 +174,9 @@ Communicates findings: severity, affected assets, trends, remediation status, SL
 ## 4.4 Explain security alerting and monitoring concepts and tools
 
 ### Monitoring computing resources
-- **Systems, applications, infrastructure** all generate telemetry to monitor.
+- **Systems:** hosts, servers, endpoints: CPU, memory, disk, processes, logons, service and patch state (agents, EDR, OS logs).
+- **Applications:** application logs, errors, authentication events, API calls, transactions, response time.
+- **Infrastructure:** network devices, firewalls, hypervisors, cloud control plane, power/HVAC (SNMP, NetFlow, firewall and cloud audit logs).
 
 ### Activities
 - **Log aggregation:** centralize logs from many sources into one place (SIEM) for correlation.
@@ -187,7 +189,7 @@ Communicates findings: severity, affected assets, trends, remediation status, SL
   - **Alert tuning:** adjust thresholds/rules to cut false positives (alert fatigue) while not creating false negatives.
 
 ### Tools
-- **SCAP (Security Content Automation Protocol):** NIST standards (e.g., OVAL, XCCDF, CVE, CVSS) for automated compliance and vuln checking. **Benchmarks:** CIS/STIG configuration checklists used with SCAP.
+- **SCAP (Security Content Automation Protocol):** NIST specification (SP 800-126) that bundles open standards (XCCDF checklists, OVAL checks, CPE/CCE naming, CVE identifiers, CVSS scores) so scanners can check configuration compliance and vulnerabilities automatically. **Benchmarks:** CIS/STIG configuration checklists used with SCAP.
 - **Agents vs. agentless:** agent = software on endpoint, works off-network, richer data, deployment overhead. Agentless = remote scan/WMI/API, no install, less depth, needs network access/creds.
 - **SIEM:** aggregates, normalizes, correlates logs, alerts, dashboards, retention. (SOAR then automates the response.)
 - **Antivirus/anti-malware:** signature/heuristic/behavior detection on endpoint.
@@ -210,9 +212,9 @@ Communicates findings: severity, affected assets, trends, remediation status, SL
 
 Example ACL reading:
 ```
-1 permit tcp any host 10.0.1.10 eq 443   # allow HTTPS to web server
-2 permit tcp 10.0.2.0/24 any eq 22       # allow SSH from admin net
-3 deny ip any any                        # implicit/explicit deny
+1 permit tcp any host 10.0.1.10 eq 443       # allow HTTPS to web server
+2 permit tcp 10.0.2.0/24 10.0.1.0/24 eq 22   # allow SSH from admin net to server net
+3 deny ip any any                            # implicit/explicit deny
 ```
 
 ### IDS/IPS
@@ -221,7 +223,7 @@ Example ACL reading:
 |---|---|---|
 | Placement | Out of band (SPAN/TAP) | Inline |
 | Action | Detect, alert | Detect and block |
-| Failure effect | None on traffic | Fail-open or fail-closed can disrupt traffic |
+| Failure effect | None on traffic | Fail-closed = outage (traffic blocked); fail-open = traffic flows uninspected |
 
 - **Trends:** reviewing IDS/IPS alert data over time (top signatures, sources, targets, volume changes) to spot campaigns, tune rules and adjust defenses; most products show trend dashboards. Exam framing: "what is changing" vs a single alert.
 - **Detection methods:** signature-based (known patterns; needs updates; misses zero-days), anomaly/behavior-based (baseline deviations; catches novel; more false positives), heuristic.
@@ -263,11 +265,11 @@ Example ACL reading:
 | IMAP | TCP 143 | IMAPS | 993 |
 | LDAP | TCP 389 | LDAPS | 636 |
 | SNMP v1/v2 | UDP 161/162 | SNMPv3 | 161/162 |
-| DNS | 53 | DNSSEC (integrity) / DoH 443 / DoT 853 | |
+| DNS | UDP/TCP 53 | DNSSEC (integrity only) / DoH / DoT | 53 / TCP 443 / TCP 853 |
 | TFTP | UDP 69 | SFTP/SCP | 22 |
-| RDP | TCP 3389 | via VPN/RD Gateway | |
+| RDP | TCP/UDP 3389 | via VPN/RD Gateway | |
 | Syslog | UDP 514 | Syslog over TLS | 6514 |
-| NTP | UDP 123 | NTS | |
+| NTP | UDP 123 | NTS | UDP 123 (NTS-KE on TCP 4460) |
 | SQL/others | | TLS-wrapped | |
 
 Others to know: DHCP 67/68, Kerberos 88, SMB 445, RADIUS 1812/1813, TACACS+ 49, IPsec IKE UDP 500 (NAT-T 4500), NetBIOS 137-139.
@@ -283,12 +285,12 @@ Block resolution of malicious/unwanted domains at the resolver (threat-intel cat
 - **DMARC:** DNS policy built on SPF and DKIM; requires alignment with the From domain; tells receivers what to do on failure (none / quarantine / reject) and sends reports back to the domain owner.
 - **Gateway (email security gateway):** inline filter (spam, phishing, malware attachments, URL rewriting, DLP, sandboxing) before mail reaches the mailbox.
 
-Fit together: SPF = "which IPs may send", DKIM = "message is signed and unaltered", DMARC = "policy + reporting when either fails to align".
+Fit together: SPF = "which IPs may send", DKIM = "message is signed and unaltered", DMARC = "policy + reporting: a message passes if SPF or DKIM passes and aligns with the From domain; the policy (none / quarantine / reject) applies only when neither does".
 
 > **Exam tip:** Spoofed sender domain -> SPF/DKIM/DMARC. "Policy: reject unauthenticated mail and receive reports" -> DMARC. "Digital signature on message headers" -> DKIM.
 
 ### File integrity monitoring (FIM)
-Baselines hashes of critical OS files, binaries, registry keys and configs, then alerts on unauthorized change (detects tampering, rootkits, web defacement, config drift). Examples: Tripwire, OSSEC/Wazuh, Windows SFC. Required by PCI DSS. Keyword: "detect changes to system files".
+Baselines hashes of critical OS files, binaries, registry keys and configs, then alerts on unauthorized change (detects tampering, rootkits, web defacement, config drift). Examples: Tripwire, OSSEC/Wazuh, EDR/AV-suite FIM modules. (Windows SFC only verifies and repairs system files on demand; it is not FIM.) Required by PCI DSS. Keyword: "detect changes to system files".
 
 ### DLP
 Classifies and inspects data in use (endpoint), in motion (network/email) and at rest (storage); blocks, quarantines, encrypts, or alerts. Keyword: "prevent SSNs/credit cards from leaving".
@@ -357,7 +359,7 @@ Note: RBAC = Role-based; rule-based is a different thing though abbreviations co
 - **Implementations:**
   - **Biometrics:** fingerprint, face, iris, retina, voice, vein. Errors: FAR (false acceptance, a security failure), FRR (false rejection, a usability problem); CER/EER = where they cross, lower is better.
   - **Hard authentication token:** physical device generating OTPs (key fob showing a TOTP/HOTP code) or smart card.
-  - **Soft authentication token:** OTP generated by an app (Google/Microsoft Authenticator) or delivered by SMS/email/push. SMS is weakest (SIM swap, interception).
+  - **Soft authentication token:** OTP generated by an authenticator app (software version of the key fob). Codes **delivered** out of band by SMS/email/push are a separate category; SMS is weakest (SIM swap, interception).
   - **Security keys:** USB/NFC/Bluetooth hardware keys (FIDO2/WebAuthn, U2F) doing public-key challenge/response; phishing-resistant.
   - TOTP = time-based (30-second codes); HOTP = counter/event-based (valid until used).
 - **Factors (SY0-701 lists four):** something you **know** (password, PIN, pattern), something you **have** (token, smart card, phone), something you **are** (biometric), **somewhere you are** (location: GPS, IP geolocation). Older material adds something you **do** (gait, typing rhythm, signature); treat it as a behavioral attribute if it appears. Two passwords or password + security question is not MFA (same factor).
@@ -436,7 +438,7 @@ Note: RBAC = Role-based; rule-based is a different thing though abbreviations co
 1. **Preparation:** IR plan, policy, team/roles, contact lists, tooling, playbooks, training, communication plan, jump bag.
 2. **Detection:** identify potential incident via alerts, users, threat intel (IoCs).
 3. **Analysis:** validate (true vs. false positive), scope, classify severity, determine impact, prioritize.
-4. **Containment:** limit spread (isolate, segment, disable accounts); short-term vs. long-term; preserve evidence first.
+4. **Containment:** limit spread (isolate, segment, disable accounts); short-term vs. long-term; choose containment actions that preserve evidence (isolate rather than power off; image before rebuilding).
 5. **Eradication:** remove root cause (malware, persistence, attacker accounts, vulnerability).
 6. **Recovery:** restore from clean backups, rebuild, validate, return to production, heightened monitoring.
 7. **Lessons learned:** post-incident review, improve plan, controls and documentation.
@@ -508,7 +510,7 @@ Proactive, hypothesis-driven search for threats already inside that evaded detec
 - **BYOD / COPE / CYOD / COBO:** employee-owned / company-owned + personal use / pick from a list / business only.
 - **EAP-TLS vs. PEAP vs. EAP-FAST:** client+server certs / server cert only + inner password / PAC, no certs.
 - **RADIUS vs. TACACS+:** UDP 1812/1813, password-only encryption vs. TCP 49, full encryption, separate AAA.
-- **WPA3-SAE:** replaces PSK handshake, resists offline guessing; OWE encrypts open networks.
+- **WPA3-SAE (exam: GCMP):** replaces PSK handshake, resists offline guessing; OWE encrypts open networks.
 - **Sanitization vs. destruction vs. certification:** reuse-safe wipe / physical, unrecoverable / paper proof.
 - **False positive vs. false negative:** reported but not real / real but missed. **Scan vs. pen test:** identify vs. exploit.
 - **CVE vs. CVSS vs. CWE:** identifier / severity score (9.0-10.0 critical, 7.0-8.9 high, 4.0-6.9 medium, 0.1-3.9 low) / weakness class.

@@ -7,6 +7,7 @@
 | Item | Value |
 |---|---|
 | Exam code | SY0-701 |
+| Version status | SY0-701 launched Nov 2023. Successor SY0-801 was expected around late 2026 with SY0-701 retiring around mid-2027; confirm current dates on CompTIA's exam page before booking. |
 | Questions | Up to 90 (MCQ + performance-based) |
 | Time | 90 minutes |
 | Question types | Multiple choice (single and multiple response), performance-based (PBQ) |
@@ -55,10 +56,10 @@ Domain 4 plus Domain 2 is half the exam. Domain 1 is smallest but its content (c
 ## Time management
 
 - 90 min for up to 90 items = about 1 minute each, but PBQs eat 5-10 each.
-- Plan: flag PBQs (about 30 seconds), MCQs at 45-60 seconds each, a target of finishing MCQs with 25-30 minutes left, then PBQs, then review flagged items.
+- Plan: flag PBQs (about 30 seconds), then MCQs at about 45 seconds each (roughly 60–65 minutes for ~85 MCQs), so you finish the MCQs with 25–30 minutes left for PBQs and flagged items.
 - Never spend more than 90 seconds on any MCQ on the first pass; mark and move on.
 - No penalty for guessing: answer every question.
-- Check at the 30-minute and 60-minute marks: you should be about one-third and two-thirds done with MCQs.
+- Check at the 30- and 60-minute marks: about half of the MCQs done at 30 minutes, all of them done by 60–65 minutes.
 
 ## Elimination tactics
 
@@ -76,7 +77,7 @@ Domain 4 plus Domain 2 is half the exam. Domain 1 is smallest but its content (c
 - Overall scaled score (100-900).
 - **Per-domain performance feedback** (objective-level strengths and weaknesses), not scaled scores per domain.
 - A failed report lists weaker areas; use them to plan the retake.
-- Scoring is not a simple percentage; the 750 line is roughly 80% by most estimates. The companion site uses `100 + round(pct * 800)` as a rough estimate only.
+- Scoring is not a simple percentage; the 750 line is roughly 81–83% by most estimates. The companion site uses `100 + round(pct * 800)`, so 750 corresponds to about 81.25% (rough estimate only).
 
 ## Logistics
 

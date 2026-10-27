@@ -23,6 +23,7 @@
 | Item | Value |
 |---|---|
 | Exam code | SY0-701 |
+| Version status | SY0-701 launched Nov 2023. Successor SY0-801 was expected around late 2026 with SY0-701 retiring around mid-2027; confirm current dates on CompTIA's exam page before booking. |
 | Questions | Up to 90 (MCQ + performance-based) |
 | Time | 90 minutes |
 | Question types | Multiple choice (single and multiple response), performance-based (PBQ) |
@@ -71,10 +72,10 @@ Domain 4 plus Domain 2 is half the exam. Domain 1 is smallest but its content (c
 ### Time management
 
 - 90 min for up to 90 items = about 1 minute each, but PBQs eat 5-10 each.
-- Plan: flag PBQs (about 30 seconds), MCQs at 45-60 seconds each, a target of finishing MCQs with 25-30 minutes left, then PBQs, then review flagged items.
+- Plan: flag PBQs (about 30 seconds), then MCQs at about 45 seconds each (roughly 60–65 minutes for ~85 MCQs), so you finish the MCQs with 25–30 minutes left for PBQs and flagged items.
 - Never spend more than 90 seconds on any MCQ on the first pass; mark and move on.
 - No penalty for guessing: answer every question.
-- Check at the 30-minute and 60-minute marks: you should be about one-third and two-thirds done with MCQs.
+- Check at the 30- and 60-minute marks: about half of the MCQs done at 30 minutes, all of them done by 60–65 minutes.
 
 ### Elimination tactics
 
@@ -92,7 +93,7 @@ Domain 4 plus Domain 2 is half the exam. Domain 1 is smallest but its content (c
 - Overall scaled score (100-900).
 - **Per-domain performance feedback** (objective-level strengths and weaknesses), not scaled scores per domain.
 - A failed report lists weaker areas; use them to plan the retake.
-- Scoring is not a simple percentage; the 750 line is roughly 80% by most estimates. The companion site uses `100 + round(pct * 800)` as a rough estimate only.
+- Scoring is not a simple percentage; the 750 line is roughly 81–83% by most estimates. The companion site uses `100 + round(pct * 800)`, so 750 corresponds to about 81.25% (rough estimate only).
 
 ### Logistics
 
@@ -142,7 +143,7 @@ Objectives 1.1–1.4. Smallest domain by weight, but the vocabulary (control typ
 
 ### 1.1 Compare and contrast various types of security controls
 
-Two independent axes: **category** (who/what implements it) and **type** (what it does / when it acts). Every control has one of each.
+Two independent axes: **category** (who/what implements it) and **type** (what it does / when it acts). Every control has one category and one or more types (CCTV is physical; detective and deterrent). The exam asks for the type the stem emphasises.
 
 #### Categories (how it is implemented)
 
@@ -166,17 +167,17 @@ Two independent axes: **category** (who/what implements it) and **type** (what i
 | Compensating | Alternative control used when the primary control is impractical or fails; gives equivalent protection | Substitute |
 | Directive | Directs/mandates behaviour; establishes what must or must not be done | Before |
 
-> **Exam tip:** Deterrent vs preventive: a "Beware of dog" or "Cameras in use" sign deters; a locked door prevents. Directive vs deterrent: a policy/AUP/procedure *tells people what to do* (directive); a warning banner/signage *discourages* (deterrent). Compensating keywords: "cannot patch / legacy system / cannot implement X, so they did Y instead" (e.g., network segmentation for an unpatchable device).
+> **Exam tip:** Deterrent vs preventive: a "Beware of dog" or "Cameras in use" sign deters; a locked door prevents. Directive vs deterrent: a policy/AUP/procedure *tells people what to do* (directive). For signs and banners, one that threatens consequences ('Cameras in use', 'Trespassers prosecuted') discourages (deterrent); a sign that instructs ('Authorized personnel only', 'Visitors must sign in') is directive. Look at the wording, not the medium. Compensating keywords: "cannot patch / legacy system / cannot implement X, so they did Y instead" (e.g., network segmentation for an unpatchable device).
 
-> **Exam tip:** Corrective vs detective: restoring from backup, patching after the fact, killing a malicious process, EDR isolating an infected host = corrective. An IPS blocking traffic inline is preventive. Log review, IDS alert, motion sensor, SIEM alert = detective.
+> **Exam tip:** Corrective vs detective: restoring from backup, patching in response to an incident, killing a malicious process, EDR isolating an infected host = corrective. An IPS blocking traffic inline is preventive. Log review, IDS alert, motion sensor, SIEM alert = detective. Patching *in response to an incident* = corrective; routine patching before exploitation = preventive. Job rotation and mandatory vacations are usually keyed detective (they expose fraud), though they also deter.
 
 #### Category × type example matrix
 
 | | Preventive | Deterrent | Detective | Corrective | Compensating | Directive |
 |---|---|---|---|---|---|---|
-| **Technical** | Firewall rule, ACL, encryption, MFA, IPS (block mode) | Login warning banner / splash screen | IDS, SIEM alerts, log monitoring, FIM | Restore from backup, EDR isolates host, patch deployment | Network segmentation for unpatchable system, WAF in front of vulnerable app | File-storage or acceptable-use notice pushed to systems telling users where/how to store data |
+| **Technical** | Firewall rule, ACL, encryption, MFA, IPS (block mode), routine patching of a known flaw | Login warning banner / splash screen | IDS, SIEM alerts, log monitoring, FIM | Restore from backup, EDR isolates host, patch deployment after an incident | Network segmentation for unpatchable system, WAF in front of vulnerable app | File-storage or acceptable-use notice pushed to systems telling users where/how to store data |
 | **Managerial** | Risk assessment gating deployment, separation-of-duties design | Sanctions/disciplinary policy | Audits, pen tests, vulnerability scan reviews | Incident-response plan lessons learned, corrective action plan | Added management review when SoD is impossible | Security policy, standards, AUP |
-| **Operational** | Awareness training, job rotation, onboarding/offboarding procedures | Publicised consequences, security reminders | Guard reviewing logs, user-activity reviews | Incident handling by IR team, backup restoration procedure | Manual review of transactions when automation unavailable | Procedures, SOPs, playbooks |
+| **Operational** | Awareness training, onboarding/offboarding procedures | Publicised consequences, security reminders | Guard reviewing logs, user-activity reviews, job rotation / mandatory vacation (uncovers fraud) | Incident handling by IR team, backup restoration procedure | Manual review of transactions when automation unavailable | Procedures, SOPs, playbooks |
 | **Physical** | Locks, fences, bollards, vestibule, badge reader | "Cameras in use" signs, visible guards, lighting | CCTV, motion/infrared sensors, alarms | Fire suppression, switching to alternate site | Guard stationed at a door whose reader is broken | "Authorized personnel only" signage, visitor-escort rules |
 
 > **Exam tip:** Most matrix cells are judgment calls; the exam asks you to pick the *best* category and type. Anchor on the verb: stops = preventive, warns = deterrent, notices = detective, fixes = corrective, substitutes = compensating, mandates = directive.
@@ -199,7 +200,7 @@ Related terms: **Non-repudiation** = a party cannot credibly deny having perform
 
 #### Authentication, Authorization, Accounting (AAA)
 
-- **Authentication:** proving identity (something you know / have / are / somewhere you are / something you do).
+- **Authentication:** proving identity (something you know / have / are / somewhere you are; older material adds 'something you do', which is not in the SY0-701 list).
 - **Authorization:** what the authenticated identity is permitted to do.
 - **Accounting:** recording what was done (logging, auditing, billing); supports non-repudiation and forensics.
 - Protocol pairing: **RADIUS** (UDP, encrypts password only, combines authN/authZ), **TACACS+** (TCP/49, encrypts entire payload, separates AAA), **Diameter** (RADIUS successor).
@@ -363,7 +364,7 @@ System of CAs, certificates, keys, and policies that binds public keys to identi
 
 States of data: **at rest**, **in transit**, **in use** (memory/processing; secure enclave, homomorphic encryption).
 
-> **Exam tip:** TDE protects database files at rest (theft of storage), not data from an authorised DB user. Column/cell-level encryption protects specific sensitive fields even from DBAs.
+> **Exam tip:** TDE protects database files at rest (theft of storage), not data from an authorised DB user. Column/cell-level encryption protects specific sensitive fields; when the keys are held by the application or client rather than the database server, it protects them even from DBAs.
 
 #### Encryption: symmetric vs asymmetric
 
@@ -401,7 +402,7 @@ States of data: **at rest**, **in transit**, **in use** (memory/processing; secu
 
 #### Key length
 
-Longer keys increase brute-force cost. Rules of thumb: AES-128 is acceptable, AES-256 for high security; RSA 2048 minimum; ECC 256. Symmetric keys are much shorter than asymmetric for the same strength. **Key exchange** (DH/RSA) and **perfect forward secrecy** (ephemeral keys) protect past sessions if a long-term key is compromised.
+Longer keys increase brute-force cost. Rules of thumb: AES-128 is acceptable, AES-256 for high security; RSA 2048 minimum; ECC 256. Symmetric keys are much shorter than asymmetric for the same strength. **Perfect forward secrecy** comes only from *ephemeral* key agreement (DHE/ECDHE): a fresh key pair per session means a later compromise of the long-term private key does not expose recorded sessions. Static RSA key transport does **not** give forward secrecy (and TLS 1.3 removed it).
 
 #### Tools
 
@@ -455,7 +456,7 @@ Distributed, append-only ledger of blocks linked by hashes; each block contains 
 | Term | Definition (exam framing) |
 |---|---|
 | Certificate authority (CA) | Trusted entity that issues and signs certificates; may be public or private (internal) |
-| Intermediate CA | Signed by root; issues end-entity certs so the root can stay offline |
+| Intermediate CA | Signed by the root (or by another intermediate); issues end-entity certs so the root can stay offline |
 | Registration authority (RA) | Verifies identity before CA issues certificate |
 | CRL (Certificate Revocation List) | CA-published list of revoked certificate serial numbers; downloaded periodically; can be stale |
 | OCSP | Real-time query of a certificate's revocation status (responder); **OCSP stapling** has the server attach a signed response to the TLS handshake |
@@ -463,7 +464,7 @@ Distributed, append-only ledger of blocks linked by hashes; each block contains 
 | Third-party (public) certificate | Issued by a publicly trusted CA; trusted by default in browsers/OS |
 | Root of trust | The trust anchor (root CA, or hardware like a TPM) from which all other trust derives |
 | Certificate signing request (CSR) | Request sent to a CA containing public key and subject info (CN/SAN), signed by the requester's private key; private key never leaves the requester |
-| Wildcard certificate | Covers all first-level subdomains of a domain (*.example.com covers www/mail.example.com, not a.b.example.com); one compromised key affects every host using it |
+| Wildcard certificate | Covers all first-level subdomains of a domain (*.example.com covers www/mail.example.com, not a.b.example.com, and not the bare apex example.com unless it is added as a SAN); one compromised key affects every host using it |
 | SAN (Subject Alternative Name) | Lists multiple specific names covered by a cert |
 
 Certificate fields: subject, issuer, validity dates, public key, serial number, signature algorithm, SAN. Common formats: PEM (Base64, text), DER (binary), PFX/P12 (cert + private key bundle), CER/CRT.
@@ -485,7 +486,7 @@ Why: asymmetric crypto solves key distribution and authentication but is slow; s
 
 ### Most-tested distinctions
 
-- Category (technical/managerial/operational/physical) vs type (preventive/deterrent/detective/corrective/compensating/directive) are separate axes; every control has one of each.
+- Category (technical/managerial/operational/physical) vs type (preventive/deterrent/detective/corrective/compensating/directive) are separate axes; every control has one category and one or more types (CCTV is physical; detective and deterrent). The exam asks for the type the stem emphasises.
 - Deterrent discourages (signs, banners, visible cameras); preventive blocks (locks, firewall rules); directive mandates (policy, procedure).
 - Detective notices (IDS, logs, CCTV); corrective fixes after (restore, patch, isolate); compensating substitutes for a control that cannot be used.
 - Managerial = policy, risk assessment, oversight; operational = people executing procedures (training, guards).
@@ -629,7 +630,7 @@ Exploits trust and psychology, not technology. Mitigated primarily by **security
 | **Shoulder surfing** | Observing screens/keypads (physical/visual) |
 | **Dumpster diving** | Retrieving information from discarded materials |
 | **Quid pro quo** | Offering a service/benefit in exchange for information or access |
-| **Eliciting** | Extracting information through ordinary conversation |
+| **Elicitation** (eliciting information) | Extracting information through ordinary conversation |
 | **Identity fraud / theft** | Using stolen identity data to open accounts or impersonate |
 
 > **Exam tip:** Spear phishing (any specific person) vs whaling (executives) vs BEC (financial request via business email). Phishing = link click; **pharming** = redirected without clicking. **Typosquatting** = misspelled domain; **brand impersonation** = looks like the brand. **Watering hole** = target's usual site is compromised. Tailgating vs piggybacking: tailgating is unauthorised follow-through; **mantrap/access control vestibule** is the control.
@@ -643,9 +644,9 @@ Exploits trust and psychology, not technology. Mitigated primarily by **security
 #### Application
 | Vulnerability | Definition / keyword |
 |---|---|
-| **Memory injection** | Malicious code injected into a running process's memory |
+| **Memory injection** | Malicious code written into a legitimate running process's memory (DLL injection, process hollowing) so it runs with that process's rights and evades file-based AV; typical of fileless malware. Mitigate: EDR, DEP/ASLR, least privilege |
 | **Buffer overflow** | Input exceeds buffer size and overwrites adjacent memory; crashes or code execution; mitigate with bounds checking, ASLR, DEP |
-| **Race condition** | Outcome depends on timing of events; **TOC/TOU** (time-of-check to time-of-use) is the classic form |
+| **Race condition** | Outcome depends on timing of events; **TOC/TOU** (time-of-check to time-of-use) is the classic form. TOC = the moment a resource or permission is checked; TOU = the moment it is used; the attacker changes the resource in between (swap a checked file for a symlink, double-spend a balance before it updates). Mitigate with atomic operations and locking |
 | **Malicious update** | Update channel delivers tampered code; mitigate with code signing and hash verification |
 
 #### Operating system (OS)-based
@@ -662,7 +663,7 @@ Exploits trust and psychology, not technology. Mitigated primarily by **security
 | Vulnerability | Definition |
 |---|---|
 | **Firmware** | Outdated/malicious/unsigned firmware (BIOS/UEFI, device); mitigate with signed updates, secure boot |
-| **End-of-life** | Vendor no longer provides updates |
+| **End-of-life (EOL) / end-of-service-life (EOSL)** | EOL: vendor stops selling and winds down support; EOSL/EOS: no more security patches at all. Exam framing: an EOL/unsupported system is unpatchable, so replace, upgrade, or isolate it |
 | **Legacy** | Old but possibly still supported; poor security design, hard to patch |
 
 #### Virtualization
@@ -717,7 +718,8 @@ Exploits trust and psychology, not technology. Mitigated primarily by **security
 | **Logic bomb** | Dormant code triggered by a condition (date, event, account removal); typically insider |
 | **Rootkit** | Hides its presence at kernel/OS/firmware level, gives persistent privileged access; evades normal AV |
 | **Backdoor** (related) | Hidden access path bypassing authentication |
-| **Botnet / RAT** (related) | Compromised hosts under C2 control; DDoS, spam |
+| **Botnet** (related) | Many compromised hosts (bots) under C2 control; DDoS, spam, credential stuffing |
+| **RAT** (related) | Remote access trojan: a trojan that gives the attacker covert interactive control of one host (files, webcam, keystrokes) |
 | **Fileless** (related) | Runs in memory using legitimate tools (PowerShell, WMI); no file on disk; detect with EDR/behavioural analysis |
 | **Cryptojacking** (related) | Hijacked CPU/GPU used to mine crypto; high resource use |
 
@@ -971,6 +973,7 @@ Objectives 3.1–3.4. Reader assumed to know the basics; this is the exam-framed
 |---|---|---|---|---|
 | Data, accounts/identities, access config | Customer | **Customer** | **Customer** | **Customer** |
 | Application | Customer | Customer | Customer | Provider |
+| Network controls (security groups, virtual firewall rules) | Customer | Customer | Shared | Provider |
 | Runtime / middleware | Customer | Customer | Provider | Provider |
 | Operating system | Customer | Customer | Provider | Provider |
 | Virtualization / hypervisor | Customer | Provider | Provider | Provider |
@@ -980,7 +983,7 @@ Objectives 3.1–3.4. Reader assumed to know the basics; this is the exam-framed
 - **IaaS** (EC2, Azure VMs): customer gets VMs/storage/networks; patches the guest OS.
 - **PaaS** (App Engine, Azure App Service, RDS): customer deploys code/data; provider handles OS and runtime.
 - **SaaS** (M365, Salesforce, Gmail): customer manages users, data, and config only.
-- **FaaS/serverless** sits at PaaS-and-above: customer owns code and permissions only.
+- **FaaS/serverless** sits at PaaS-and-above: customer owns function code, permissions/identities, and data.
 
 > **Exam tip:** "Who patches the guest OS?" IaaS = customer; PaaS/SaaS = provider. "Who is always responsible for data?" Customer. Provider is *always* responsible for the physical facility (except private cloud/on-prem).
 
@@ -1081,7 +1084,7 @@ IDS/IPS detection methods: **signature** (known patterns), **anomaly/behavior** 
 | **EAP-TLS** | Mutual certificate auth (client and server certs). Strongest; needs PKI on every client. |
 | **PEAP** | Server cert only builds a TLS tunnel; client authenticates inside with MSCHAPv2/password. Most common. |
 | **EAP-TTLS** | Like PEAP; tunnel then almost any inner method (PAP, CHAP, MSCHAPv2); client cert optional. |
-| **EAP-FAST** | Cisco; uses PAC (protected access credential) instead of certificates. Replaces LEAP. |
+| **EAP-FAST** | Cisco; uses PAC (protected access credential) instead of client certificates (server cert optional). Replaces LEAP. |
 | **EAP-MD5** | One-way, weak, no mutual auth. Avoid. |
 | **LEAP** | Legacy Cisco, crackable. Avoid. |
 
@@ -1114,14 +1117,14 @@ Rule hygiene: ACLs processed top-down, first match wins; **implicit deny** at th
 | **VPN remote access** | Individual client to gateway; user-initiated, with client or clientless (browser/SSL VPN). |
 | **Split tunnel** | Only corporate traffic via VPN; internet direct. Less load, more risk. |
 | **Full tunnel** | All traffic via VPN; full inspection. |
-| **TLS (SSL VPN)** | Transport-layer encryption; port 443; works through firewalls/NAT; client or browser-based. Application-level access. |
+| **TLS (SSL VPN)** | Encrypts above TCP (runs over TCP 443; not Layer 3 like IPSec); port 443; works through firewalls/NAT; client or browser-based. Application-level access. |
 | **IPSec** | Network layer (L3) suite; encrypts any IP traffic; IKE (UDP 500, NAT-T UDP 4500) negotiates SAs. |
 | **AH (Authentication Header)** | Integrity + authentication (+anti-replay); **no encryption**; protocol 51; breaks under NAT. |
 | **ESP (Encapsulating Security Payload)** | Confidentiality + integrity + authentication; protocol 50; works with NAT-T. Normally used. |
-| **Transport mode** | Encrypts payload only; original IP header kept; host-to-host. |
-| **Tunnel mode** | Encrypts entire original packet and adds a new IP header; gateway-to-gateway (site-to-site VPN). |
+| **Transport mode** | Protects (with ESP, encrypts) the payload only; original IP header kept; host-to-host. |
+| **Tunnel mode** | Protects (with ESP, encrypts) the entire original packet and adds a new IP header; used for gateway-to-gateway (site-to-site) and client-to-gateway (remote-access) VPNs. |
 | **SD-WAN** | Software-defined overlay managing multiple WAN links (MPLS, broadband, LTE); application-aware routing, centralized policy, encryption, zero-touch branch provisioning. |
-| **SASE** | Secure Access Service Edge: cloud-delivered convergence of **SD-WAN plus network security** (SWG, CASB, ZTNA, FWaaS) at the edge close to the user. Keyword: "branch/remote workforce, cloud-delivered security, single vendor." |
+| **SASE** | Secure Access Service Edge: cloud-delivered convergence of **SD-WAN plus network security** (SWG, CASB, ZTNA, FWaaS) at the edge close to the user. Keyword: "branch/remote workforce, cloud-delivered security, often single-vendor." |
 
 > **Exam tip:** AH = no encryption. ESP = encryption. Tunnel mode = new header, gateway-to-gateway. Transport mode = host-to-host, original header. TLS VPN = port 443, easy through firewalls.
 
@@ -1170,7 +1173,7 @@ Classification drives handling, labeling, retention, access, and encryption. Dat
 |---|---|---|
 | **At rest** | Stored on disk, DB, backup, USB | Full-disk/volume (BitLocker, LUKS), file/DB encryption (TDE), access controls, HSM/TPM for keys |
 | **In transit / in motion** | Moving across a network | TLS, IPSec, SSH, VPN, WPA3, S/MIME |
-| **In use** | Being processed in memory/CPU | Secure enclaves, confidential computing, memory protection, screen locks, DLP; hardest to protect |
+| **In use** | Being processed in memory/CPU | Secure enclaves / TEEs (confidential computing), memory encryption and protection, process isolation, endpoint access controls; hardest to protect |
 
 > **Exam tip:** Data in use = RAM/CPU; encryption is hardest. Keyword "enclave / confidential computing / TEE" = in use.
 
@@ -1209,7 +1212,7 @@ Classification drives handling, labeling, retention, access, and encryption. Dat
 | Limit who can open a file | Permission restrictions (least privilege) |
 | Isolate regulated data from the rest of the network | Segmentation |
 | Prevent employees emailing out customer records | DLP |
-| Customer records must be unrecoverable by anyone | Anonymization |
+| Records must be kept for analytics but never be re-identifiable by anyone | Anonymization |
 | Data crossing the internet | TLS / IPSec VPN |
 | Data being processed in memory | Secure enclave / confidential computing |
 
@@ -1227,7 +1230,7 @@ Classification drives handling, labeling, retention, access, and encryption. Dat
 |---|---|
 | **High availability** | Systems remain operational with minimal downtime; no single point of failure. |
 | **Load balancing** | Spreads requests across multiple **active** nodes for performance and availability; nodes typically independent and stateless. |
-| **Clustering** | Multiple nodes act as one system sharing state/storage; **failover** to a standby on node failure. Active/active or active/passive. |
+| **Clustering** | Multiple nodes act as one system sharing state/storage; on node failure the surviving nodes (or a passive standby) take over. Active/active or active/passive. |
 
 > **Exam tip:** Load balancing = distribute work (performance + availability). Clustering = redundancy via failover (availability). "Servers appear as a single system" = cluster.
 
@@ -1235,7 +1238,7 @@ Classification drives handling, labeling, retention, access, and encryption. Dat
 
 | Site | Description | Cost | Recovery time |
 |---|---|---|---|
-| **Hot** | Fully equipped, live data replication, mirror of production | Highest | Minutes to hours (near zero) |
+| **Hot** | Fully equipped, live data replication, mirror of production | Highest | Minutes (near-zero downtime) |
 | **Warm** | Hardware/connectivity in place, data restored from recent backup | Medium | Hours to days |
 | **Cold** | Space, power, and connectivity only; bring equipment and data | Lowest | Days to weeks |
 | **Mobile site** | Trailer/portable datacenter | Variable | Depends |
@@ -1313,7 +1316,7 @@ Also: **hot/cold aisles** are datacenter cooling, not DR sites. **Reciprocal agr
 - **Forward proxy (clients/outbound) vs reverse proxy (servers/inbound).**
 - **802.1X EAP:** EAP-TLS mutual certs; PEAP/TTLS server cert and tunnel; EAP-FAST uses PAC.
 - **WAF (web app attacks) vs NGFW (L7 app/user aware) vs UTM (all-in-one) vs L4 (IP/port only).**
-- **IPSec:** AH = integrity only; ESP = encryption; tunnel mode = gateway-to-gateway with new header; transport = host-to-host.
+- **IPSec:** AH = integrity only; ESP = encryption; tunnel mode = whole original packet protected under a new header (site-to-site and remote-access VPNs); transport = payload only, host-to-host.
 - **SD-WAN vs SASE:** SASE = SD-WAN plus cloud-delivered security (SWG, CASB, ZTNA).
 - **Masking (display hiding) vs tokenization (vault surrogate) vs encryption (reversible with key) vs hashing (one-way).**
 - **Data states:** at rest, in transit, in use (hardest; enclaves).
@@ -1377,7 +1380,7 @@ Core hardening list: remove/disable unnecessary software, accounts and services;
 
 | Method | Security implication |
 |---|---|
-| **Cellular** | Carrier network, encrypted to the tower but **outside corporate control/monitoring**; a phone on cellular bypasses corporate firewall/DLP. Risks: rogue base stations (IMSI catchers, SIM swap). Use VPN/ZTNA and MDM. |
+| **Cellular** | Carrier network, encrypted to the tower but **outside corporate control/monitoring**; a phone on cellular bypasses corporate firewall/DLP. Risks: rogue base stations (IMSI catchers/stingrays); SIM swapping (attacker social-engineers the carrier to port the number, hijacking SMS codes). Use VPN/ZTNA and MDM. |
 | **Wi-Fi** | Untrusted public hotspots, evil twin/rogue AP, on-path attacks. Use WPA3/802.1X on corporate Wi-Fi, always-on VPN elsewhere, disable auto-join. |
 | **Bluetooth** | Short-range PAN. Attacks: bluejacking (unsolicited messages), bluesnarfing (data theft), bluebugging (device control). Disable discoverable mode, require pairing PIN, turn off when unused. |
 | Others | NFC (centimetres, contactless pay, relay risk), USB/tethering/hotspot (bridges networks, bypasses controls), infrared, point-to-point/ad hoc. Disable unused radios via MDM. |
@@ -1388,7 +1391,7 @@ Core hardening list: remove/disable unnecessary software, accounts and services;
 - **WPA3:** Personal uses **SAE** (Simultaneous Authentication of Equals, "Dragonfly") instead of WPA2-PSK, so a captured handshake cannot be brute-forced offline; per-session keys give forward secrecy; **PMF** (protected management frames) mandatory, stopping deauth attacks; Enterprise offers a 192-bit (CNSA, GCMP-256) mode. **OWE** (Opportunistic Wireless Encryption, "Enhanced Open") encrypts open/guest networks without a password.
 - **WPA2:** AES-CCMP. **WPA:** TKIP (deprecated). **WEP:** RC4, broken.
 - **AAA / RADIUS:** 802.1X port-based access control. Supplicant (client) -> authenticator (AP/switch) -> authentication server (RADIUS). RADIUS = UDP 1812/1813, encrypts only password; TACACS+ = TCP 49, encrypts entire payload, separates AAA, Cisco-origin (device admin). Diameter is RADIUS successor.
-- **Cryptographic protocols:** WPA2 = AES-**CCMP**; WPA3 = AES-CCMP (Personal) or **GCMP-256** (Enterprise 192-bit). TKIP and WEP/RC4 are the wrong answers. TLS is used inside EAP methods.
+- **Cryptographic protocols:** WPA2 = AES-**CCMP**; WPA3 = AES-CCMP (Personal) or **GCMP-256** (Enterprise 192-bit). TKIP and WEP/RC4 are the wrong answers. TLS is used inside EAP methods. Exam framing: questions usually pair **WPA2 → CCMP** and **WPA3 → GCMP**; if GCMP is offered for WPA3, take it.
 - **Authentication protocols (EAP family):**
 
 | Method | Server cert | Client cert | Tunnel | Notes |
@@ -1396,7 +1399,7 @@ Core hardening list: remove/disable unnecessary software, accounts and services;
 | EAP-TLS | Yes | **Yes** (mutual) | TLS | Strongest; requires PKI on every client |
 | PEAP | Yes | No | TLS tunnel protects inner (MS-CHAPv2) | Microsoft/Cisco/RSA; username+password inside tunnel |
 | EAP-TTLS | Yes | No (optional) | TLS tunnel | Like PEAP; supports more inner methods (PAP, CHAP) |
-| EAP-FAST | No (uses PAC) | No | Protected Access Credential tunnel | Cisco; replaced LEAP; no certs needed |
+| EAP-FAST | Optional (PAC normally replaces it) | No | Protected Access Credential tunnel | Cisco; replaced LEAP; no client cert, PAC instead |
 | LEAP | - | - | None | Cisco legacy, crackable, avoid |
 
 > **Exam tip:** "Certificates on both client and server" = EAP-TLS. "Cisco, no certificates, PAC" = EAP-FAST. "Tunnel + password only client" = PEAP/EAP-TTLS.
@@ -1429,8 +1432,8 @@ Continuous collection of logs and telemetry from hardened resources (SIEM, EDR, 
   - **Enumeration:** discovering and listing assets (network scans, agents, NAC).
   - Also tag/barcode/RFID, lifecycle tracking, license tracking.
 - **Disposal/decommissioning:**
-  - **Sanitization:** make data unrecoverable while device may be reused (overwrite, crypto erase, secure erase for SSDs, degauss for magnetic media). Standard: NIST SP 800-88 (clear, purge, destroy).
-  - **Destruction:** physically destroy media (shred, pulverize, incinerate, disintegrate). Required for highest sensitivity or non-sanitizable media. Degaussing does not work on SSDs.
+  - **Sanitization:** make data unrecoverable, normally so the media can be reused (overwrite, cryptographic erase, ATA/NVMe secure erase for SSDs). Standard: NIST SP 800-88 (clear, purge, destroy).
+  - **Destruction:** physically destroy media (shred, pulverize, incinerate, disintegrate). Required for highest sensitivity or non-sanitizable media. **Degaussing** (strong magnetic field) erases magnetic media; it also wipes an HDD's servo tracks, so the drive is unusable afterwards (tape survives). Useless on SSDs/flash.
   - **Certification:** documented proof (certificate of destruction/sanitization), often from a third-party vendor, for audit/compliance.
   - **Data retention:** keep data only as long as legal/business need requires, then dispose per policy; retain disposal records. Over-retention = liability; premature deletion = compliance violation (and legal hold overrides schedules).
 
@@ -1472,7 +1475,7 @@ Continuous collection of logs and telemetry from hardened resources (SIEM, EDR, 
 | 7.0 – 8.9 | High |
 | 9.0 – 10.0 | Critical |
 
-- **CVE:** standardized identifier for a publicly known vuln (CVE-YYYY-NNNN). NVD enriches with CVSS. **CWE** = weakness type. CVSS = how severe; CVE = what/which.
+- **CVE:** standardized identifier for a publicly known vuln (CVE-YYYY-NNNN, four or more digits, e.g. CVE-2021-44228). NVD enriches with CVSS. **CWE** = weakness type. CVSS = how severe; CVE = what/which.
 - **Vulnerability classification:** by type/category (e.g., misconfiguration, zero-day, injection, outdated software).
 - **Exposure factor:** % of asset value lost if exploited (feeds SLE).
 - **Environmental variables:** your specifics: internet-facing or not, compensating controls, data on system.
@@ -1485,7 +1488,7 @@ Continuous collection of logs and telemetry from hardened resources (SIEM, EDR, 
 - **Insurance:** risk transfer for residual risk (does not remove vuln).
 - **Segmentation:** isolate vulnerable system when it cannot be patched.
 - **Compensating controls:** alternative control reducing risk when primary fix unavailable (WAF, IPS virtual patch, extra monitoring).
-- **Exceptions and exemptions:** formally documented, time-limited, risk-accepted, approved by owner/management.
+- **Exceptions and exemptions:** both are documented, approved forms of risk acceptance. An exception is a time-boxed deviation with compensating controls; an exemption releases a system from the requirement (see 5.2).
 
 #### Validation of remediation
 - **Rescanning:** confirm vuln gone. **Audit:** verify process/config. **Verification:** manual confirmation that the fix works and nothing broke.
@@ -1500,7 +1503,9 @@ Communicates findings: severity, affected assets, trends, remediation status, SL
 ### 4.4 Explain security alerting and monitoring concepts and tools
 
 #### Monitoring computing resources
-- **Systems, applications, infrastructure** all generate telemetry to monitor.
+- **Systems:** hosts, servers, endpoints: CPU, memory, disk, processes, logons, service and patch state (agents, EDR, OS logs).
+- **Applications:** application logs, errors, authentication events, API calls, transactions, response time.
+- **Infrastructure:** network devices, firewalls, hypervisors, cloud control plane, power/HVAC (SNMP, NetFlow, firewall and cloud audit logs).
 
 #### Activities
 - **Log aggregation:** centralize logs from many sources into one place (SIEM) for correlation.
@@ -1513,7 +1518,7 @@ Communicates findings: severity, affected assets, trends, remediation status, SL
   - **Alert tuning:** adjust thresholds/rules to cut false positives (alert fatigue) while not creating false negatives.
 
 #### Tools
-- **SCAP (Security Content Automation Protocol):** NIST standards (e.g., OVAL, XCCDF, CVE, CVSS) for automated compliance and vuln checking. **Benchmarks:** CIS/STIG configuration checklists used with SCAP.
+- **SCAP (Security Content Automation Protocol):** NIST specification (SP 800-126) that bundles open standards (XCCDF checklists, OVAL checks, CPE/CCE naming, CVE identifiers, CVSS scores) so scanners can check configuration compliance and vulnerabilities automatically. **Benchmarks:** CIS/STIG configuration checklists used with SCAP.
 - **Agents vs. agentless:** agent = software on endpoint, works off-network, richer data, deployment overhead. Agentless = remote scan/WMI/API, no install, less depth, needs network access/creds.
 - **SIEM:** aggregates, normalizes, correlates logs, alerts, dashboards, retention. (SOAR then automates the response.)
 - **Antivirus/anti-malware:** signature/heuristic/behavior detection on endpoint.
@@ -1536,9 +1541,9 @@ Communicates findings: severity, affected assets, trends, remediation status, SL
 
 Example ACL reading:
 ```
-1 permit tcp any host 10.0.1.10 eq 443   # allow HTTPS to web server
-2 permit tcp 10.0.2.0/24 any eq 22       # allow SSH from admin net
-3 deny ip any any                        # implicit/explicit deny
+1 permit tcp any host 10.0.1.10 eq 443       # allow HTTPS to web server
+2 permit tcp 10.0.2.0/24 10.0.1.0/24 eq 22   # allow SSH from admin net to server net
+3 deny ip any any                            # implicit/explicit deny
 ```
 
 #### IDS/IPS
@@ -1547,7 +1552,7 @@ Example ACL reading:
 |---|---|---|
 | Placement | Out of band (SPAN/TAP) | Inline |
 | Action | Detect, alert | Detect and block |
-| Failure effect | None on traffic | Fail-open or fail-closed can disrupt traffic |
+| Failure effect | None on traffic | Fail-closed = outage (traffic blocked); fail-open = traffic flows uninspected |
 
 - **Trends:** reviewing IDS/IPS alert data over time (top signatures, sources, targets, volume changes) to spot campaigns, tune rules and adjust defenses; most products show trend dashboards. Exam framing: "what is changing" vs a single alert.
 - **Detection methods:** signature-based (known patterns; needs updates; misses zero-days), anomaly/behavior-based (baseline deviations; catches novel; more false positives), heuristic.
@@ -1589,11 +1594,11 @@ Example ACL reading:
 | IMAP | TCP 143 | IMAPS | 993 |
 | LDAP | TCP 389 | LDAPS | 636 |
 | SNMP v1/v2 | UDP 161/162 | SNMPv3 | 161/162 |
-| DNS | 53 | DNSSEC (integrity) / DoH 443 / DoT 853 | |
+| DNS | UDP/TCP 53 | DNSSEC (integrity only) / DoH / DoT | 53 / TCP 443 / TCP 853 |
 | TFTP | UDP 69 | SFTP/SCP | 22 |
-| RDP | TCP 3389 | via VPN/RD Gateway | |
+| RDP | TCP/UDP 3389 | via VPN/RD Gateway | |
 | Syslog | UDP 514 | Syslog over TLS | 6514 |
-| NTP | UDP 123 | NTS | |
+| NTP | UDP 123 | NTS | UDP 123 (NTS-KE on TCP 4460) |
 | SQL/others | | TLS-wrapped | |
 
 Others to know: DHCP 67/68, Kerberos 88, SMB 445, RADIUS 1812/1813, TACACS+ 49, IPsec IKE UDP 500 (NAT-T 4500), NetBIOS 137-139.
@@ -1609,12 +1614,12 @@ Block resolution of malicious/unwanted domains at the resolver (threat-intel cat
 - **DMARC:** DNS policy built on SPF and DKIM; requires alignment with the From domain; tells receivers what to do on failure (none / quarantine / reject) and sends reports back to the domain owner.
 - **Gateway (email security gateway):** inline filter (spam, phishing, malware attachments, URL rewriting, DLP, sandboxing) before mail reaches the mailbox.
 
-Fit together: SPF = "which IPs may send", DKIM = "message is signed and unaltered", DMARC = "policy + reporting when either fails to align".
+Fit together: SPF = "which IPs may send", DKIM = "message is signed and unaltered", DMARC = "policy + reporting: a message passes if SPF or DKIM passes and aligns with the From domain; the policy (none / quarantine / reject) applies only when neither does".
 
 > **Exam tip:** Spoofed sender domain -> SPF/DKIM/DMARC. "Policy: reject unauthenticated mail and receive reports" -> DMARC. "Digital signature on message headers" -> DKIM.
 
 #### File integrity monitoring (FIM)
-Baselines hashes of critical OS files, binaries, registry keys and configs, then alerts on unauthorized change (detects tampering, rootkits, web defacement, config drift). Examples: Tripwire, OSSEC/Wazuh, Windows SFC. Required by PCI DSS. Keyword: "detect changes to system files".
+Baselines hashes of critical OS files, binaries, registry keys and configs, then alerts on unauthorized change (detects tampering, rootkits, web defacement, config drift). Examples: Tripwire, OSSEC/Wazuh, EDR/AV-suite FIM modules. (Windows SFC only verifies and repairs system files on demand; it is not FIM.) Required by PCI DSS. Keyword: "detect changes to system files".
 
 #### DLP
 Classifies and inspects data in use (endpoint), in motion (network/email) and at rest (storage); blocks, quarantines, encrypts, or alerts. Keyword: "prevent SSNs/credit cards from leaving".
@@ -1683,7 +1688,7 @@ Note: RBAC = Role-based; rule-based is a different thing though abbreviations co
 - **Implementations:**
   - **Biometrics:** fingerprint, face, iris, retina, voice, vein. Errors: FAR (false acceptance, a security failure), FRR (false rejection, a usability problem); CER/EER = where they cross, lower is better.
   - **Hard authentication token:** physical device generating OTPs (key fob showing a TOTP/HOTP code) or smart card.
-  - **Soft authentication token:** OTP generated by an app (Google/Microsoft Authenticator) or delivered by SMS/email/push. SMS is weakest (SIM swap, interception).
+  - **Soft authentication token:** OTP generated by an authenticator app (software version of the key fob). Codes **delivered** out of band by SMS/email/push are a separate category; SMS is weakest (SIM swap, interception).
   - **Security keys:** USB/NFC/Bluetooth hardware keys (FIDO2/WebAuthn, U2F) doing public-key challenge/response; phishing-resistant.
   - TOTP = time-based (30-second codes); HOTP = counter/event-based (valid until used).
 - **Factors (SY0-701 lists four):** something you **know** (password, PIN, pattern), something you **have** (token, smart card, phone), something you **are** (biometric), **somewhere you are** (location: GPS, IP geolocation). Older material adds something you **do** (gait, typing rhythm, signature); treat it as a behavioral attribute if it appears. Two passwords or password + security question is not MFA (same factor).
@@ -1762,7 +1767,7 @@ Note: RBAC = Role-based; rule-based is a different thing though abbreviations co
 1. **Preparation:** IR plan, policy, team/roles, contact lists, tooling, playbooks, training, communication plan, jump bag.
 2. **Detection:** identify potential incident via alerts, users, threat intel (IoCs).
 3. **Analysis:** validate (true vs. false positive), scope, classify severity, determine impact, prioritize.
-4. **Containment:** limit spread (isolate, segment, disable accounts); short-term vs. long-term; preserve evidence first.
+4. **Containment:** limit spread (isolate, segment, disable accounts); short-term vs. long-term; choose containment actions that preserve evidence (isolate rather than power off; image before rebuilding).
 5. **Eradication:** remove root cause (malware, persistence, attacker accounts, vulnerability).
 6. **Recovery:** restore from clean backups, rebuild, validate, return to production, heightened monitoring.
 7. **Lessons learned:** post-incident review, improve plan, controls and documentation.
@@ -1834,7 +1839,7 @@ Proactive, hypothesis-driven search for threats already inside that evaded detec
 - **BYOD / COPE / CYOD / COBO:** employee-owned / company-owned + personal use / pick from a list / business only.
 - **EAP-TLS vs. PEAP vs. EAP-FAST:** client+server certs / server cert only + inner password / PAC, no certs.
 - **RADIUS vs. TACACS+:** UDP 1812/1813, password-only encryption vs. TCP 49, full encryption, separate AAA.
-- **WPA3-SAE:** replaces PSK handshake, resists offline guessing; OWE encrypts open networks.
+- **WPA3-SAE (exam: GCMP):** replaces PSK handshake, resists offline guessing; OWE encrypts open networks.
 - **Sanitization vs. destruction vs. certification:** reuse-safe wipe / physical, unrecoverable / paper proof.
 - **False positive vs. false negative:** reported but not real / real but missed. **Scan vs. pen test:** identify vs. exploit.
 - **CVE vs. CVSS vs. CWE:** identifier / severity score (9.0-10.0 critical, 7.0-8.9 high, 4.0-6.9 medium, 0.1-3.9 low) / weakness class.
@@ -1892,14 +1897,14 @@ Objectives 5.1–5.6. Governance, risk, third parties, compliance, audits, aware
 |---|---|
 | **Password** | Length, complexity, history, age, lockout, MFA requirement, no reuse. |
 | **Access control** | Model (RBAC/ABAC/MAC/DAC), least privilege, separation of duties, review cadence, provisioning rules. |
-| **Physical security** | Badges, mantraps, cameras, visitor logs, locks, guard coverage. |
+| **Physical security** | Badges, access control vestibules (mantraps), cameras, visitor logs, locks, guard coverage. |
 | **Encryption** | Approved algorithms, key lengths, protocols (TLS 1.2+), key management and rotation. |
 
 #### Procedures
 
 | Procedure | Notes |
 |---|---|
-| **Change management** | Request > impact/risk analysis > approval (CAB) > test > schedule > implement > backout plan > document/post-review. |
+| **Change management** | Request > impact/risk analysis > approval (CAB) > test > schedule (maintenance window, backout plan ready) > implement > verify or back out > document/post-review. |
 | **Onboarding** | Accounts provisioned by role, AUP signed, training, equipment issued, background check complete. |
 | **Offboarding** | Disable accounts immediately, retrieve assets/badges, revoke access and tokens, exit interview, reassign data. |
 | **Playbooks** | Prescribed step-by-step response for a specific scenario (ransomware, phishing). Often automated via SOAR. Distinct from a runbook (routine operational tasks). |
@@ -1908,10 +1913,10 @@ Objectives 5.1–5.6. Governance, risk, third parties, compliance, audits, aware
 
 | Factor | Examples / key point |
 |---|---|
-| **Regulatory** | Government-mandated; penalties for noncompliance (HIPAA, SOX, GLBA, FISMA, PCI DSS is contractual/industry). |
+| **Regulatory** | Government-mandated; penalties for noncompliance (HIPAA, SOX, GLBA, FISMA). PCI DSS is *not* a regulation: it is a contractual/industry standard (see Industry). |
 | **Legal** | Laws, contractual obligations, liability, e-discovery, breach notification. |
 | **Industry** | Sector standards and frameworks (PCI DSS, ISO 27001, NIST CSF, CIS). |
-| **Geographic: local / regional / national / global** | Local ordinances, state laws (CCPA), national (HIPAA), regional (GDPR - EU), global (ISO). **Data sovereignty** applies: data is subject to the laws of the country where it is stored. |
+| **Geographic: local / regional / national / global** | Local ordinances; regional (US state laws such as CCPA/CPRA, EU member-state law); national (HIPAA, GLBA, SOX, COPPA); global (GDPR's extraterritorial reach, cross-border data-transfer rules, international agreements). **Data sovereignty** applies: data is subject to the laws of the country where it is collected or stored. |
 
 #### Monitoring and revision
 
@@ -1987,7 +1992,7 @@ Find assets, threats, vulnerabilities, and existing controls. Sources: asset inv
 - A flood-protection control costing $5,000/year that eliminates the risk is justified (saves $3,000/year). One costing $12,000/year is not.
 - If the control cuts ARO from 0.1 to 0.02: new ALE = $1,600; savings = $6,400; subtract annual control cost to get net benefit.
 
-> **Exam tip:** Never spend more on a control than the ALE it prevents. "Once every 5 years" means ARO = 0.2. "Twice a year" means ARO = 2.
+> **Exam tip:** Never spend more per year on a control than the ALE reduction it delivers (ALE before − ALE after). "Once every 5 years" means ARO = 0.2. "Twice a year" means ARO = 2.
 
 #### Risk register
 
@@ -2042,9 +2047,10 @@ Identifies critical functions and quantifies the effect of their loss; drives re
 |---|---|
 | **RTO** (recovery time objective) | Maximum acceptable time to restore a service after disruption. |
 | **RPO** (recovery point objective) | Maximum acceptable data loss, measured in time since last good backup. |
-| **MTTR** (mean time to repair/recover) | Average time to repair a failed component and restore service. |
+| **MTTR** (mean time to repair; CompTIA's acronym list says recover) | Average time to repair a failed component and restore service. |
 | **MTBF** (mean time between failures) | Average operating time between failures; reliability. |
 | **MTD / MAO** | Maximum tolerable downtime; the absolute limit before the business suffers unacceptable harm. RTO must be < MTD. |
+| **WRT** | Work recovery time: time after systems are restored to verify data and resume normal operations. MTD = RTO + WRT, so RTO must be shorter than MTD |
 
 **Worked example.** Order system: RPO 1 hour, RTO 4 hours. The business can lose at most 1 hour of orders, so backups/replication must occur at least hourly. Service must be back within 4 hours of the outage. A nightly backup fails the RPO. Availability from MTBF/MTTR: MTBF 1,000 h, MTTR 10 h gives availability = 1000 / (1000 + 10) = about 99.0%.
 
@@ -2085,7 +2091,7 @@ Identifies critical functions and quantifies the effect of their loss; drives re
 
 #### Vendor monitoring
 
-Continuous, not one-time: review SLA metrics, audit reports, security ratings, incident notifications, financial health, and re-assess on contract renewal or after changes. Includes **questionnaires** and **rules of engagement**.
+Continuous, not one-time: review SLA metrics, audit reports, security ratings, incident notifications, financial health, and re-assess on contract renewal or after changes. Separate 5.3 items, covered next: questionnaires (assessment and periodic re-assessment) and rules of engagement (scope and limits for any testing of the vendor).
 
 #### Questionnaires
 
@@ -2118,7 +2124,7 @@ Defines what is allowed in testing/assessment of the vendor: scope, targets, tim
 
 | Consequence | Notes |
 |---|---|
-| **Fines** | Monetary penalties (GDPR up to 4% of global annual turnover or EUR 20M). |
+| **Fines** | Monetary penalties (GDPR up to EUR 20M or 4% of global annual turnover, whichever is higher). |
 | **Sanctions** | Regulatory restrictions or formal penalties; can include trade restrictions. |
 | **Reputational damage** | Loss of customer trust, negative press. |
 | **Loss of license** | Cannot operate in regulated sector. |
@@ -2132,7 +2138,7 @@ Defines what is allowed in testing/assessment of the vendor: scope, targets, tim
 | **Due care** | Acting responsibly on an ongoing basis; doing what a reasonable person would to protect assets (applying controls, patching). |
 | **Attestation** | Formal statement (by management or auditor) that controls are in place and operating. |
 | **Acknowledgement** | Individual confirms they read and understood a policy (AUP signing). |
-| **Internal vs external** | Internal monitoring by compliance team/IA; external by regulators and independent auditors. |
+| **Internal vs external** | Internal monitoring by compliance team/internal audit; external by regulators and independent auditors. |
 | **Automation** | Continuous control monitoring, policy-as-code, automated evidence collection, and dashboards reduce manual effort and drift. |
 
 > **Exam tip:** Due *diligence* = before/investigate. Due *care* = after/ongoing maintenance. Failing to apply due care is negligence.
@@ -2143,7 +2149,7 @@ Defines what is allowed in testing/assessment of the vendor: scope, targets, tim
 |---|---|
 | **Legal implications - local/regional** | State/provincial laws (CCPA/CPRA, other US state laws). |
 | **National** | Country-level (HIPAA, GLBA, COPPA, PIPEDA). |
-| **Global** | GDPR applies to any organization handling EU residents' data regardless of location. Cross-border transfer rules; data sovereignty. |
+| **Global** | GDPR applies to organizations established in the EU and to any organization elsewhere that offers goods or services to, or monitors, people in the EU (exam shorthand: 'EU residents' data'). Cross-border transfer rules; data sovereignty. |
 | **Data subject** | The individual the personal data is about; holds rights (access, correction, deletion, portability, objection). |
 | **Controller vs processor** | Controller decides purpose/means; processor processes on controller's behalf. Controller remains accountable. |
 | **Ownership** | Data owner is accountable for the data; the data subject retains privacy rights regardless. |
@@ -2200,10 +2206,10 @@ An independent party's (or management's) formal opinion that a control or statem
 
 | Type | Definition | Examples |
 |---|---|---|
-| **Passive** | No direct interaction with target; leaves no trace | OSINT, WHOIS, social media, DNS records, Shodan |
+| **Passive** | No direct interaction with the target's systems; very hard to detect | OSINT, WHOIS, social media, DNS records, Shodan |
 | **Active** | Direct interaction with target systems; detectable | Port scans, banner grabbing, ping sweeps |
 
-> **Exam tip:** Written permission and rules of engagement come before any penetration test. "No prior knowledge" = unknown environment/black box. "Red + blue working together" = integrated/purple. Passive recon never touches the target's systems.
+> **Exam tip:** Written permission and rules of engagement come before any penetration test. "No prior knowledge" = unknown environment/black box. "Red + blue working together" = integrated/purple. Passive recon avoids touching the target's systems (uses public/third-party sources).
 
 ---
 
@@ -2214,6 +2220,7 @@ An independent party's (or management's) formal opinion that a control or statem
 - **Campaigns**: simulated phishing emails sent to staff to measure susceptibility (click rate, credential-submission rate, report rate); followed by targeted training.
 - **Recognition**: suspicious sender/domain, urgency, mismatched URLs, unexpected attachments, requests for credentials or payment, generic greeting, grammar errors.
 - **Response**: do not click or reply; report using the report-phishing button or to the security team; if clicked, disconnect and report immediately; change credentials.
+- **Handling reports (security team):** acknowledge the reporter, triage (headers, URLs, attachments, sandbox), search and purge the message from all mailboxes, block sender/domain/URL/hash, identify who clicked or entered credentials (reset, revoke sessions), escalate to IR if compromise is confirmed, feed results into awareness metrics.
 
 #### Anomalous behavior recognition
 
@@ -2231,7 +2238,7 @@ An independent party's (or management's) formal opinion that a control or statem
 | **Situational awareness** | Notice surroundings: shoulder surfing, tailgating/piggybacking, strangers in secure areas, clean desk, screen locks. |
 | **Insider threat** | Recognize and report warning signs (unusual access, data hoarding, policy circumvention) through a confidential channel. |
 | **Password management** | Long unique passphrases, password manager, MFA, never share or reuse credentials. |
-| **Removable media and cables** | Do not plug in found USB drives or unknown charging cables (malicious cables/"juice jacking" can deliver keystroke-injection payloads); use only approved, encrypted media. |
+| **Removable media and cables** | Do not plug in found USB drives or unknown cables (a malicious cable or drive can pose as a keyboard and inject keystrokes); avoid public USB charging ports ('juice jacking' = data theft or malware through a compromised charging port) and use your own charger or a data blocker. Use only approved, encrypted media. |
 | **Social engineering** | Recognize pretexting, phishing/vishing/smishing, impersonation, urgency and authority tactics; verify out of band. |
 | **Operational security (OPSEC)** | Avoid leaking sensitive details (projects, travel, org charts) in conversation or on social media that attackers can use for reconnaissance. |
 | **Hybrid/remote work environments** | Secure home Wi-Fi, use VPN, avoid public Wi-Fi without VPN, lock screens, keep family off work devices, physical privacy for calls. |
@@ -2291,23 +2298,19 @@ Metrics: completion rates, phishing click/report rates, incident counts, time to
 | Simple file transfer | TFTP UDP 69 | None (use SFTP) | No authentication, used for PXE/network device configs |
 | Remote shell | Telnet TCP 23 | **SSH** TCP 22 | SSH also does SCP, SFTP, port forwarding/tunneling |
 | Web | HTTP TCP 80 | **HTTPS** TCP 443 (TLS) | HTTP/3 uses QUIC over UDP 443 |
-| Mail relay (server to server) | SMTP TCP 25 | SMTPS TCP 465 (implicit TLS); STARTTLS on 25 | Port 25 is server-to-server |
-| Mail submission (client to server) | SMTP 25 | **Submission TCP 587** (STARTTLS) | Authenticated client submission |
+| Mail relay (server to server) | SMTP TCP 25 | STARTTLS on TCP 25 (no separate secure port for relay) | Port 25 is server-to-server |
+| Mail submission (client to server) | SMTP 25 | **Submission TCP 587** (STARTTLS) or **SMTPS TCP 465** (implicit TLS) | Authenticated client submission |
 | Mail retrieval | POP3 TCP 110 | **POP3S** TCP 995 | Downloads mail, usually deletes from server |
 | Mail retrieval | IMAP TCP 143 | **IMAPS** TCP 993 | Keeps mail on server, syncs folders |
 | Name resolution | DNS UDP/TCP 53 | **DNSSEC** (still 53; adds signatures, integrity not confidentiality); **DoT** TCP 853; **DoH** TCP 443 | Zone transfers use TCP 53. DoT/DoH encrypt queries |
 | Network management | SNMPv1/v2c UDP 161 (queries), 162 (traps) | **SNMPv3** UDP 161/162 | v3 adds auth + encryption. v1/v2c use cleartext community strings |
-| Directory | LDAP TCP/UDP 389 | **LDAPS** TCP 636 (also StartTLS on 389) | Global Catalog: 3268 / 3269 (TLS) |
-| Time | NTP UDP 123 | **NTS** (Network Time Security, NTP over TLS-based key exchange, TCP 4460 for NTS-KE) | NTP is amplification-attack prone |
+| Directory | LDAP TCP 389 (UDP for CLDAP) | **LDAPS** TCP 636 (also StartTLS on 389) | Global Catalog: 3268 / 3269 (TLS) |
+| Time | NTP UDP 123 | **NTS** (Network Time Security): TLS key establishment on TCP 4460 (NTS-KE), then authenticated NTP packets on UDP 123 | NTP is amplification-attack prone |
 | Remote desktop | RDP TCP/UDP 3389 | Same port; use NLA, TLS, gateway/VPN | Never expose directly to the internet |
 | File sharing | SMB TCP 445 (legacy NetBIOS 139) | SMB 3.x with encryption (same port) | SMBv1 deprecated (EternalBlue) |
 | NetBIOS | UDP 137 (name), UDP 138 (datagram), TCP 139 (session) | Replace with SMB over 445 | Legacy Windows name/file services |
-| Authentication | Kerberos TCP/UDP 88 | n/a | Ticket-based, time-sensitive (5 min skew), AD default |
 | AAA (network access) | RADIUS UDP **1812** (auth), **1813** (accounting); legacy 1645/1646 | RADIUS over TLS (RadSec) TCP 2083 | Only encrypts the password field. UDP |
-| AAA (device admin) | **TACACS+** TCP 49 | n/a | Cisco, encrypts the entire payload, separates authN/authZ/accounting |
 | Logging | Syslog UDP 514 | **Syslog over TLS** TCP **6514** | Syslog UDP is unreliable and unencrypted |
-| VPN (IPSec) | IKE/ISAKMP UDP **500**; NAT-T UDP **4500** | ESP (protocol 50), AH (protocol 51) | Not TCP/UDP ports for ESP/AH |
-| VPN (SSL/TLS) | OpenVPN UDP/TCP **1194** | n/a | TLS-based VPN; L2TP UDP 1701; PPTP TCP 1723 (deprecated) |
 | DHCP | UDP 67 (server), 68 (client) | DHCP snooping on switches | Rogue DHCP risk |
 | VoIP signalling | SIP UDP/TCP 5060 | **SIP TLS** 5061 (SIPS); SRTP for media | SRTP secures the media |
 | SQL Server | TCP 1433 | Same, with TLS | |
@@ -2315,9 +2318,18 @@ Metrics: completion rates, phishing click/report rates, incident counts, time to
 | PostgreSQL | TCP 5432 | Same, with TLS | |
 | Oracle | TCP 1521 | Same (Oracle Net with encryption) | |
 
+### Other ports to know (no insecure/secure pair)
+
+| Service | Port | Notes |
+|---|---|---|
+| Authentication (Kerberos) | TCP/UDP 88 | Ticket-based, time-sensitive (5 min skew), AD default |
+| AAA, device admin (**TACACS+**) | TCP 49 | Cisco, encrypts the entire payload, separates authN/authZ/accounting |
+| VPN (IPSec) | IKE/ISAKMP UDP **500**; NAT-T UDP **4500**; ESP = IP protocol 50, AH = IP protocol 51 | ESP and AH are IP protocol numbers, not TCP/UDP ports |
+| VPN (SSL/TLS: OpenVPN) | UDP/TCP **1194** | TLS-based VPN. Related: L2TP UDP 1701; PPTP TCP 1723 (deprecated) |
+
 ### Quick memorization list (by number)
 
-20/21 FTP, 22 SSH/SCP/SFTP, 23 Telnet, 25 SMTP, 49 TACACS+, 53 DNS, 67/68 DHCP, 69 TFTP, 80 HTTP, 88 Kerberos, 110 POP3, 123 NTP, 137-139 NetBIOS, 143 IMAP, 161/162 SNMP, 389 LDAP, 443 HTTPS, 445 SMB, 465 SMTPS, 500 IKE, 514 syslog, 587 SMTP submission, 636 LDAPS, 853 DoT, 989/990 FTPS, 993 IMAPS, 995 POP3S, 1194 OpenVPN, 1433 SQL Server, 1521 Oracle, 1645/1646 legacy RADIUS, 1812/1813 RADIUS, 3306 MySQL, 3389 RDP, 4500 IPSec NAT-T, 5060/5061 SIP, 5432 PostgreSQL, 6514 syslog TLS.
+20/21 FTP, 22 SSH/SCP/SFTP, 23 Telnet, 25 SMTP, 49 TACACS+, 53 DNS, 67/68 DHCP, 69 TFTP, 80 HTTP, 88 Kerberos, 110 POP3, 123 NTP, 137-139 NetBIOS, 143 IMAP, 161/162 SNMP, 389 LDAP, 443 HTTPS, 445 SMB, 465 SMTPS, 500 IKE, 514 syslog, 587 SMTP submission, 636 LDAPS, 853 DoT, 989/990 FTPS, 993 IMAPS, 995 POP3S, 1194 OpenVPN, 1433 SQL Server, 1521 Oracle, 1645/1646 legacy RADIUS, 1701 L2TP, 1723 PPTP, 1812/1813 RADIUS, 3306 MySQL, 3389 RDP, 4460 NTS-KE, 4500 IPSec NAT-T, 5060/5061 SIP, 5432 PostgreSQL, 6514 syslog TLS.
 
 > **Exam tip:** Port ranges: well-known 0-1023, registered 1024-49151, dynamic/ephemeral 49152-65535. TCP = connection-oriented/reliable; UDP = connectionless (DNS queries, DHCP, TFTP, SNMP, syslog, NTP, RADIUS, IKE).
 
@@ -2332,7 +2344,7 @@ Metrics: completion rates, phishing click/report rates, incident counts, time to
 
 - Certificates (X.509) bind identity to public key; the session key is symmetric, agreed via (EC)DHE.
 - **Perfect forward secrecy (PFS):** ephemeral keys per session; compromise of the long-term private key does not expose past sessions.
-- **HSTS** forces HTTPS; **certificate pinning** limits trusted CAs; **STARTTLS** upgrades a plaintext connection to TLS in place.
+- **HSTS** forces HTTPS; **certificate pinning** makes a client accept only a specific expected certificate or public key for a host, defeating rogue or mis-issued certificates; **STARTTLS** upgrades a plaintext connection to TLS in place.
 
 ### IPSec
 
@@ -2366,13 +2378,15 @@ Metrics: completion rates, phishing click/report rates, incident counts, time to
 | **Evil twin / rogue AP** | Impersonating or unauthorized AP; mitigate with 802.1X and WIDS |
 | **Captive portal** | Web-based guest authentication |
 
+> **Exam tip:** WPA2 -> CCMP; WPA3 -> exam materials usually say GCMP. If a question pairs WPA3 with GCMP, accept it; WPA3-Personal actually still uses CCMP-128.
+
 ### EAP methods (802.1X)
 
 | Method | Client cert? | Server cert? | Notes |
 |---|---|---|---|
 | **EAP-TLS** | Yes | Yes | Mutual certificate auth; strongest; needs PKI |
 | **PEAP** | No | Yes | TLS tunnel then inner auth (MSCHAPv2); username/password |
-| **EAP-TTLS** | No | Yes | Tunnelled TLS; supports more inner methods |
+| **EAP-TTLS** | Optional (usually no) | Yes | Tunnelled TLS; supports more inner methods |
 | **EAP-FAST** | No (PAC) | Optional | Cisco; uses Protected Access Credential |
 | **EAP-MD5** | No | No | Weak; no mutual auth |
 | **LEAP** | No | No | Cisco legacy; broken |
@@ -2385,8 +2399,6 @@ Metrics: completion rates, phishing click/report rates, incident counts, time to
 | **DKIM** | Message integrity and domain authenticity | Sender signs headers/body with a private key; public key in DNS TXT; signature in header |
 | **DMARC** | Policy + reporting that ties SPF/DKIM to the visible From domain | DNS TXT at `_dmarc`; policy `none` / `quarantine` / `reject`; aggregate (rua) and forensic (ruf) reports |
 | **S/MIME / PGP** | End-to-end message signing and encryption | Certificates (S/MIME) or web of trust (PGP) |
-
-> **Exam tip:** WPA2 -> CCMP; WPA3 -> exam materials usually say GCMP. If a question pairs WPA3 with GCMP, accept it; WPA3-Personal actually still uses CCMP-128.
 
 > **Exam tip:** SPF = which servers, DKIM = signed and unmodified, DMARC = what to do on failure and report back. All three combat spoofing/phishing; none encrypt message content.
 
@@ -2403,7 +2415,9 @@ Jump: [A](#a) [B](#b) [C](#c) [D](#d) [E](#e) [F](#f) [G](#g) [H](#h) [I](#i) [J
 | Acronym | Expansion | Meaning |
 |---|---|---|
 | AAA | Authentication, Authorization, and Accounting | Framework for verifying identity, granting access, and logging activity |
+| ABAC | Attribute-Based Access Control | Access decided by policies over user, resource, and environment attributes (context-aware) |
 | ACL | Access Control List | Rules permitting or denying access to resources or traffic |
+| AEAD | Authenticated Encryption with Associated Data | Cipher mode giving confidentiality plus integrity in one step (e.g. AES-GCM, ChaCha20-Poly1305) |
 | AES | Advanced Encryption Standard | Symmetric block cipher, 128/192/256-bit keys |
 | AES-256 | Advanced Encryption Standard 256-bit | AES with a 256-bit key |
 | AH | Authentication Header | IPSec protocol for integrity/authentication without encryption |
@@ -2426,6 +2440,7 @@ Jump: [A](#a) [B](#b) [C](#c) [D](#d) [E](#e) [F](#f) [G](#g) [H](#h) [I](#i) [J
 |---|---|---|
 | BASH | Bourne Again Shell | Common Unix/Linux command shell |
 | BCP | Business Continuity Planning | Keeping critical functions running during disruption |
+| BEC | Business Email Compromise | Fraud using a spoofed or compromised business mailbox to redirect payments or data |
 | BGP | Border Gateway Protocol | Inter-domain internet routing protocol |
 | BIA | Business Impact Analysis | Identifies critical functions and the impact of their loss |
 | BIOS | Basic Input/Output System | Legacy firmware that initializes hardware at boot |
@@ -2440,6 +2455,7 @@ Jump: [A](#a) [B](#b) [C](#c) [D](#d) [E](#e) [F](#f) [G](#g) [H](#h) [I](#i) [J
 |---|---|---|
 | C2 | Command and Control | Attacker infrastructure that directs compromised hosts |
 | CA | Certificate Authority | Issues and signs digital certificates |
+| CAB | Change Advisory Board | Group that reviews and approves changes in change management |
 | CAC | Common Access Card | US DoD smart card for physical and logical access |
 | CAPTCHA | Completely Automated Public Turing Test to Tell Computers and Humans Apart | Challenge to block bots |
 | CAR | Corrective Action Report | Documents remediation of a finding |
@@ -2463,22 +2479,26 @@ Jump: [A](#a) [B](#b) [C](#c) [D](#d) [E](#e) [F](#f) [G](#g) [H](#h) [I](#i) [J
 | CMDB | Configuration Management Database | Authoritative inventory of assets and their configurations |
 | CMS | Content Management System | Platform for managing web content |
 | CN | Common Name | Certificate field naming the subject, e.g. FQDN |
+| COBO | Corporate-Owned, Business-Only | Company device restricted to work use; strictest mobile model |
 | COOP | Continuity of Operations Planning | Maintaining essential functions during crises |
 | COPE | Corporate-Owned, Personally Enabled | Company device that permits personal use |
+| COPPA | Children's Online Privacy Protection Act | US law protecting personal data of children under 13 |
 | CP | Contingency Planning | Plans for responding to disruptive events |
 | CPE | Common Platform Enumeration | Standard naming of products/platforms (SCAP component) |
 | CRC | Cyclic Redundancy Check | Error-detection checksum |
 | CRL | Certificate Revocation List | List of revoked certificates published by a CA |
 | CSA | Cloud Security Alliance | Cloud security standards body |
+| CSF | Cybersecurity Framework (NIST) | NIST framework of functions (Govern, Identify, Protect, Detect, Respond, Recover in CSF 2.0) |
 | CSIRT | Computer Security Incident Response Team | Team handling security incidents |
 | CSO | Chief Security Officer | Executive responsible for physical and cyber security |
-| CSP | Cloud Service Provider | Vendor offering cloud services |
+| CSP | Cloud Service Provider (also Content Security Policy) | Cloud vendor; in web security, an HTTP response header restricting which scripts/sources a page may load (XSS mitigation) |
 | CSPM | Cloud Security Posture Management | Continuously checks cloud configurations for misconfiguration |
 | CSR | Certificate Signing Request | Request to a CA for a certificate |
 | CSRF | Cross-Site Request Forgery | Tricks an authenticated user's browser into sending unwanted requests |
 | CSU | Channel Service Unit | WAN line termination device |
 | CTM | Counter Mode | Block cipher mode producing a keystream from a counter (usually written CTR) |
 | CTO | Chief Technology Officer | Executive responsible for technology direction |
+| CUI | Controlled Unclassified Information | US government data that is unclassified but requires safeguarding (replaces FOUO) |
 | CVE | Common Vulnerabilities and Exposures | Identifier list for publicly known vulnerabilities |
 | CVSS | Common Vulnerability Scoring System | 0-10 severity scoring |
 | CWE | Common Weakness Enumeration | Catalog of software weakness types (e.g. CWE-79 XSS) |
@@ -2489,6 +2509,7 @@ Jump: [A](#a) [B](#b) [C](#c) [D](#d) [E](#e) [F](#f) [G](#g) [H](#h) [I](#i) [J
 | Acronym | Expansion | Meaning |
 |---|---|---|
 | DAC | Discretionary Access Control | Owner decides who has access |
+| DAI | Dynamic ARP Inspection | Switch feature that drops ARP packets not matching DHCP snooping bindings (stops ARP spoofing) |
 | DAST | Dynamic Application Security Testing | Tests a running application from outside |
 | DBA | Database Administrator | Manages databases |
 | DDoS | Distributed Denial of Service | DoS from many sources |
@@ -2528,8 +2549,9 @@ Jump: [A](#a) [B](#b) [C](#c) [D](#d) [E](#e) [F](#f) [G](#g) [H](#h) [I](#i) [J
 | EFS | Encrypting File System | Windows NTFS file-level encryption |
 | EGP | Exterior Gateway Protocol | Routing between autonomous systems |
 | EIP | Extended Instruction Pointer | CPU register for next instruction; buffer overflow target |
-| EOL | End of Life | Vendor stops selling (and eventually supporting) a product; plan replacement |
+| EOL | End of Life | Vendor stops selling and winds down support; for the exam an EOL system no longer gets security patches (see EOS/EOSL) |
 | EOS | End of Service (Life) | Vendor no longer supports or patches (EOSL); unpatchable from this point |
+| EPSS | Exploit Prediction Scoring System | FIRST model estimating the probability a vulnerability will be exploited soon; used with CVSS to prioritize |
 | ERP | Enterprise Resource Planning | Integrated business management software |
 | ESN | Electronic Serial Number | Unique mobile device identifier |
 | ESP | Encapsulating Security Payload | IPSec protocol providing encryption and integrity |
@@ -2543,8 +2565,10 @@ Jump: [A](#a) [B](#b) [C](#c) [D](#d) [E](#e) [F](#f) [G](#g) [H](#h) [I](#i) [J
 | FACL | File System Access Control List | ACL on files and folders |
 | FAR | False Acceptance Rate | Impostors wrongly accepted by biometrics (security failure) |
 | FDE | Full Disk Encryption | Encrypts entire storage volume |
+| FERPA | Family Educational Rights and Privacy Act | US law protecting student education records |
 | FIDO | Fast IDentity Online | Standards (FIDO2/WebAuthn, U2F) for phishing-resistant passwordless auth |
 | FIM | File Integrity Monitoring | Detects unauthorized file changes |
+| FIPS | Federal Information Processing Standards | US government standards, e.g. FIPS 140-2/140-3 for validated crypto modules |
 | FISMA | Federal Information Security Modernization Act | US law requiring federal agency security programs |
 | FPGA | Field Programmable Gate Array | Reconfigurable hardware chip |
 | FRR | False Rejection Rate | Valid users wrongly rejected by biometrics |
@@ -2580,6 +2604,7 @@ Jump: [A](#a) [B](#b) [C](#c) [D](#d) [E](#e) [F](#f) [G](#g) [H](#h) [I](#i) [J
 | HMI | Human-Machine Interface | Operator console for ICS/SCADA |
 | HOTP | HMAC-based One-Time Password | Counter-based OTP |
 | HSM | Hardware Security Module | Tamper-resistant device for key storage and crypto ops |
+| HSTS | HTTP Strict Transport Security | Response header telling browsers to use only HTTPS for a site (blocks SSL stripping) |
 | HTML | Hypertext Markup Language | Web page markup language |
 | HTTP | Hypertext Transfer Protocol | Cleartext web protocol, TCP 80 |
 | HTTPS | Hypertext Transfer Protocol Secure | HTTP over TLS, TCP 443 |
@@ -2601,7 +2626,8 @@ Jump: [A](#a) [B](#b) [C](#c) [D](#d) [E](#e) [F](#f) [G](#g) [H](#h) [I](#i) [J
 | IEEE | Institute of Electrical and Electronics Engineers | Standards body, e.g. 802.1X |
 | IKE | Internet Key Exchange | Negotiates IPSec security associations |
 | IM | Instant Messaging | Real-time text communication |
-| IMAP4 | Internet Message Access Protocol v4 | Mail retrieval keeping mail on server, TCP 143 |
+| IMAP (IMAP4) | Internet Message Access Protocol v4 | Mail retrieval keeping mail on server, TCP 143 |
+| IMAPS | IMAP over TLS | Encrypted mail retrieval, TCP 993 |
 | IoC | Indicators of Compromise | Evidence that a system has been breached |
 | IoT | Internet of Things | Network-connected embedded devices |
 | IP | Internet Protocol | Layer 3 addressing and routing |
@@ -2613,6 +2639,7 @@ Jump: [A](#a) [B](#b) [C](#c) [D](#d) [E](#e) [F](#f) [G](#g) [H](#h) [I](#i) [J
 | ISA | Interconnection Security Agreement | Agreement securing connection between two organizations' systems |
 | ISAC | Information Sharing and Analysis Center | Sector-specific threat-intelligence sharing organization |
 | ISFW | Internal Segmentation Firewall | Firewall between internal network segments |
+| ISMS | Information Security Management System | Organization-wide system of policies and processes for managing security risk (ISO 27001) |
 | ISO | International Organization for Standardization | Standards body (e.g. 27001) |
 | ISP | Internet Service Provider | Provides internet access |
 | ISSO | Information Systems Security Officer | Manages security of an information system |
@@ -2633,7 +2660,7 @@ Jump: [A](#a) [B](#b) [C](#c) [D](#d) [E](#e) [F](#f) [G](#g) [H](#h) [I](#i) [J
 |---|---|---|
 | KDC | Key Distribution Center | Kerberos component issuing tickets |
 | KEK | Key Encryption Key | Key that encrypts other keys |
-| Kerberos | (not an acronym) | Ticket-based network authentication protocol, port 88 |
+| KMS | Key Management System/Service | Centralized creation, storage, rotation, and revocation of cryptographic keys (e.g. cloud KMS) |
 | KRI | Key Risk Indicator | Metric signalling rising risk exposure |
 
 ### L
@@ -2643,6 +2670,7 @@ Jump: [A](#a) [B](#b) [C](#c) [D](#d) [E](#e) [F](#f) [G](#g) [H](#h) [I](#i) [J
 | L2TP | Layer 2 Tunneling Protocol | VPN tunnel protocol, usually with IPSec |
 | LAN | Local Area Network | Network in a limited area |
 | LDAP | Lightweight Directory Access Protocol | Directory query protocol, TCP 389 |
+| LDAPS | LDAP over TLS (LDAP Secure) | Encrypted directory access, TCP 636 |
 | LEAP | Lightweight Extensible Authentication Protocol | Cisco legacy EAP, insecure |
 
 ### M
@@ -2674,7 +2702,7 @@ Jump: [A](#a) [B](#b) [C](#c) [D](#d) [E](#e) [F](#f) [G](#g) [H](#h) [I](#i) [J
 | MTBF | Mean Time Between Failures | Average operational time between failures |
 | MTD | Maximum Tolerable Downtime | Absolute limit on downtime; RTO must not exceed it |
 | MTTF | Mean Time to Failure | Average time until a non-repairable failure |
-| MTTR | Mean Time to Repair / Recover | Average time to restore a failed component or service (CompTIA list: "Recover") |
+| MTTR | Mean Time to Repair (CompTIA list: Recover) | Average time to restore a failed component or service |
 | MTU | Maximum Transmission Unit | Largest packet size on a link |
 
 ### N
@@ -2699,6 +2727,7 @@ Jump: [A](#a) [B](#b) [C](#c) [D](#d) [E](#e) [F](#f) [G](#g) [H](#h) [I](#i) [J
 | NTFS | New Technology File System | Windows file system with permissions |
 | NTLM | New Technology LAN Manager | Windows challenge/response authentication, legacy |
 | NTP | Network Time Protocol | Time synchronization, UDP 123 |
+| NTS | Network Time Security | Authenticates NTP: TLS key establishment (NTS-KE, TCP 4460), then protected NTP on UDP 123 |
 | NVD | National Vulnerability Database | NIST database enriching CVEs with CVSS scores |
 
 ### O
@@ -2709,6 +2738,7 @@ Jump: [A](#a) [B](#b) [C](#c) [D](#d) [E](#e) [F](#f) [G](#g) [H](#h) [I](#i) [J
 | OCSP | Online Certificate Status Protocol | Real-time certificate revocation check |
 | OID | Object Identifier | Unique identifier for objects in certs/MIBs |
 | OIDC | OpenID Connect | Authentication layer on top of OAuth 2.0 (ID token as JWT) |
+| OPSEC | Operations Security | Protecting small, innocuous-seeming details that attackers could aggregate for reconnaissance |
 | OS | Operating System | Core system software |
 | OSI | Open Systems Interconnection | Seven-layer network model |
 | OSINT | Open-source Intelligence | Intelligence from public sources |
@@ -2718,7 +2748,7 @@ Jump: [A](#a) [B](#b) [C](#c) [D](#d) [E](#e) [F](#f) [G](#g) [H](#h) [I](#i) [J
 | OTG | On-The-Go | USB device role capability |
 | OTP | One-Time Password | Password valid for a single use or short window (HOTP/TOTP) |
 | OVAL | Open Vulnerability and Assessment Language | Standard for expressing vulnerability checks |
-| OWASP | Open Web Application Security Project | Community publishing web app security guidance |
+| OWASP | Open Worldwide Application Security Project (formerly Open Web Application Security Project; older CompTIA material uses the old name) | Community publishing web app security guidance (OWASP Top 10) |
 | OWE | Opportunistic Wireless Encryption | Encrypts open Wi-Fi without a password (Wi-Fi Enhanced Open) |
 
 ### P
@@ -2727,6 +2757,7 @@ Jump: [A](#a) [B](#b) [C](#c) [D](#d) [E](#e) [F](#f) [G](#g) [H](#h) [I](#i) [J
 |---|---|---|
 | P12 | PKCS #12 | Certificate and private key container format |
 | P2P | Peer to Peer | Direct communication between peers |
+| PA | Policy Administrator | Zero trust component that establishes/tears down the session path and instructs the PEP |
 | PaaS | Platform as a Service | Cloud platform for deploying apps; provider manages OS |
 | PAC | Proxy Auto Configuration (also Protected Access Credential) | Script telling browsers which proxy to use; in EAP-FAST, the credential that replaces certificates |
 | PAM | Privileged Access Management | Controls and monitors privileged accounts (also Pluggable Authentication Modules) |
@@ -2738,7 +2769,7 @@ Jump: [A](#a) [B](#b) [C](#c) [D](#d) [E](#e) [F](#f) [G](#g) [H](#h) [I](#i) [J
 | PCI DSS | Payment Card Industry Data Security Standard | Card data protection standard |
 | PDP | Policy Decision Point | Zero trust component that decides to grant access (policy engine + administrator) |
 | PDU | Power Distribution Unit | Distributes power to racks |
-| PE | Portable Executable | Windows executable file format |
+| PE | Policy Engine (also Portable Executable) | Zero trust component that decides to grant/deny/revoke access (PE + PA = PDP); also the Windows executable file format |
 | PEAP | Protected Extensible Authentication Protocol | EAP in a TLS tunnel |
 | PED | Personal Electronic Device | Portable electronics |
 | PEM | Privacy Enhanced Mail | Base64 text encoding for certificates/keys |
@@ -2754,7 +2785,8 @@ Jump: [A](#a) [B](#b) [C](#c) [D](#d) [E](#e) [F](#f) [G](#g) [H](#h) [I](#i) [J
 | PLC | Programmable Logic Controller | Industrial controller running physical processes |
 | PMF | Protected Management Frames | 802.11w; mandatory in WPA3, prevents deauthentication attacks |
 | PoC | Proof of Concept | Demonstration that something works or is exploitable |
-| POP | Post Office Protocol | Mail retrieval, TCP 110 |
+| POP3 | Post Office Protocol version 3 | Mail retrieval that downloads (and usually deletes) mail from the server, TCP 110 |
+| POP3S | POP3 Secure | POP3 over TLS, TCP 995 |
 | POTS | Plain Old Telephone Service | Analog phone network |
 | PPP | Point-to-Point Protocol | Layer 2 link protocol |
 | PPTP | Point-to-Point Tunneling Protocol | Deprecated VPN protocol |
@@ -2768,6 +2800,7 @@ Jump: [A](#a) [B](#b) [C](#c) [D](#d) [E](#e) [F](#f) [G](#g) [H](#h) [I](#i) [J
 |---|---|---|
 | QA | Quality Assurance | Verifying quality of software/process |
 | QoS | Quality of Service | Traffic prioritization |
+| QSA | Qualified Security Assessor | Auditor certified by the PCI SSC to assess PCI DSS compliance |
 
 ### R
 
@@ -2789,11 +2822,12 @@ Jump: [A](#a) [B](#b) [C](#c) [D](#d) [E](#e) [F](#f) [G](#g) [H](#h) [I](#i) [J
 | RFC | Request for Comments | Internet standards document |
 | RFID | Radio Frequency Identification | Wireless tag identification |
 | RIPEMD | RACE Integrity Primitives Evaluation Message Digest | Hash function family |
+| RMF | Risk Management Framework (NIST) | NIST SP 800-37 process: prepare, categorize, select, implement, assess, authorize, monitor |
 | ROI | Return on Investment | Benefit relative to cost |
 | RPO | Recovery Point Objective | Maximum tolerable data loss in time |
 | RSA | Rivest, Shamir, Adleman | Asymmetric algorithm for encryption and signatures |
 | RTBH | Remotely Triggered Black Hole | Drops attack traffic at the network edge |
-| RTO | Recovery Time Objective | Maximum tolerable downtime to restore |
+| RTO | Recovery Time Objective | Target maximum time to restore a service after disruption; must not exceed MTD |
 | RTOS | Real-time Operating System | OS with deterministic timing |
 | RTP | Real-time Transport Protocol | Carries audio/video |
 | RTU | Remote Terminal Unit | Field device in SCADA reporting to a master station |
@@ -2814,6 +2848,7 @@ Jump: [A](#a) [B](#b) [C](#c) [D](#d) [E](#e) [F](#f) [G](#g) [H](#h) [I](#i) [J
 | SCAP | Security Content Automation Protocol | Standards for automated compliance/vulnerability checks |
 | SCEP | Simple Certificate Enrollment Protocol | Automated certificate enrollment |
 | SCIM | System for Cross-domain Identity Management | Standard for automated user provisioning across systems |
+| SCP | Secure Copy Protocol | File copy over SSH, TCP 22 |
 | SDK | Software Development Kit | Tools for building software |
 | SDLC | Software Development Life Cycle | Stages of software development |
 | SDLM | Software Development Life-cycle Methodology | Approach to the SDLC |
@@ -2822,8 +2857,8 @@ Jump: [A](#a) [B](#b) [C](#c) [D](#d) [E](#e) [F](#f) [G](#g) [H](#h) [I](#i) [J
 | SED | Self-Encrypting Drive | Drive with built-in hardware encryption |
 | SEH | Structured Exception Handling | Windows exception mechanism |
 | SELinux | Security-Enhanced Linux | Linux kernel mandatory access control using security labels |
-| SFTP | SSH File Transfer Protocol | File transfer over SSH, TCP 22 |
-| SHA | Secure Hashing Algorithm | Family of cryptographic hashes |
+| SFTP | SSH File Transfer Protocol (CompTIA list: Secured File Transfer Protocol) | File transfer over SSH, TCP 22 |
+| SHA | Secure Hashing Algorithm (formal: Secure Hash Algorithm) | Family of cryptographic hashes |
 | SHTTP | Secure Hypertext Transfer Protocol | Obsolete message-level HTTP security |
 | SIEM | Security Information and Event Management | Aggregates and correlates logs |
 | SIM | Subscriber Identity Module | Mobile network identity card |
@@ -2839,8 +2874,10 @@ Jump: [A](#a) [B](#b) [C](#c) [D](#d) [E](#e) [F](#f) [G](#g) [H](#h) [I](#i) [J
 | SNMP | Simple Network Management Protocol | Network device management |
 | SOAP | Simple Object Access Protocol | XML web services messaging |
 | SOAR | Security Orchestration, Automation, and Response | Automates playbook-driven response |
-| SOC | Security Operations Center | Team/facility monitoring security |
+| SOC | Security Operations Center (also System and Organization Controls, as in SOC 2) | Team/facility monitoring security; SOC 2 = AICPA attestation report on a service provider's controls (Type I design, Type II operating effectiveness) |
 | SoC | System on Chip | Entire system on one chip |
+| SoD | Separation of Duties | Splitting critical tasks among people so no one person can commit and conceal fraud |
+| SOP | Standard Operating Procedure | Documented step-by-step instructions for a routine task |
 | SOW | Statement of Work | Defines specific project deliverables |
 | SOX | Sarbanes-Oxley Act | US law on financial reporting integrity and internal controls |
 | SPAN | Switched Port Analyzer | Switch port mirroring that copies traffic to a monitor port |
@@ -2857,6 +2894,7 @@ Jump: [A](#a) [B](#b) [C](#c) [D](#d) [E](#e) [F](#f) [G](#g) [H](#h) [I](#i) [J
 | SSRF | Server-Side Request Forgery | Tricks a server into making requests to internal resources |
 | STIG | Security Technical Implementation Guide | DISA hardening configuration standards |
 | STIX | Structured Threat Information eXpression | Standard format for threat intel |
+| STP | Spanning Tree Protocol | Prevents Layer 2 switching loops; protect with BPDU guard/root guard |
 | SWG | Secure Web Gateway | Filters web traffic and enforces policy |
 
 ### T
@@ -2865,8 +2903,11 @@ Jump: [A](#a) [B](#b) [C](#c) [D](#d) [E](#e) [F](#f) [G](#g) [H](#h) [I](#i) [J
 |---|---|---|
 | TACACS+ | Terminal Access Controller Access Control System Plus | Cisco AAA over TCP 49 |
 | TAXII | Trusted Automated eXchange of Indicator Information | Transport protocol for sharing STIX |
+| TCP | Transmission Control Protocol | Connection-oriented, reliable transport (three-way handshake) |
 | TCP/IP | Transmission Control Protocol/Internet Protocol | Core internet protocol suite |
+| TDE | Transparent Data Encryption | Database encrypts its data files at rest without application changes |
 | TEE | Trusted Execution Environment | Isolated processor area protecting data in use (secure enclave) |
+| TFTP | Trivial File Transfer Protocol | Unauthenticated file transfer, UDP 69 (PXE, device configs) |
 | TGT | Ticket Granting Ticket | Kerberos ticket used to request service tickets |
 | TKIP | Temporal Key Integrity Protocol | WPA RC4-based encryption, deprecated |
 | TLS | Transport Layer Security | Encrypts data in transit |
@@ -2914,17 +2955,18 @@ Jump: [A](#a) [B](#b) [C](#c) [D](#d) [E](#e) [F](#f) [G](#g) [H](#h) [I](#i) [J
 | Acronym | Expansion | Meaning |
 |---|---|---|
 | WAF | Web Application Firewall | Filters HTTP traffic to protect web apps |
-| WAP | Wireless Access Point | Wireless network access device |
+| WAP | Wireless Access Point (also Wireless Application Protocol) | Wireless network access device |
 | WEP | Wired Equivalent Privacy | Broken Wi-Fi encryption using RC4 |
 | WIDS | Wireless Intrusion Detection System | Detects wireless threats such as rogue APs |
 | WIPS | Wireless Intrusion Prevention System | Blocks wireless threats |
 | WO | Work Order | Authorizes a specific piece of work, often under an MSA (paired with SOW) |
-| WORM | Write Once Read Many | Immutable storage (also self-replicating malware) |
+| WORM | Write Once Read Many | Immutable storage for logs/backups (not to be confused with worm malware, a plain word) |
 | WPA | Wi-Fi Protected Access | Wi-Fi security standard (WPA2/WPA3 successors) |
 | WPA2 | Wi-Fi Protected Access 2 | Wi-Fi security using AES-CCMP; PSK or 802.1X |
 | WPA3 | Wi-Fi Protected Access 3 | Wi-Fi security using SAE, PMF, and 192-bit enterprise mode |
 | WPS | Wi-Fi Protected Setup | Easy pairing; PIN is weak |
-| WTLS | Wireless TLS | TLS for WAP devices |
+| WRT | Work Recovery Time | Time after systems are restored to verify data and resume operations (MTD = RTO + WRT) |
+| WTLS | Wireless TLS | TLS variant for Wireless Application Protocol mobile devices; obsolete |
 
 ### X
 
@@ -2977,7 +3019,8 @@ Compare: a $90,000/year control reducing ALE by $80,000 is **not** justified.
 | Avoid | Stop the activity |
 | Mitigate | Apply controls to reduce likelihood/impact |
 | Transfer | Insurance, contract, outsourcing |
-| Residual risk | Remaining after controls. Inherent risk is before controls |
+
+**Inherent risk** = before controls; **residual risk** = what remains after controls and must be accepted by the risk owner. Accept includes exemption and exception.
 
 Qualitative: likelihood x impact on a heat map/risk matrix. **Risk = threat x vulnerability x impact** (conceptual).
 
@@ -2985,7 +3028,7 @@ Qualitative: likelihood x impact on a heat map/risk matrix. **Risk = threat x vu
 
 | Term | Meaning |
 |---|---|
-| **RTO** | Recovery time objective: max acceptable downtime; how fast to restore |
+| **RTO** | Recovery time objective: target time to restore a service after disruption; must fit within MTD (MTD = RTO + WRT) |
 | **RPO** | Recovery point objective: max acceptable data loss measured in time; drives backup frequency |
 | **MTTR** | Mean time to repair/restore (average) |
 | **MTBF** | Mean time between failures (reliability) |
@@ -3064,53 +3107,52 @@ Symmetric: fast, same key, key distribution problem, confidentiality. Asymmetric
 | High | 7.0 - 8.9 |
 | Critical | 9.0 - 10.0 |
 
-Base metrics: attack vector, complexity, privileges required, user interaction, scope, C/I/A impact. Temporal (v3; "Threat" in v4) and environmental metrics adjust. **EPSS** estimates exploit likelihood. **CVE** = identifier; **CWE** = weakness type; **NVD** = database.
+Base metrics (v3.x): attack vector, attack complexity, privileges required, user interaction, scope, C/I/A impact. v4.0 drops Scope, adds Attack Requirements, and splits impact into vulnerable-system and subsequent-system C/I/A. Severity bands are the same in both. Temporal (v3; "Threat" in v4) and environmental metrics adjust. **EPSS** estimates exploit likelihood. **CVE** = identifier; **CWE** = weakness type; **NVD** = database.
 
 ### Password and MFA numbers
 
 | Item | Common value |
 |---|---|
-| NIST SP 800-63B password guidance | Length over complexity; min 8 (15 for single-factor-only), allow 64+; no forced periodic rotation; block breached/common passwords; no hints/KBA |
+| NIST SP 800-63B password guidance | Length over complexity; minimum 8 characters (800-63B-4 recommends at least 15), allow 64+; no forced periodic rotation; block breached/common passwords; no hints or KBA |
 | Account lockout | Threshold 3-10 failed attempts; lockout duration or admin reset; ties to throttling |
 | Password history | Commonly 5-24 remembered |
 | Min/max age | Min age stops rapid cycling through history |
 | Entropy | More length is better than more complexity |
-| MFA factors | Something you **know**, **have**, **are**, **somewhere you are**, **something you do** |
+| MFA factors | Something you **know**, **have**, **are**, **somewhere you are** (SY0-701's four; older material adds 'something you do') |
 | OTP | HOTP (counter-based), TOTP (time-based, usually 30 s window) |
 | Biometric errors | FAR (false accept; security risk), FRR (false reject; usability), **CER/EER** = point where FAR = FRR (lower is better) |
 | SMS OTP | Weakest MFA delivery (SIM swap, interception) |
 | Kerberos clock skew | 5 minutes default |
 | Session timeouts | Idle timeout + absolute timeout |
 
-### Incident response phases (NIST SP 800-61 / exam order)
+### Incident response phases (SY0-701 exam order)
 
 **Preparation -> Detection -> Analysis -> Containment -> Eradication -> Recovery -> Lessons learned**
 
-(SY0-701 objective 4.8 lists these seven separately. NIST SP 800-61r2 groups them into four phases: preparation; detection and analysis; containment, eradication and recovery; post-incident activity. Answer exam questions with the seven-step order.)
+(SY0-701 objective 4.8 lists these seven separately.) NIST SP 800-61r2 grouped these into four phases (preparation; detection & analysis; containment, eradication & recovery; post-incident activity). r2 was superseded in 2025 by r3, which maps IR onto the CSF 2.0 functions. Answer exam questions with the seven-step order above.
 
 ### Order of volatility (most to least volatile)
 
 1. CPU registers and cache
-2. Routing table, ARP cache, process table, kernel statistics
-3. RAM (memory contents)
-4. Temporary file systems / swap
-5. Disk (storage)
-6. Remote logging and monitoring data
-7. Physical configuration, network topology
-8. Archival media / backups
+2. RAM: memory contents, routing table, ARP cache, process table, kernel statistics
+3. Temporary file systems / swap
+4. Disk (storage)
+5. Remote logging and monitoring data
+6. Physical configuration, network topology
+7. Archival media / backups
 
 Forensics: legal hold, chain of custody, hash (write blocker) before analysis, work on copies, document everything. **Collect memory first.**
 
 ### Data classification ladders
 
-| Level (high to low) | Government (US) | Commercial |
+| Level (high to low) | Government (US) | Commercial (one common example scheme) |
 |---|---|---|
-| 1 | Top Secret | Confidential / Restricted / Proprietary |
-| 2 | Secret | Private / Sensitive |
-| 3 | Confidential | Internal / Company-confidential |
-| 4 | Unclassified (CUI, FOUO) | Public |
+| 1 | Top Secret | Restricted |
+| 2 | Secret | Confidential |
+| 3 | Confidential | Sensitive / Private / Internal |
+| 4 | Unclassified (CUI for controlled unclassified data; replaces FOUO) | Public |
 
-SY0-701 data classification terms: **sensitive, confidential, public, restricted, private, critical** (no fixed order across organisations). Other terms: PII, PHI, financial, trade secret, intellectual property, regulated; owner (accountable), custodian (day-to-day), steward, controller (decides purposes), processor (handles on behalf of controller), DPO.
+SY0-701 data classification terms: **sensitive, confidential, public, restricted, private, critical** (no fixed order across organisations; see Domain 3 for the exam-framed label definitions). Other terms: PII, PHI, financial, trade secret, intellectual property, regulated; owner (accountable), custodian (day-to-day), steward, controller (decides purposes), processor (handles on behalf of controller), DPO.
 
 ### Compliance frameworks and laws
 
@@ -3118,7 +3160,7 @@ SY0-701 data classification terms: **sensitive, confidential, public, restricted
 |---|---|
 | **PCI DSS** | Payment card data; merchants and processors; 12 requirements; contractual standard, not law |
 | **HIPAA** | US healthcare; PHI; Privacy, Security, and Breach Notification Rules |
-| **GDPR** | EU/EEA personal data; consent, rights (access, erasure, portability), breach notification within **72 hours**, fines up to 4% global turnover or EUR 20M |
+| **GDPR** | EU/EEA personal data; consent, rights (access, erasure, portability), breach notification within **72 hours**, fines up to EUR 20M or 4% of global annual turnover, whichever is higher |
 | **SOX** | US public companies; financial reporting integrity; internal controls and audit (IT controls over financial systems) |
 | **GLBA** | US financial institutions; protection of customers' nonpublic personal information |
 | **FISMA** | US federal agencies and contractors; information security program (uses NIST SP 800-53) |
@@ -3129,7 +3171,7 @@ SY0-701 data classification terms: **sensitive, confidential, public, restricted
 | **NIST SP 800-53** | Security and privacy control catalogue |
 | **ISO/IEC 27001** | International ISMS standard (certifiable); **27002** control guidance; **27701** privacy; **27017/27018** cloud |
 | **CIS Controls / Benchmarks** | Prioritized safeguards; configuration hardening benchmarks per OS/app |
-| **SOC 2** | Service organization controls (trust services criteria); Type I = point-in-time design, Type II = operating effectiveness over a period |
+| **SOC 2** | System and Organization Controls (AICPA; formerly Service Organization Controls), trust services criteria; Type I = design at a point in time, Type II = operating effectiveness over a period |
 | **CSA CCM / STAR** | Cloud security controls and assurance |
 | **MITRE ATT&CK** | Adversary tactics/techniques knowledge base (not a compliance framework) |
 | **Diamond Model / Cyber Kill Chain** | Intrusion analysis models |

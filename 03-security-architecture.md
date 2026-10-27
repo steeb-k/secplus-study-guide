@@ -50,6 +50,7 @@ Objectives 3.1–3.4. Reader assumed to know the basics; this is the exam-framed
 |---|---|---|---|---|
 | Data, accounts/identities, access config | Customer | **Customer** | **Customer** | **Customer** |
 | Application | Customer | Customer | Customer | Provider |
+| Network controls (security groups, virtual firewall rules) | Customer | Customer | Shared | Provider |
 | Runtime / middleware | Customer | Customer | Provider | Provider |
 | Operating system | Customer | Customer | Provider | Provider |
 | Virtualization / hypervisor | Customer | Provider | Provider | Provider |
@@ -59,7 +60,7 @@ Objectives 3.1–3.4. Reader assumed to know the basics; this is the exam-framed
 - **IaaS** (EC2, Azure VMs): customer gets VMs/storage/networks; patches the guest OS.
 - **PaaS** (App Engine, Azure App Service, RDS): customer deploys code/data; provider handles OS and runtime.
 - **SaaS** (M365, Salesforce, Gmail): customer manages users, data, and config only.
-- **FaaS/serverless** sits at PaaS-and-above: customer owns code and permissions only.
+- **FaaS/serverless** sits at PaaS-and-above: customer owns function code, permissions/identities, and data.
 
 > **Exam tip:** "Who patches the guest OS?" IaaS = customer; PaaS/SaaS = provider. "Who is always responsible for data?" Customer. Provider is *always* responsible for the physical facility (except private cloud/on-prem).
 
@@ -160,7 +161,7 @@ IDS/IPS detection methods: **signature** (known patterns), **anomaly/behavior** 
 | **EAP-TLS** | Mutual certificate auth (client and server certs). Strongest; needs PKI on every client. |
 | **PEAP** | Server cert only builds a TLS tunnel; client authenticates inside with MSCHAPv2/password. Most common. |
 | **EAP-TTLS** | Like PEAP; tunnel then almost any inner method (PAP, CHAP, MSCHAPv2); client cert optional. |
-| **EAP-FAST** | Cisco; uses PAC (protected access credential) instead of certificates. Replaces LEAP. |
+| **EAP-FAST** | Cisco; uses PAC (protected access credential) instead of client certificates (server cert optional). Replaces LEAP. |
 | **EAP-MD5** | One-way, weak, no mutual auth. Avoid. |
 | **LEAP** | Legacy Cisco, crackable. Avoid. |
 
@@ -193,14 +194,14 @@ Rule hygiene: ACLs processed top-down, first match wins; **implicit deny** at th
 | **VPN remote access** | Individual client to gateway; user-initiated, with client or clientless (browser/SSL VPN). |
 | **Split tunnel** | Only corporate traffic via VPN; internet direct. Less load, more risk. |
 | **Full tunnel** | All traffic via VPN; full inspection. |
-| **TLS (SSL VPN)** | Transport-layer encryption; port 443; works through firewalls/NAT; client or browser-based. Application-level access. |
+| **TLS (SSL VPN)** | Encrypts above TCP (runs over TCP 443; not Layer 3 like IPSec); port 443; works through firewalls/NAT; client or browser-based. Application-level access. |
 | **IPSec** | Network layer (L3) suite; encrypts any IP traffic; IKE (UDP 500, NAT-T UDP 4500) negotiates SAs. |
 | **AH (Authentication Header)** | Integrity + authentication (+anti-replay); **no encryption**; protocol 51; breaks under NAT. |
 | **ESP (Encapsulating Security Payload)** | Confidentiality + integrity + authentication; protocol 50; works with NAT-T. Normally used. |
-| **Transport mode** | Encrypts payload only; original IP header kept; host-to-host. |
-| **Tunnel mode** | Encrypts entire original packet and adds a new IP header; gateway-to-gateway (site-to-site VPN). |
+| **Transport mode** | Protects (with ESP, encrypts) the payload only; original IP header kept; host-to-host. |
+| **Tunnel mode** | Protects (with ESP, encrypts) the entire original packet and adds a new IP header; used for gateway-to-gateway (site-to-site) and client-to-gateway (remote-access) VPNs. |
 | **SD-WAN** | Software-defined overlay managing multiple WAN links (MPLS, broadband, LTE); application-aware routing, centralized policy, encryption, zero-touch branch provisioning. |
-| **SASE** | Secure Access Service Edge: cloud-delivered convergence of **SD-WAN plus network security** (SWG, CASB, ZTNA, FWaaS) at the edge close to the user. Keyword: "branch/remote workforce, cloud-delivered security, single vendor." |
+| **SASE** | Secure Access Service Edge: cloud-delivered convergence of **SD-WAN plus network security** (SWG, CASB, ZTNA, FWaaS) at the edge close to the user. Keyword: "branch/remote workforce, cloud-delivered security, often single-vendor." |
 
 > **Exam tip:** AH = no encryption. ESP = encryption. Tunnel mode = new header, gateway-to-gateway. Transport mode = host-to-host, original header. TLS VPN = port 443, easy through firewalls.
 
@@ -249,7 +250,7 @@ Classification drives handling, labeling, retention, access, and encryption. Dat
 |---|---|---|
 | **At rest** | Stored on disk, DB, backup, USB | Full-disk/volume (BitLocker, LUKS), file/DB encryption (TDE), access controls, HSM/TPM for keys |
 | **In transit / in motion** | Moving across a network | TLS, IPSec, SSH, VPN, WPA3, S/MIME |
-| **In use** | Being processed in memory/CPU | Secure enclaves, confidential computing, memory protection, screen locks, DLP; hardest to protect |
+| **In use** | Being processed in memory/CPU | Secure enclaves / TEEs (confidential computing), memory encryption and protection, process isolation, endpoint access controls; hardest to protect |
 
 > **Exam tip:** Data in use = RAM/CPU; encryption is hardest. Keyword "enclave / confidential computing / TEE" = in use.
 
@@ -288,7 +289,7 @@ Classification drives handling, labeling, retention, access, and encryption. Dat
 | Limit who can open a file | Permission restrictions (least privilege) |
 | Isolate regulated data from the rest of the network | Segmentation |
 | Prevent employees emailing out customer records | DLP |
-| Customer records must be unrecoverable by anyone | Anonymization |
+| Records must be kept for analytics but never be re-identifiable by anyone | Anonymization |
 | Data crossing the internet | TLS / IPSec VPN |
 | Data being processed in memory | Secure enclave / confidential computing |
 
@@ -306,7 +307,7 @@ Classification drives handling, labeling, retention, access, and encryption. Dat
 |---|---|
 | **High availability** | Systems remain operational with minimal downtime; no single point of failure. |
 | **Load balancing** | Spreads requests across multiple **active** nodes for performance and availability; nodes typically independent and stateless. |
-| **Clustering** | Multiple nodes act as one system sharing state/storage; **failover** to a standby on node failure. Active/active or active/passive. |
+| **Clustering** | Multiple nodes act as one system sharing state/storage; on node failure the surviving nodes (or a passive standby) take over. Active/active or active/passive. |
 
 > **Exam tip:** Load balancing = distribute work (performance + availability). Clustering = redundancy via failover (availability). "Servers appear as a single system" = cluster.
 
@@ -314,7 +315,7 @@ Classification drives handling, labeling, retention, access, and encryption. Dat
 
 | Site | Description | Cost | Recovery time |
 |---|---|---|---|
-| **Hot** | Fully equipped, live data replication, mirror of production | Highest | Minutes to hours (near zero) |
+| **Hot** | Fully equipped, live data replication, mirror of production | Highest | Minutes (near-zero downtime) |
 | **Warm** | Hardware/connectivity in place, data restored from recent backup | Medium | Hours to days |
 | **Cold** | Space, power, and connectivity only; bring equipment and data | Lowest | Days to weeks |
 | **Mobile site** | Trailer/portable datacenter | Variable | Depends |
@@ -392,7 +393,7 @@ Also: **hot/cold aisles** are datacenter cooling, not DR sites. **Reciprocal agr
 - **Forward proxy (clients/outbound) vs reverse proxy (servers/inbound).**
 - **802.1X EAP:** EAP-TLS mutual certs; PEAP/TTLS server cert and tunnel; EAP-FAST uses PAC.
 - **WAF (web app attacks) vs NGFW (L7 app/user aware) vs UTM (all-in-one) vs L4 (IP/port only).**
-- **IPSec:** AH = integrity only; ESP = encryption; tunnel mode = gateway-to-gateway with new header; transport = host-to-host.
+- **IPSec:** AH = integrity only; ESP = encryption; tunnel mode = whole original packet protected under a new header (site-to-site and remote-access VPNs); transport = payload only, host-to-host.
 - **SD-WAN vs SASE:** SASE = SD-WAN plus cloud-delivered security (SWG, CASB, ZTNA).
 - **Masking (display hiding) vs tokenization (vault surrogate) vs encryption (reversible with key) vs hashing (one-way).**
 - **Data states:** at rest, in transit, in use (hardest; enclaves).

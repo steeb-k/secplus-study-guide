@@ -11,7 +11,9 @@ Jump: [A](#a) [B](#b) [C](#c) [D](#d) [E](#e) [F](#f) [G](#g) [H](#h) [I](#i) [J
 | Acronym | Expansion | Meaning |
 |---|---|---|
 | AAA | Authentication, Authorization, and Accounting | Framework for verifying identity, granting access, and logging activity |
+| ABAC | Attribute-Based Access Control | Access decided by policies over user, resource, and environment attributes (context-aware) |
 | ACL | Access Control List | Rules permitting or denying access to resources or traffic |
+| AEAD | Authenticated Encryption with Associated Data | Cipher mode giving confidentiality plus integrity in one step (e.g. AES-GCM, ChaCha20-Poly1305) |
 | AES | Advanced Encryption Standard | Symmetric block cipher, 128/192/256-bit keys |
 | AES-256 | Advanced Encryption Standard 256-bit | AES with a 256-bit key |
 | AH | Authentication Header | IPSec protocol for integrity/authentication without encryption |
@@ -34,6 +36,7 @@ Jump: [A](#a) [B](#b) [C](#c) [D](#d) [E](#e) [F](#f) [G](#g) [H](#h) [I](#i) [J
 |---|---|---|
 | BASH | Bourne Again Shell | Common Unix/Linux command shell |
 | BCP | Business Continuity Planning | Keeping critical functions running during disruption |
+| BEC | Business Email Compromise | Fraud using a spoofed or compromised business mailbox to redirect payments or data |
 | BGP | Border Gateway Protocol | Inter-domain internet routing protocol |
 | BIA | Business Impact Analysis | Identifies critical functions and the impact of their loss |
 | BIOS | Basic Input/Output System | Legacy firmware that initializes hardware at boot |
@@ -48,6 +51,7 @@ Jump: [A](#a) [B](#b) [C](#c) [D](#d) [E](#e) [F](#f) [G](#g) [H](#h) [I](#i) [J
 |---|---|---|
 | C2 | Command and Control | Attacker infrastructure that directs compromised hosts |
 | CA | Certificate Authority | Issues and signs digital certificates |
+| CAB | Change Advisory Board | Group that reviews and approves changes in change management |
 | CAC | Common Access Card | US DoD smart card for physical and logical access |
 | CAPTCHA | Completely Automated Public Turing Test to Tell Computers and Humans Apart | Challenge to block bots |
 | CAR | Corrective Action Report | Documents remediation of a finding |
@@ -71,22 +75,26 @@ Jump: [A](#a) [B](#b) [C](#c) [D](#d) [E](#e) [F](#f) [G](#g) [H](#h) [I](#i) [J
 | CMDB | Configuration Management Database | Authoritative inventory of assets and their configurations |
 | CMS | Content Management System | Platform for managing web content |
 | CN | Common Name | Certificate field naming the subject, e.g. FQDN |
+| COBO | Corporate-Owned, Business-Only | Company device restricted to work use; strictest mobile model |
 | COOP | Continuity of Operations Planning | Maintaining essential functions during crises |
 | COPE | Corporate-Owned, Personally Enabled | Company device that permits personal use |
+| COPPA | Children's Online Privacy Protection Act | US law protecting personal data of children under 13 |
 | CP | Contingency Planning | Plans for responding to disruptive events |
 | CPE | Common Platform Enumeration | Standard naming of products/platforms (SCAP component) |
 | CRC | Cyclic Redundancy Check | Error-detection checksum |
 | CRL | Certificate Revocation List | List of revoked certificates published by a CA |
 | CSA | Cloud Security Alliance | Cloud security standards body |
+| CSF | Cybersecurity Framework (NIST) | NIST framework of functions (Govern, Identify, Protect, Detect, Respond, Recover in CSF 2.0) |
 | CSIRT | Computer Security Incident Response Team | Team handling security incidents |
 | CSO | Chief Security Officer | Executive responsible for physical and cyber security |
-| CSP | Cloud Service Provider | Vendor offering cloud services |
+| CSP | Cloud Service Provider (also Content Security Policy) | Cloud vendor; in web security, an HTTP response header restricting which scripts/sources a page may load (XSS mitigation) |
 | CSPM | Cloud Security Posture Management | Continuously checks cloud configurations for misconfiguration |
 | CSR | Certificate Signing Request | Request to a CA for a certificate |
 | CSRF | Cross-Site Request Forgery | Tricks an authenticated user's browser into sending unwanted requests |
 | CSU | Channel Service Unit | WAN line termination device |
 | CTM | Counter Mode | Block cipher mode producing a keystream from a counter (usually written CTR) |
 | CTO | Chief Technology Officer | Executive responsible for technology direction |
+| CUI | Controlled Unclassified Information | US government data that is unclassified but requires safeguarding (replaces FOUO) |
 | CVE | Common Vulnerabilities and Exposures | Identifier list for publicly known vulnerabilities |
 | CVSS | Common Vulnerability Scoring System | 0-10 severity scoring |
 | CWE | Common Weakness Enumeration | Catalog of software weakness types (e.g. CWE-79 XSS) |
@@ -97,6 +105,7 @@ Jump: [A](#a) [B](#b) [C](#c) [D](#d) [E](#e) [F](#f) [G](#g) [H](#h) [I](#i) [J
 | Acronym | Expansion | Meaning |
 |---|---|---|
 | DAC | Discretionary Access Control | Owner decides who has access |
+| DAI | Dynamic ARP Inspection | Switch feature that drops ARP packets not matching DHCP snooping bindings (stops ARP spoofing) |
 | DAST | Dynamic Application Security Testing | Tests a running application from outside |
 | DBA | Database Administrator | Manages databases |
 | DDoS | Distributed Denial of Service | DoS from many sources |
@@ -136,8 +145,9 @@ Jump: [A](#a) [B](#b) [C](#c) [D](#d) [E](#e) [F](#f) [G](#g) [H](#h) [I](#i) [J
 | EFS | Encrypting File System | Windows NTFS file-level encryption |
 | EGP | Exterior Gateway Protocol | Routing between autonomous systems |
 | EIP | Extended Instruction Pointer | CPU register for next instruction; buffer overflow target |
-| EOL | End of Life | Vendor stops selling (and eventually supporting) a product; plan replacement |
+| EOL | End of Life | Vendor stops selling and winds down support; for the exam an EOL system no longer gets security patches (see EOS/EOSL) |
 | EOS | End of Service (Life) | Vendor no longer supports or patches (EOSL); unpatchable from this point |
+| EPSS | Exploit Prediction Scoring System | FIRST model estimating the probability a vulnerability will be exploited soon; used with CVSS to prioritize |
 | ERP | Enterprise Resource Planning | Integrated business management software |
 | ESN | Electronic Serial Number | Unique mobile device identifier |
 | ESP | Encapsulating Security Payload | IPSec protocol providing encryption and integrity |
@@ -151,8 +161,10 @@ Jump: [A](#a) [B](#b) [C](#c) [D](#d) [E](#e) [F](#f) [G](#g) [H](#h) [I](#i) [J
 | FACL | File System Access Control List | ACL on files and folders |
 | FAR | False Acceptance Rate | Impostors wrongly accepted by biometrics (security failure) |
 | FDE | Full Disk Encryption | Encrypts entire storage volume |
+| FERPA | Family Educational Rights and Privacy Act | US law protecting student education records |
 | FIDO | Fast IDentity Online | Standards (FIDO2/WebAuthn, U2F) for phishing-resistant passwordless auth |
 | FIM | File Integrity Monitoring | Detects unauthorized file changes |
+| FIPS | Federal Information Processing Standards | US government standards, e.g. FIPS 140-2/140-3 for validated crypto modules |
 | FISMA | Federal Information Security Modernization Act | US law requiring federal agency security programs |
 | FPGA | Field Programmable Gate Array | Reconfigurable hardware chip |
 | FRR | False Rejection Rate | Valid users wrongly rejected by biometrics |
@@ -188,6 +200,7 @@ Jump: [A](#a) [B](#b) [C](#c) [D](#d) [E](#e) [F](#f) [G](#g) [H](#h) [I](#i) [J
 | HMI | Human-Machine Interface | Operator console for ICS/SCADA |
 | HOTP | HMAC-based One-Time Password | Counter-based OTP |
 | HSM | Hardware Security Module | Tamper-resistant device for key storage and crypto ops |
+| HSTS | HTTP Strict Transport Security | Response header telling browsers to use only HTTPS for a site (blocks SSL stripping) |
 | HTML | Hypertext Markup Language | Web page markup language |
 | HTTP | Hypertext Transfer Protocol | Cleartext web protocol, TCP 80 |
 | HTTPS | Hypertext Transfer Protocol Secure | HTTP over TLS, TCP 443 |
@@ -209,7 +222,8 @@ Jump: [A](#a) [B](#b) [C](#c) [D](#d) [E](#e) [F](#f) [G](#g) [H](#h) [I](#i) [J
 | IEEE | Institute of Electrical and Electronics Engineers | Standards body, e.g. 802.1X |
 | IKE | Internet Key Exchange | Negotiates IPSec security associations |
 | IM | Instant Messaging | Real-time text communication |
-| IMAP4 | Internet Message Access Protocol v4 | Mail retrieval keeping mail on server, TCP 143 |
+| IMAP (IMAP4) | Internet Message Access Protocol v4 | Mail retrieval keeping mail on server, TCP 143 |
+| IMAPS | IMAP over TLS | Encrypted mail retrieval, TCP 993 |
 | IoC | Indicators of Compromise | Evidence that a system has been breached |
 | IoT | Internet of Things | Network-connected embedded devices |
 | IP | Internet Protocol | Layer 3 addressing and routing |
@@ -221,6 +235,7 @@ Jump: [A](#a) [B](#b) [C](#c) [D](#d) [E](#e) [F](#f) [G](#g) [H](#h) [I](#i) [J
 | ISA | Interconnection Security Agreement | Agreement securing connection between two organizations' systems |
 | ISAC | Information Sharing and Analysis Center | Sector-specific threat-intelligence sharing organization |
 | ISFW | Internal Segmentation Firewall | Firewall between internal network segments |
+| ISMS | Information Security Management System | Organization-wide system of policies and processes for managing security risk (ISO 27001) |
 | ISO | International Organization for Standardization | Standards body (e.g. 27001) |
 | ISP | Internet Service Provider | Provides internet access |
 | ISSO | Information Systems Security Officer | Manages security of an information system |
@@ -241,7 +256,7 @@ Jump: [A](#a) [B](#b) [C](#c) [D](#d) [E](#e) [F](#f) [G](#g) [H](#h) [I](#i) [J
 |---|---|---|
 | KDC | Key Distribution Center | Kerberos component issuing tickets |
 | KEK | Key Encryption Key | Key that encrypts other keys |
-| Kerberos | (not an acronym) | Ticket-based network authentication protocol, port 88 |
+| KMS | Key Management System/Service | Centralized creation, storage, rotation, and revocation of cryptographic keys (e.g. cloud KMS) |
 | KRI | Key Risk Indicator | Metric signalling rising risk exposure |
 
 ## L
@@ -251,6 +266,7 @@ Jump: [A](#a) [B](#b) [C](#c) [D](#d) [E](#e) [F](#f) [G](#g) [H](#h) [I](#i) [J
 | L2TP | Layer 2 Tunneling Protocol | VPN tunnel protocol, usually with IPSec |
 | LAN | Local Area Network | Network in a limited area |
 | LDAP | Lightweight Directory Access Protocol | Directory query protocol, TCP 389 |
+| LDAPS | LDAP over TLS (LDAP Secure) | Encrypted directory access, TCP 636 |
 | LEAP | Lightweight Extensible Authentication Protocol | Cisco legacy EAP, insecure |
 
 ## M
@@ -282,7 +298,7 @@ Jump: [A](#a) [B](#b) [C](#c) [D](#d) [E](#e) [F](#f) [G](#g) [H](#h) [I](#i) [J
 | MTBF | Mean Time Between Failures | Average operational time between failures |
 | MTD | Maximum Tolerable Downtime | Absolute limit on downtime; RTO must not exceed it |
 | MTTF | Mean Time to Failure | Average time until a non-repairable failure |
-| MTTR | Mean Time to Repair / Recover | Average time to restore a failed component or service (CompTIA list: "Recover") |
+| MTTR | Mean Time to Repair (CompTIA list: Recover) | Average time to restore a failed component or service |
 | MTU | Maximum Transmission Unit | Largest packet size on a link |
 
 ## N
@@ -307,6 +323,7 @@ Jump: [A](#a) [B](#b) [C](#c) [D](#d) [E](#e) [F](#f) [G](#g) [H](#h) [I](#i) [J
 | NTFS | New Technology File System | Windows file system with permissions |
 | NTLM | New Technology LAN Manager | Windows challenge/response authentication, legacy |
 | NTP | Network Time Protocol | Time synchronization, UDP 123 |
+| NTS | Network Time Security | Authenticates NTP: TLS key establishment (NTS-KE, TCP 4460), then protected NTP on UDP 123 |
 | NVD | National Vulnerability Database | NIST database enriching CVEs with CVSS scores |
 
 ## O
@@ -317,6 +334,7 @@ Jump: [A](#a) [B](#b) [C](#c) [D](#d) [E](#e) [F](#f) [G](#g) [H](#h) [I](#i) [J
 | OCSP | Online Certificate Status Protocol | Real-time certificate revocation check |
 | OID | Object Identifier | Unique identifier for objects in certs/MIBs |
 | OIDC | OpenID Connect | Authentication layer on top of OAuth 2.0 (ID token as JWT) |
+| OPSEC | Operations Security | Protecting small, innocuous-seeming details that attackers could aggregate for reconnaissance |
 | OS | Operating System | Core system software |
 | OSI | Open Systems Interconnection | Seven-layer network model |
 | OSINT | Open-source Intelligence | Intelligence from public sources |
@@ -326,7 +344,7 @@ Jump: [A](#a) [B](#b) [C](#c) [D](#d) [E](#e) [F](#f) [G](#g) [H](#h) [I](#i) [J
 | OTG | On-The-Go | USB device role capability |
 | OTP | One-Time Password | Password valid for a single use or short window (HOTP/TOTP) |
 | OVAL | Open Vulnerability and Assessment Language | Standard for expressing vulnerability checks |
-| OWASP | Open Web Application Security Project | Community publishing web app security guidance |
+| OWASP | Open Worldwide Application Security Project (formerly Open Web Application Security Project; older CompTIA material uses the old name) | Community publishing web app security guidance (OWASP Top 10) |
 | OWE | Opportunistic Wireless Encryption | Encrypts open Wi-Fi without a password (Wi-Fi Enhanced Open) |
 
 ## P
@@ -335,6 +353,7 @@ Jump: [A](#a) [B](#b) [C](#c) [D](#d) [E](#e) [F](#f) [G](#g) [H](#h) [I](#i) [J
 |---|---|---|
 | P12 | PKCS #12 | Certificate and private key container format |
 | P2P | Peer to Peer | Direct communication between peers |
+| PA | Policy Administrator | Zero trust component that establishes/tears down the session path and instructs the PEP |
 | PaaS | Platform as a Service | Cloud platform for deploying apps; provider manages OS |
 | PAC | Proxy Auto Configuration (also Protected Access Credential) | Script telling browsers which proxy to use; in EAP-FAST, the credential that replaces certificates |
 | PAM | Privileged Access Management | Controls and monitors privileged accounts (also Pluggable Authentication Modules) |
@@ -346,7 +365,7 @@ Jump: [A](#a) [B](#b) [C](#c) [D](#d) [E](#e) [F](#f) [G](#g) [H](#h) [I](#i) [J
 | PCI DSS | Payment Card Industry Data Security Standard | Card data protection standard |
 | PDP | Policy Decision Point | Zero trust component that decides to grant access (policy engine + administrator) |
 | PDU | Power Distribution Unit | Distributes power to racks |
-| PE | Portable Executable | Windows executable file format |
+| PE | Policy Engine (also Portable Executable) | Zero trust component that decides to grant/deny/revoke access (PE + PA = PDP); also the Windows executable file format |
 | PEAP | Protected Extensible Authentication Protocol | EAP in a TLS tunnel |
 | PED | Personal Electronic Device | Portable electronics |
 | PEM | Privacy Enhanced Mail | Base64 text encoding for certificates/keys |
@@ -362,7 +381,8 @@ Jump: [A](#a) [B](#b) [C](#c) [D](#d) [E](#e) [F](#f) [G](#g) [H](#h) [I](#i) [J
 | PLC | Programmable Logic Controller | Industrial controller running physical processes |
 | PMF | Protected Management Frames | 802.11w; mandatory in WPA3, prevents deauthentication attacks |
 | PoC | Proof of Concept | Demonstration that something works or is exploitable |
-| POP | Post Office Protocol | Mail retrieval, TCP 110 |
+| POP3 | Post Office Protocol version 3 | Mail retrieval that downloads (and usually deletes) mail from the server, TCP 110 |
+| POP3S | POP3 Secure | POP3 over TLS, TCP 995 |
 | POTS | Plain Old Telephone Service | Analog phone network |
 | PPP | Point-to-Point Protocol | Layer 2 link protocol |
 | PPTP | Point-to-Point Tunneling Protocol | Deprecated VPN protocol |
@@ -376,6 +396,7 @@ Jump: [A](#a) [B](#b) [C](#c) [D](#d) [E](#e) [F](#f) [G](#g) [H](#h) [I](#i) [J
 |---|---|---|
 | QA | Quality Assurance | Verifying quality of software/process |
 | QoS | Quality of Service | Traffic prioritization |
+| QSA | Qualified Security Assessor | Auditor certified by the PCI SSC to assess PCI DSS compliance |
 
 ## R
 
@@ -397,11 +418,12 @@ Jump: [A](#a) [B](#b) [C](#c) [D](#d) [E](#e) [F](#f) [G](#g) [H](#h) [I](#i) [J
 | RFC | Request for Comments | Internet standards document |
 | RFID | Radio Frequency Identification | Wireless tag identification |
 | RIPEMD | RACE Integrity Primitives Evaluation Message Digest | Hash function family |
+| RMF | Risk Management Framework (NIST) | NIST SP 800-37 process: prepare, categorize, select, implement, assess, authorize, monitor |
 | ROI | Return on Investment | Benefit relative to cost |
 | RPO | Recovery Point Objective | Maximum tolerable data loss in time |
 | RSA | Rivest, Shamir, Adleman | Asymmetric algorithm for encryption and signatures |
 | RTBH | Remotely Triggered Black Hole | Drops attack traffic at the network edge |
-| RTO | Recovery Time Objective | Maximum tolerable downtime to restore |
+| RTO | Recovery Time Objective | Target maximum time to restore a service after disruption; must not exceed MTD |
 | RTOS | Real-time Operating System | OS with deterministic timing |
 | RTP | Real-time Transport Protocol | Carries audio/video |
 | RTU | Remote Terminal Unit | Field device in SCADA reporting to a master station |
@@ -422,6 +444,7 @@ Jump: [A](#a) [B](#b) [C](#c) [D](#d) [E](#e) [F](#f) [G](#g) [H](#h) [I](#i) [J
 | SCAP | Security Content Automation Protocol | Standards for automated compliance/vulnerability checks |
 | SCEP | Simple Certificate Enrollment Protocol | Automated certificate enrollment |
 | SCIM | System for Cross-domain Identity Management | Standard for automated user provisioning across systems |
+| SCP | Secure Copy Protocol | File copy over SSH, TCP 22 |
 | SDK | Software Development Kit | Tools for building software |
 | SDLC | Software Development Life Cycle | Stages of software development |
 | SDLM | Software Development Life-cycle Methodology | Approach to the SDLC |
@@ -430,8 +453,8 @@ Jump: [A](#a) [B](#b) [C](#c) [D](#d) [E](#e) [F](#f) [G](#g) [H](#h) [I](#i) [J
 | SED | Self-Encrypting Drive | Drive with built-in hardware encryption |
 | SEH | Structured Exception Handling | Windows exception mechanism |
 | SELinux | Security-Enhanced Linux | Linux kernel mandatory access control using security labels |
-| SFTP | SSH File Transfer Protocol | File transfer over SSH, TCP 22 |
-| SHA | Secure Hashing Algorithm | Family of cryptographic hashes |
+| SFTP | SSH File Transfer Protocol (CompTIA list: Secured File Transfer Protocol) | File transfer over SSH, TCP 22 |
+| SHA | Secure Hashing Algorithm (formal: Secure Hash Algorithm) | Family of cryptographic hashes |
 | SHTTP | Secure Hypertext Transfer Protocol | Obsolete message-level HTTP security |
 | SIEM | Security Information and Event Management | Aggregates and correlates logs |
 | SIM | Subscriber Identity Module | Mobile network identity card |
@@ -447,8 +470,10 @@ Jump: [A](#a) [B](#b) [C](#c) [D](#d) [E](#e) [F](#f) [G](#g) [H](#h) [I](#i) [J
 | SNMP | Simple Network Management Protocol | Network device management |
 | SOAP | Simple Object Access Protocol | XML web services messaging |
 | SOAR | Security Orchestration, Automation, and Response | Automates playbook-driven response |
-| SOC | Security Operations Center | Team/facility monitoring security |
+| SOC | Security Operations Center (also System and Organization Controls, as in SOC 2) | Team/facility monitoring security; SOC 2 = AICPA attestation report on a service provider's controls (Type I design, Type II operating effectiveness) |
 | SoC | System on Chip | Entire system on one chip |
+| SoD | Separation of Duties | Splitting critical tasks among people so no one person can commit and conceal fraud |
+| SOP | Standard Operating Procedure | Documented step-by-step instructions for a routine task |
 | SOW | Statement of Work | Defines specific project deliverables |
 | SOX | Sarbanes-Oxley Act | US law on financial reporting integrity and internal controls |
 | SPAN | Switched Port Analyzer | Switch port mirroring that copies traffic to a monitor port |
@@ -465,6 +490,7 @@ Jump: [A](#a) [B](#b) [C](#c) [D](#d) [E](#e) [F](#f) [G](#g) [H](#h) [I](#i) [J
 | SSRF | Server-Side Request Forgery | Tricks a server into making requests to internal resources |
 | STIG | Security Technical Implementation Guide | DISA hardening configuration standards |
 | STIX | Structured Threat Information eXpression | Standard format for threat intel |
+| STP | Spanning Tree Protocol | Prevents Layer 2 switching loops; protect with BPDU guard/root guard |
 | SWG | Secure Web Gateway | Filters web traffic and enforces policy |
 
 ## T
@@ -473,8 +499,11 @@ Jump: [A](#a) [B](#b) [C](#c) [D](#d) [E](#e) [F](#f) [G](#g) [H](#h) [I](#i) [J
 |---|---|---|
 | TACACS+ | Terminal Access Controller Access Control System Plus | Cisco AAA over TCP 49 |
 | TAXII | Trusted Automated eXchange of Indicator Information | Transport protocol for sharing STIX |
+| TCP | Transmission Control Protocol | Connection-oriented, reliable transport (three-way handshake) |
 | TCP/IP | Transmission Control Protocol/Internet Protocol | Core internet protocol suite |
+| TDE | Transparent Data Encryption | Database encrypts its data files at rest without application changes |
 | TEE | Trusted Execution Environment | Isolated processor area protecting data in use (secure enclave) |
+| TFTP | Trivial File Transfer Protocol | Unauthenticated file transfer, UDP 69 (PXE, device configs) |
 | TGT | Ticket Granting Ticket | Kerberos ticket used to request service tickets |
 | TKIP | Temporal Key Integrity Protocol | WPA RC4-based encryption, deprecated |
 | TLS | Transport Layer Security | Encrypts data in transit |
@@ -522,17 +551,18 @@ Jump: [A](#a) [B](#b) [C](#c) [D](#d) [E](#e) [F](#f) [G](#g) [H](#h) [I](#i) [J
 | Acronym | Expansion | Meaning |
 |---|---|---|
 | WAF | Web Application Firewall | Filters HTTP traffic to protect web apps |
-| WAP | Wireless Access Point | Wireless network access device |
+| WAP | Wireless Access Point (also Wireless Application Protocol) | Wireless network access device |
 | WEP | Wired Equivalent Privacy | Broken Wi-Fi encryption using RC4 |
 | WIDS | Wireless Intrusion Detection System | Detects wireless threats such as rogue APs |
 | WIPS | Wireless Intrusion Prevention System | Blocks wireless threats |
 | WO | Work Order | Authorizes a specific piece of work, often under an MSA (paired with SOW) |
-| WORM | Write Once Read Many | Immutable storage (also self-replicating malware) |
+| WORM | Write Once Read Many | Immutable storage for logs/backups (not to be confused with worm malware, a plain word) |
 | WPA | Wi-Fi Protected Access | Wi-Fi security standard (WPA2/WPA3 successors) |
 | WPA2 | Wi-Fi Protected Access 2 | Wi-Fi security using AES-CCMP; PSK or 802.1X |
 | WPA3 | Wi-Fi Protected Access 3 | Wi-Fi security using SAE, PMF, and 192-bit enterprise mode |
 | WPS | Wi-Fi Protected Setup | Easy pairing; PIN is weak |
-| WTLS | Wireless TLS | TLS for WAP devices |
+| WRT | Work Recovery Time | Time after systems are restored to verify data and resume operations (MTD = RTO + WRT) |
+| WTLS | Wireless TLS | TLS variant for Wireless Application Protocol mobile devices; obsolete |
 
 ## X
 

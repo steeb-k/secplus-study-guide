@@ -8,7 +8,7 @@ Objectives 1.1–1.4. Smallest domain by weight, but the vocabulary (control typ
 
 ## 1.1 Compare and contrast various types of security controls
 
-Two independent axes: **category** (who/what implements it) and **type** (what it does / when it acts). Every control has one of each.
+Two independent axes: **category** (who/what implements it) and **type** (what it does / when it acts). Every control has one category and one or more types (CCTV is physical; detective and deterrent). The exam asks for the type the stem emphasises.
 
 ### Categories (how it is implemented)
 
@@ -32,17 +32,17 @@ Two independent axes: **category** (who/what implements it) and **type** (what i
 | Compensating | Alternative control used when the primary control is impractical or fails; gives equivalent protection | Substitute |
 | Directive | Directs/mandates behaviour; establishes what must or must not be done | Before |
 
-> **Exam tip:** Deterrent vs preventive: a "Beware of dog" or "Cameras in use" sign deters; a locked door prevents. Directive vs deterrent: a policy/AUP/procedure *tells people what to do* (directive); a warning banner/signage *discourages* (deterrent). Compensating keywords: "cannot patch / legacy system / cannot implement X, so they did Y instead" (e.g., network segmentation for an unpatchable device).
+> **Exam tip:** Deterrent vs preventive: a "Beware of dog" or "Cameras in use" sign deters; a locked door prevents. Directive vs deterrent: a policy/AUP/procedure *tells people what to do* (directive). For signs and banners, one that threatens consequences ('Cameras in use', 'Trespassers prosecuted') discourages (deterrent); a sign that instructs ('Authorized personnel only', 'Visitors must sign in') is directive. Look at the wording, not the medium. Compensating keywords: "cannot patch / legacy system / cannot implement X, so they did Y instead" (e.g., network segmentation for an unpatchable device).
 
-> **Exam tip:** Corrective vs detective: restoring from backup, patching after the fact, killing a malicious process, EDR isolating an infected host = corrective. An IPS blocking traffic inline is preventive. Log review, IDS alert, motion sensor, SIEM alert = detective.
+> **Exam tip:** Corrective vs detective: restoring from backup, patching in response to an incident, killing a malicious process, EDR isolating an infected host = corrective. An IPS blocking traffic inline is preventive. Log review, IDS alert, motion sensor, SIEM alert = detective. Patching *in response to an incident* = corrective; routine patching before exploitation = preventive. Job rotation and mandatory vacations are usually keyed detective (they expose fraud), though they also deter.
 
 ### Category × type example matrix
 
 | | Preventive | Deterrent | Detective | Corrective | Compensating | Directive |
 |---|---|---|---|---|---|---|
-| **Technical** | Firewall rule, ACL, encryption, MFA, IPS (block mode) | Login warning banner / splash screen | IDS, SIEM alerts, log monitoring, FIM | Restore from backup, EDR isolates host, patch deployment | Network segmentation for unpatchable system, WAF in front of vulnerable app | File-storage or acceptable-use notice pushed to systems telling users where/how to store data |
+| **Technical** | Firewall rule, ACL, encryption, MFA, IPS (block mode), routine patching of a known flaw | Login warning banner / splash screen | IDS, SIEM alerts, log monitoring, FIM | Restore from backup, EDR isolates host, patch deployment after an incident | Network segmentation for unpatchable system, WAF in front of vulnerable app | File-storage or acceptable-use notice pushed to systems telling users where/how to store data |
 | **Managerial** | Risk assessment gating deployment, separation-of-duties design | Sanctions/disciplinary policy | Audits, pen tests, vulnerability scan reviews | Incident-response plan lessons learned, corrective action plan | Added management review when SoD is impossible | Security policy, standards, AUP |
-| **Operational** | Awareness training, job rotation, onboarding/offboarding procedures | Publicised consequences, security reminders | Guard reviewing logs, user-activity reviews | Incident handling by IR team, backup restoration procedure | Manual review of transactions when automation unavailable | Procedures, SOPs, playbooks |
+| **Operational** | Awareness training, onboarding/offboarding procedures | Publicised consequences, security reminders | Guard reviewing logs, user-activity reviews, job rotation / mandatory vacation (uncovers fraud) | Incident handling by IR team, backup restoration procedure | Manual review of transactions when automation unavailable | Procedures, SOPs, playbooks |
 | **Physical** | Locks, fences, bollards, vestibule, badge reader | "Cameras in use" signs, visible guards, lighting | CCTV, motion/infrared sensors, alarms | Fire suppression, switching to alternate site | Guard stationed at a door whose reader is broken | "Authorized personnel only" signage, visitor-escort rules |
 
 > **Exam tip:** Most matrix cells are judgment calls; the exam asks you to pick the *best* category and type. Anchor on the verb: stops = preventive, warns = deterrent, notices = detective, fixes = corrective, substitutes = compensating, mandates = directive.
@@ -65,7 +65,7 @@ Related terms: **Non-repudiation** = a party cannot credibly deny having perform
 
 ### Authentication, Authorization, Accounting (AAA)
 
-- **Authentication:** proving identity (something you know / have / are / somewhere you are / something you do).
+- **Authentication:** proving identity (something you know / have / are / somewhere you are; older material adds 'something you do', which is not in the SY0-701 list).
 - **Authorization:** what the authenticated identity is permitted to do.
 - **Accounting:** recording what was done (logging, auditing, billing); supports non-repudiation and forensics.
 - Protocol pairing: **RADIUS** (UDP, encrypts password only, combines authN/authZ), **TACACS+** (TCP/49, encrypts entire payload, separates AAA), **Diameter** (RADIUS successor).
@@ -229,7 +229,7 @@ System of CAs, certificates, keys, and policies that binds public keys to identi
 
 States of data: **at rest**, **in transit**, **in use** (memory/processing; secure enclave, homomorphic encryption).
 
-> **Exam tip:** TDE protects database files at rest (theft of storage), not data from an authorised DB user. Column/cell-level encryption protects specific sensitive fields even from DBAs.
+> **Exam tip:** TDE protects database files at rest (theft of storage), not data from an authorised DB user. Column/cell-level encryption protects specific sensitive fields; when the keys are held by the application or client rather than the database server, it protects them even from DBAs.
 
 ### Encryption: symmetric vs asymmetric
 
@@ -267,7 +267,7 @@ States of data: **at rest**, **in transit**, **in use** (memory/processing; secu
 
 ### Key length
 
-Longer keys increase brute-force cost. Rules of thumb: AES-128 is acceptable, AES-256 for high security; RSA 2048 minimum; ECC 256. Symmetric keys are much shorter than asymmetric for the same strength. **Key exchange** (DH/RSA) and **perfect forward secrecy** (ephemeral keys) protect past sessions if a long-term key is compromised.
+Longer keys increase brute-force cost. Rules of thumb: AES-128 is acceptable, AES-256 for high security; RSA 2048 minimum; ECC 256. Symmetric keys are much shorter than asymmetric for the same strength. **Perfect forward secrecy** comes only from *ephemeral* key agreement (DHE/ECDHE): a fresh key pair per session means a later compromise of the long-term private key does not expose recorded sessions. Static RSA key transport does **not** give forward secrecy (and TLS 1.3 removed it).
 
 ### Tools
 
@@ -321,7 +321,7 @@ Distributed, append-only ledger of blocks linked by hashes; each block contains 
 | Term | Definition (exam framing) |
 |---|---|
 | Certificate authority (CA) | Trusted entity that issues and signs certificates; may be public or private (internal) |
-| Intermediate CA | Signed by root; issues end-entity certs so the root can stay offline |
+| Intermediate CA | Signed by the root (or by another intermediate); issues end-entity certs so the root can stay offline |
 | Registration authority (RA) | Verifies identity before CA issues certificate |
 | CRL (Certificate Revocation List) | CA-published list of revoked certificate serial numbers; downloaded periodically; can be stale |
 | OCSP | Real-time query of a certificate's revocation status (responder); **OCSP stapling** has the server attach a signed response to the TLS handshake |
@@ -329,7 +329,7 @@ Distributed, append-only ledger of blocks linked by hashes; each block contains 
 | Third-party (public) certificate | Issued by a publicly trusted CA; trusted by default in browsers/OS |
 | Root of trust | The trust anchor (root CA, or hardware like a TPM) from which all other trust derives |
 | Certificate signing request (CSR) | Request sent to a CA containing public key and subject info (CN/SAN), signed by the requester's private key; private key never leaves the requester |
-| Wildcard certificate | Covers all first-level subdomains of a domain (*.example.com covers www/mail.example.com, not a.b.example.com); one compromised key affects every host using it |
+| Wildcard certificate | Covers all first-level subdomains of a domain (*.example.com covers www/mail.example.com, not a.b.example.com, and not the bare apex example.com unless it is added as a SAN); one compromised key affects every host using it |
 | SAN (Subject Alternative Name) | Lists multiple specific names covered by a cert |
 
 Certificate fields: subject, issuer, validity dates, public key, serial number, signature algorithm, SAN. Common formats: PEM (Base64, text), DER (binary), PFX/P12 (cert + private key bundle), CER/CRT.
@@ -351,7 +351,7 @@ Why: asymmetric crypto solves key distribution and authentication but is slow; s
 
 ## Most-tested distinctions
 
-- Category (technical/managerial/operational/physical) vs type (preventive/deterrent/detective/corrective/compensating/directive) are separate axes; every control has one of each.
+- Category (technical/managerial/operational/physical) vs type (preventive/deterrent/detective/corrective/compensating/directive) are separate axes; every control has one category and one or more types (CCTV is physical; detective and deterrent). The exam asks for the type the stem emphasises.
 - Deterrent discourages (signs, banners, visible cameras); preventive blocks (locks, firewall rules); directive mandates (policy, procedure).
 - Detective notices (IDS, logs, CCTV); corrective fixes after (restore, patch, isolate); compensating substitutes for a control that cannot be used.
 - Managerial = policy, risk assessment, oversight; operational = people executing procedures (training, guards).

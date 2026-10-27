@@ -12,23 +12,19 @@
 | Simple file transfer | TFTP UDP 69 | None (use SFTP) | No authentication, used for PXE/network device configs |
 | Remote shell | Telnet TCP 23 | **SSH** TCP 22 | SSH also does SCP, SFTP, port forwarding/tunneling |
 | Web | HTTP TCP 80 | **HTTPS** TCP 443 (TLS) | HTTP/3 uses QUIC over UDP 443 |
-| Mail relay (server to server) | SMTP TCP 25 | SMTPS TCP 465 (implicit TLS); STARTTLS on 25 | Port 25 is server-to-server |
-| Mail submission (client to server) | SMTP 25 | **Submission TCP 587** (STARTTLS) | Authenticated client submission |
+| Mail relay (server to server) | SMTP TCP 25 | STARTTLS on TCP 25 (no separate secure port for relay) | Port 25 is server-to-server |
+| Mail submission (client to server) | SMTP 25 | **Submission TCP 587** (STARTTLS) or **SMTPS TCP 465** (implicit TLS) | Authenticated client submission |
 | Mail retrieval | POP3 TCP 110 | **POP3S** TCP 995 | Downloads mail, usually deletes from server |
 | Mail retrieval | IMAP TCP 143 | **IMAPS** TCP 993 | Keeps mail on server, syncs folders |
 | Name resolution | DNS UDP/TCP 53 | **DNSSEC** (still 53; adds signatures, integrity not confidentiality); **DoT** TCP 853; **DoH** TCP 443 | Zone transfers use TCP 53. DoT/DoH encrypt queries |
 | Network management | SNMPv1/v2c UDP 161 (queries), 162 (traps) | **SNMPv3** UDP 161/162 | v3 adds auth + encryption. v1/v2c use cleartext community strings |
-| Directory | LDAP TCP/UDP 389 | **LDAPS** TCP 636 (also StartTLS on 389) | Global Catalog: 3268 / 3269 (TLS) |
-| Time | NTP UDP 123 | **NTS** (Network Time Security, NTP over TLS-based key exchange, TCP 4460 for NTS-KE) | NTP is amplification-attack prone |
+| Directory | LDAP TCP 389 (UDP for CLDAP) | **LDAPS** TCP 636 (also StartTLS on 389) | Global Catalog: 3268 / 3269 (TLS) |
+| Time | NTP UDP 123 | **NTS** (Network Time Security): TLS key establishment on TCP 4460 (NTS-KE), then authenticated NTP packets on UDP 123 | NTP is amplification-attack prone |
 | Remote desktop | RDP TCP/UDP 3389 | Same port; use NLA, TLS, gateway/VPN | Never expose directly to the internet |
 | File sharing | SMB TCP 445 (legacy NetBIOS 139) | SMB 3.x with encryption (same port) | SMBv1 deprecated (EternalBlue) |
 | NetBIOS | UDP 137 (name), UDP 138 (datagram), TCP 139 (session) | Replace with SMB over 445 | Legacy Windows name/file services |
-| Authentication | Kerberos TCP/UDP 88 | n/a | Ticket-based, time-sensitive (5 min skew), AD default |
 | AAA (network access) | RADIUS UDP **1812** (auth), **1813** (accounting); legacy 1645/1646 | RADIUS over TLS (RadSec) TCP 2083 | Only encrypts the password field. UDP |
-| AAA (device admin) | **TACACS+** TCP 49 | n/a | Cisco, encrypts the entire payload, separates authN/authZ/accounting |
 | Logging | Syslog UDP 514 | **Syslog over TLS** TCP **6514** | Syslog UDP is unreliable and unencrypted |
-| VPN (IPSec) | IKE/ISAKMP UDP **500**; NAT-T UDP **4500** | ESP (protocol 50), AH (protocol 51) | Not TCP/UDP ports for ESP/AH |
-| VPN (SSL/TLS) | OpenVPN UDP/TCP **1194** | n/a | TLS-based VPN; L2TP UDP 1701; PPTP TCP 1723 (deprecated) |
 | DHCP | UDP 67 (server), 68 (client) | DHCP snooping on switches | Rogue DHCP risk |
 | VoIP signalling | SIP UDP/TCP 5060 | **SIP TLS** 5061 (SIPS); SRTP for media | SRTP secures the media |
 | SQL Server | TCP 1433 | Same, with TLS | |
@@ -36,9 +32,18 @@
 | PostgreSQL | TCP 5432 | Same, with TLS | |
 | Oracle | TCP 1521 | Same (Oracle Net with encryption) | |
 
+## Other ports to know (no insecure/secure pair)
+
+| Service | Port | Notes |
+|---|---|---|
+| Authentication (Kerberos) | TCP/UDP 88 | Ticket-based, time-sensitive (5 min skew), AD default |
+| AAA, device admin (**TACACS+**) | TCP 49 | Cisco, encrypts the entire payload, separates authN/authZ/accounting |
+| VPN (IPSec) | IKE/ISAKMP UDP **500**; NAT-T UDP **4500**; ESP = IP protocol 50, AH = IP protocol 51 | ESP and AH are IP protocol numbers, not TCP/UDP ports |
+| VPN (SSL/TLS: OpenVPN) | UDP/TCP **1194** | TLS-based VPN. Related: L2TP UDP 1701; PPTP TCP 1723 (deprecated) |
+
 ## Quick memorization list (by number)
 
-20/21 FTP, 22 SSH/SCP/SFTP, 23 Telnet, 25 SMTP, 49 TACACS+, 53 DNS, 67/68 DHCP, 69 TFTP, 80 HTTP, 88 Kerberos, 110 POP3, 123 NTP, 137-139 NetBIOS, 143 IMAP, 161/162 SNMP, 389 LDAP, 443 HTTPS, 445 SMB, 465 SMTPS, 500 IKE, 514 syslog, 587 SMTP submission, 636 LDAPS, 853 DoT, 989/990 FTPS, 993 IMAPS, 995 POP3S, 1194 OpenVPN, 1433 SQL Server, 1521 Oracle, 1645/1646 legacy RADIUS, 1812/1813 RADIUS, 3306 MySQL, 3389 RDP, 4500 IPSec NAT-T, 5060/5061 SIP, 5432 PostgreSQL, 6514 syslog TLS.
+20/21 FTP, 22 SSH/SCP/SFTP, 23 Telnet, 25 SMTP, 49 TACACS+, 53 DNS, 67/68 DHCP, 69 TFTP, 80 HTTP, 88 Kerberos, 110 POP3, 123 NTP, 137-139 NetBIOS, 143 IMAP, 161/162 SNMP, 389 LDAP, 443 HTTPS, 445 SMB, 465 SMTPS, 500 IKE, 514 syslog, 587 SMTP submission, 636 LDAPS, 853 DoT, 989/990 FTPS, 993 IMAPS, 995 POP3S, 1194 OpenVPN, 1433 SQL Server, 1521 Oracle, 1645/1646 legacy RADIUS, 1701 L2TP, 1723 PPTP, 1812/1813 RADIUS, 3306 MySQL, 3389 RDP, 4460 NTS-KE, 4500 IPSec NAT-T, 5060/5061 SIP, 5432 PostgreSQL, 6514 syslog TLS.
 
 > **Exam tip:** Port ranges: well-known 0-1023, registered 1024-49151, dynamic/ephemeral 49152-65535. TCP = connection-oriented/reliable; UDP = connectionless (DNS queries, DHCP, TFTP, SNMP, syslog, NTP, RADIUS, IKE).
 
@@ -53,7 +58,7 @@
 
 - Certificates (X.509) bind identity to public key; the session key is symmetric, agreed via (EC)DHE.
 - **Perfect forward secrecy (PFS):** ephemeral keys per session; compromise of the long-term private key does not expose past sessions.
-- **HSTS** forces HTTPS; **certificate pinning** limits trusted CAs; **STARTTLS** upgrades a plaintext connection to TLS in place.
+- **HSTS** forces HTTPS; **certificate pinning** makes a client accept only a specific expected certificate or public key for a host, defeating rogue or mis-issued certificates; **STARTTLS** upgrades a plaintext connection to TLS in place.
 
 ## IPSec
 
@@ -87,13 +92,15 @@
 | **Evil twin / rogue AP** | Impersonating or unauthorized AP; mitigate with 802.1X and WIDS |
 | **Captive portal** | Web-based guest authentication |
 
+> **Exam tip:** WPA2 -> CCMP; WPA3 -> exam materials usually say GCMP. If a question pairs WPA3 with GCMP, accept it; WPA3-Personal actually still uses CCMP-128.
+
 ## EAP methods (802.1X)
 
 | Method | Client cert? | Server cert? | Notes |
 |---|---|---|---|
 | **EAP-TLS** | Yes | Yes | Mutual certificate auth; strongest; needs PKI |
 | **PEAP** | No | Yes | TLS tunnel then inner auth (MSCHAPv2); username/password |
-| **EAP-TTLS** | No | Yes | Tunnelled TLS; supports more inner methods |
+| **EAP-TTLS** | Optional (usually no) | Yes | Tunnelled TLS; supports more inner methods |
 | **EAP-FAST** | No (PAC) | Optional | Cisco; uses Protected Access Credential |
 | **EAP-MD5** | No | No | Weak; no mutual auth |
 | **LEAP** | No | No | Cisco legacy; broken |
@@ -106,7 +113,5 @@
 | **DKIM** | Message integrity and domain authenticity | Sender signs headers/body with a private key; public key in DNS TXT; signature in header |
 | **DMARC** | Policy + reporting that ties SPF/DKIM to the visible From domain | DNS TXT at `_dmarc`; policy `none` / `quarantine` / `reject`; aggregate (rua) and forensic (ruf) reports |
 | **S/MIME / PGP** | End-to-end message signing and encryption | Certificates (S/MIME) or web of trust (PGP) |
-
-> **Exam tip:** WPA2 -> CCMP; WPA3 -> exam materials usually say GCMP. If a question pairs WPA3 with GCMP, accept it; WPA3-Personal actually still uses CCMP-128.
 
 > **Exam tip:** SPF = which servers, DKIM = signed and unmodified, DMARC = what to do on failure and report back. All three combat spoofing/phishing; none encrypt message content.

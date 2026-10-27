@@ -31,7 +31,8 @@ Compare: a $90,000/year control reducing ALE by $80,000 is **not** justified.
 | Avoid | Stop the activity |
 | Mitigate | Apply controls to reduce likelihood/impact |
 | Transfer | Insurance, contract, outsourcing |
-| Residual risk | Remaining after controls. Inherent risk is before controls |
+
+**Inherent risk** = before controls; **residual risk** = what remains after controls and must be accepted by the risk owner. Accept includes exemption and exception.
 
 Qualitative: likelihood x impact on a heat map/risk matrix. **Risk = threat x vulnerability x impact** (conceptual).
 
@@ -39,7 +40,7 @@ Qualitative: likelihood x impact on a heat map/risk matrix. **Risk = threat x vu
 
 | Term | Meaning |
 |---|---|
-| **RTO** | Recovery time objective: max acceptable downtime; how fast to restore |
+| **RTO** | Recovery time objective: target time to restore a service after disruption; must fit within MTD (MTD = RTO + WRT) |
 | **RPO** | Recovery point objective: max acceptable data loss measured in time; drives backup frequency |
 | **MTTR** | Mean time to repair/restore (average) |
 | **MTBF** | Mean time between failures (reliability) |
@@ -118,53 +119,52 @@ Symmetric: fast, same key, key distribution problem, confidentiality. Asymmetric
 | High | 7.0 - 8.9 |
 | Critical | 9.0 - 10.0 |
 
-Base metrics: attack vector, complexity, privileges required, user interaction, scope, C/I/A impact. Temporal (v3; "Threat" in v4) and environmental metrics adjust. **EPSS** estimates exploit likelihood. **CVE** = identifier; **CWE** = weakness type; **NVD** = database.
+Base metrics (v3.x): attack vector, attack complexity, privileges required, user interaction, scope, C/I/A impact. v4.0 drops Scope, adds Attack Requirements, and splits impact into vulnerable-system and subsequent-system C/I/A. Severity bands are the same in both. Temporal (v3; "Threat" in v4) and environmental metrics adjust. **EPSS** estimates exploit likelihood. **CVE** = identifier; **CWE** = weakness type; **NVD** = database.
 
 ## Password and MFA numbers
 
 | Item | Common value |
 |---|---|
-| NIST SP 800-63B password guidance | Length over complexity; min 8 (15 for single-factor-only), allow 64+; no forced periodic rotation; block breached/common passwords; no hints/KBA |
+| NIST SP 800-63B password guidance | Length over complexity; minimum 8 characters (800-63B-4 recommends at least 15), allow 64+; no forced periodic rotation; block breached/common passwords; no hints or KBA |
 | Account lockout | Threshold 3-10 failed attempts; lockout duration or admin reset; ties to throttling |
 | Password history | Commonly 5-24 remembered |
 | Min/max age | Min age stops rapid cycling through history |
 | Entropy | More length is better than more complexity |
-| MFA factors | Something you **know**, **have**, **are**, **somewhere you are**, **something you do** |
+| MFA factors | Something you **know**, **have**, **are**, **somewhere you are** (SY0-701's four; older material adds 'something you do') |
 | OTP | HOTP (counter-based), TOTP (time-based, usually 30 s window) |
 | Biometric errors | FAR (false accept; security risk), FRR (false reject; usability), **CER/EER** = point where FAR = FRR (lower is better) |
 | SMS OTP | Weakest MFA delivery (SIM swap, interception) |
 | Kerberos clock skew | 5 minutes default |
 | Session timeouts | Idle timeout + absolute timeout |
 
-## Incident response phases (NIST SP 800-61 / exam order)
+## Incident response phases (SY0-701 exam order)
 
 **Preparation -> Detection -> Analysis -> Containment -> Eradication -> Recovery -> Lessons learned**
 
-(SY0-701 objective 4.8 lists these seven separately. NIST SP 800-61r2 groups them into four phases: preparation; detection and analysis; containment, eradication and recovery; post-incident activity. Answer exam questions with the seven-step order.)
+(SY0-701 objective 4.8 lists these seven separately.) NIST SP 800-61r2 grouped these into four phases (preparation; detection & analysis; containment, eradication & recovery; post-incident activity). r2 was superseded in 2025 by r3, which maps IR onto the CSF 2.0 functions. Answer exam questions with the seven-step order above.
 
 ## Order of volatility (most to least volatile)
 
 1. CPU registers and cache
-2. Routing table, ARP cache, process table, kernel statistics
-3. RAM (memory contents)
-4. Temporary file systems / swap
-5. Disk (storage)
-6. Remote logging and monitoring data
-7. Physical configuration, network topology
-8. Archival media / backups
+2. RAM: memory contents, routing table, ARP cache, process table, kernel statistics
+3. Temporary file systems / swap
+4. Disk (storage)
+5. Remote logging and monitoring data
+6. Physical configuration, network topology
+7. Archival media / backups
 
 Forensics: legal hold, chain of custody, hash (write blocker) before analysis, work on copies, document everything. **Collect memory first.**
 
 ## Data classification ladders
 
-| Level (high to low) | Government (US) | Commercial |
+| Level (high to low) | Government (US) | Commercial (one common example scheme) |
 |---|---|---|
-| 1 | Top Secret | Confidential / Restricted / Proprietary |
-| 2 | Secret | Private / Sensitive |
-| 3 | Confidential | Internal / Company-confidential |
-| 4 | Unclassified (CUI, FOUO) | Public |
+| 1 | Top Secret | Restricted |
+| 2 | Secret | Confidential |
+| 3 | Confidential | Sensitive / Private / Internal |
+| 4 | Unclassified (CUI for controlled unclassified data; replaces FOUO) | Public |
 
-SY0-701 data classification terms: **sensitive, confidential, public, restricted, private, critical** (no fixed order across organisations). Other terms: PII, PHI, financial, trade secret, intellectual property, regulated; owner (accountable), custodian (day-to-day), steward, controller (decides purposes), processor (handles on behalf of controller), DPO.
+SY0-701 data classification terms: **sensitive, confidential, public, restricted, private, critical** (no fixed order across organisations; see Domain 3 for the exam-framed label definitions). Other terms: PII, PHI, financial, trade secret, intellectual property, regulated; owner (accountable), custodian (day-to-day), steward, controller (decides purposes), processor (handles on behalf of controller), DPO.
 
 ## Compliance frameworks and laws
 
@@ -172,7 +172,7 @@ SY0-701 data classification terms: **sensitive, confidential, public, restricted
 |---|---|
 | **PCI DSS** | Payment card data; merchants and processors; 12 requirements; contractual standard, not law |
 | **HIPAA** | US healthcare; PHI; Privacy, Security, and Breach Notification Rules |
-| **GDPR** | EU/EEA personal data; consent, rights (access, erasure, portability), breach notification within **72 hours**, fines up to 4% global turnover or EUR 20M |
+| **GDPR** | EU/EEA personal data; consent, rights (access, erasure, portability), breach notification within **72 hours**, fines up to EUR 20M or 4% of global annual turnover, whichever is higher |
 | **SOX** | US public companies; financial reporting integrity; internal controls and audit (IT controls over financial systems) |
 | **GLBA** | US financial institutions; protection of customers' nonpublic personal information |
 | **FISMA** | US federal agencies and contractors; information security program (uses NIST SP 800-53) |
@@ -183,7 +183,7 @@ SY0-701 data classification terms: **sensitive, confidential, public, restricted
 | **NIST SP 800-53** | Security and privacy control catalogue |
 | **ISO/IEC 27001** | International ISMS standard (certifiable); **27002** control guidance; **27701** privacy; **27017/27018** cloud |
 | **CIS Controls / Benchmarks** | Prioritized safeguards; configuration hardening benchmarks per OS/app |
-| **SOC 2** | Service organization controls (trust services criteria); Type I = point-in-time design, Type II = operating effectiveness over a period |
+| **SOC 2** | System and Organization Controls (AICPA; formerly Service Organization Controls), trust services criteria; Type I = design at a point in time, Type II = operating effectiveness over a period |
 | **CSA CCM / STAR** | Cloud security controls and assurance |
 | **MITRE ATT&CK** | Adversary tactics/techniques knowledge base (not a compliance framework) |
 | **Diamond Model / Cyber Kill Chain** | Intrusion analysis models |

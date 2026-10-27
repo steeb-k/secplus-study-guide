@@ -39,14 +39,14 @@ Objectives 5.1–5.6. Governance, risk, third parties, compliance, audits, aware
 |---|---|
 | **Password** | Length, complexity, history, age, lockout, MFA requirement, no reuse. |
 | **Access control** | Model (RBAC/ABAC/MAC/DAC), least privilege, separation of duties, review cadence, provisioning rules. |
-| **Physical security** | Badges, mantraps, cameras, visitor logs, locks, guard coverage. |
+| **Physical security** | Badges, access control vestibules (mantraps), cameras, visitor logs, locks, guard coverage. |
 | **Encryption** | Approved algorithms, key lengths, protocols (TLS 1.2+), key management and rotation. |
 
 ### Procedures
 
 | Procedure | Notes |
 |---|---|
-| **Change management** | Request > impact/risk analysis > approval (CAB) > test > schedule > implement > backout plan > document/post-review. |
+| **Change management** | Request > impact/risk analysis > approval (CAB) > test > schedule (maintenance window, backout plan ready) > implement > verify or back out > document/post-review. |
 | **Onboarding** | Accounts provisioned by role, AUP signed, training, equipment issued, background check complete. |
 | **Offboarding** | Disable accounts immediately, retrieve assets/badges, revoke access and tokens, exit interview, reassign data. |
 | **Playbooks** | Prescribed step-by-step response for a specific scenario (ransomware, phishing). Often automated via SOAR. Distinct from a runbook (routine operational tasks). |
@@ -55,10 +55,10 @@ Objectives 5.1–5.6. Governance, risk, third parties, compliance, audits, aware
 
 | Factor | Examples / key point |
 |---|---|
-| **Regulatory** | Government-mandated; penalties for noncompliance (HIPAA, SOX, GLBA, FISMA, PCI DSS is contractual/industry). |
+| **Regulatory** | Government-mandated; penalties for noncompliance (HIPAA, SOX, GLBA, FISMA). PCI DSS is *not* a regulation: it is a contractual/industry standard (see Industry). |
 | **Legal** | Laws, contractual obligations, liability, e-discovery, breach notification. |
 | **Industry** | Sector standards and frameworks (PCI DSS, ISO 27001, NIST CSF, CIS). |
-| **Geographic: local / regional / national / global** | Local ordinances, state laws (CCPA), national (HIPAA), regional (GDPR - EU), global (ISO). **Data sovereignty** applies: data is subject to the laws of the country where it is stored. |
+| **Geographic: local / regional / national / global** | Local ordinances; regional (US state laws such as CCPA/CPRA, EU member-state law); national (HIPAA, GLBA, SOX, COPPA); global (GDPR's extraterritorial reach, cross-border data-transfer rules, international agreements). **Data sovereignty** applies: data is subject to the laws of the country where it is collected or stored. |
 
 ### Monitoring and revision
 
@@ -134,7 +134,7 @@ Find assets, threats, vulnerabilities, and existing controls. Sources: asset inv
 - A flood-protection control costing $5,000/year that eliminates the risk is justified (saves $3,000/year). One costing $12,000/year is not.
 - If the control cuts ARO from 0.1 to 0.02: new ALE = $1,600; savings = $6,400; subtract annual control cost to get net benefit.
 
-> **Exam tip:** Never spend more on a control than the ALE it prevents. "Once every 5 years" means ARO = 0.2. "Twice a year" means ARO = 2.
+> **Exam tip:** Never spend more per year on a control than the ALE reduction it delivers (ALE before − ALE after). "Once every 5 years" means ARO = 0.2. "Twice a year" means ARO = 2.
 
 ### Risk register
 
@@ -189,9 +189,10 @@ Identifies critical functions and quantifies the effect of their loss; drives re
 |---|---|
 | **RTO** (recovery time objective) | Maximum acceptable time to restore a service after disruption. |
 | **RPO** (recovery point objective) | Maximum acceptable data loss, measured in time since last good backup. |
-| **MTTR** (mean time to repair/recover) | Average time to repair a failed component and restore service. |
+| **MTTR** (mean time to repair; CompTIA's acronym list says recover) | Average time to repair a failed component and restore service. |
 | **MTBF** (mean time between failures) | Average operating time between failures; reliability. |
 | **MTD / MAO** | Maximum tolerable downtime; the absolute limit before the business suffers unacceptable harm. RTO must be < MTD. |
+| **WRT** | Work recovery time: time after systems are restored to verify data and resume normal operations. MTD = RTO + WRT, so RTO must be shorter than MTD |
 
 **Worked example.** Order system: RPO 1 hour, RTO 4 hours. The business can lose at most 1 hour of orders, so backups/replication must occur at least hourly. Service must be back within 4 hours of the outage. A nightly backup fails the RPO. Availability from MTBF/MTTR: MTBF 1,000 h, MTTR 10 h gives availability = 1000 / (1000 + 10) = about 99.0%.
 
@@ -232,7 +233,7 @@ Identifies critical functions and quantifies the effect of their loss; drives re
 
 ### Vendor monitoring
 
-Continuous, not one-time: review SLA metrics, audit reports, security ratings, incident notifications, financial health, and re-assess on contract renewal or after changes. Includes **questionnaires** and **rules of engagement**.
+Continuous, not one-time: review SLA metrics, audit reports, security ratings, incident notifications, financial health, and re-assess on contract renewal or after changes. Separate 5.3 items, covered next: questionnaires (assessment and periodic re-assessment) and rules of engagement (scope and limits for any testing of the vendor).
 
 ### Questionnaires
 
@@ -265,7 +266,7 @@ Defines what is allowed in testing/assessment of the vendor: scope, targets, tim
 
 | Consequence | Notes |
 |---|---|
-| **Fines** | Monetary penalties (GDPR up to 4% of global annual turnover or EUR 20M). |
+| **Fines** | Monetary penalties (GDPR up to EUR 20M or 4% of global annual turnover, whichever is higher). |
 | **Sanctions** | Regulatory restrictions or formal penalties; can include trade restrictions. |
 | **Reputational damage** | Loss of customer trust, negative press. |
 | **Loss of license** | Cannot operate in regulated sector. |
@@ -279,7 +280,7 @@ Defines what is allowed in testing/assessment of the vendor: scope, targets, tim
 | **Due care** | Acting responsibly on an ongoing basis; doing what a reasonable person would to protect assets (applying controls, patching). |
 | **Attestation** | Formal statement (by management or auditor) that controls are in place and operating. |
 | **Acknowledgement** | Individual confirms they read and understood a policy (AUP signing). |
-| **Internal vs external** | Internal monitoring by compliance team/IA; external by regulators and independent auditors. |
+| **Internal vs external** | Internal monitoring by compliance team/internal audit; external by regulators and independent auditors. |
 | **Automation** | Continuous control monitoring, policy-as-code, automated evidence collection, and dashboards reduce manual effort and drift. |
 
 > **Exam tip:** Due *diligence* = before/investigate. Due *care* = after/ongoing maintenance. Failing to apply due care is negligence.
@@ -290,7 +291,7 @@ Defines what is allowed in testing/assessment of the vendor: scope, targets, tim
 |---|---|
 | **Legal implications - local/regional** | State/provincial laws (CCPA/CPRA, other US state laws). |
 | **National** | Country-level (HIPAA, GLBA, COPPA, PIPEDA). |
-| **Global** | GDPR applies to any organization handling EU residents' data regardless of location. Cross-border transfer rules; data sovereignty. |
+| **Global** | GDPR applies to organizations established in the EU and to any organization elsewhere that offers goods or services to, or monitors, people in the EU (exam shorthand: 'EU residents' data'). Cross-border transfer rules; data sovereignty. |
 | **Data subject** | The individual the personal data is about; holds rights (access, correction, deletion, portability, objection). |
 | **Controller vs processor** | Controller decides purpose/means; processor processes on controller's behalf. Controller remains accountable. |
 | **Ownership** | Data owner is accountable for the data; the data subject retains privacy rights regardless. |
@@ -347,10 +348,10 @@ An independent party's (or management's) formal opinion that a control or statem
 
 | Type | Definition | Examples |
 |---|---|---|
-| **Passive** | No direct interaction with target; leaves no trace | OSINT, WHOIS, social media, DNS records, Shodan |
+| **Passive** | No direct interaction with the target's systems; very hard to detect | OSINT, WHOIS, social media, DNS records, Shodan |
 | **Active** | Direct interaction with target systems; detectable | Port scans, banner grabbing, ping sweeps |
 
-> **Exam tip:** Written permission and rules of engagement come before any penetration test. "No prior knowledge" = unknown environment/black box. "Red + blue working together" = integrated/purple. Passive recon never touches the target's systems.
+> **Exam tip:** Written permission and rules of engagement come before any penetration test. "No prior knowledge" = unknown environment/black box. "Red + blue working together" = integrated/purple. Passive recon avoids touching the target's systems (uses public/third-party sources).
 
 ---
 
@@ -361,6 +362,7 @@ An independent party's (or management's) formal opinion that a control or statem
 - **Campaigns**: simulated phishing emails sent to staff to measure susceptibility (click rate, credential-submission rate, report rate); followed by targeted training.
 - **Recognition**: suspicious sender/domain, urgency, mismatched URLs, unexpected attachments, requests for credentials or payment, generic greeting, grammar errors.
 - **Response**: do not click or reply; report using the report-phishing button or to the security team; if clicked, disconnect and report immediately; change credentials.
+- **Handling reports (security team):** acknowledge the reporter, triage (headers, URLs, attachments, sandbox), search and purge the message from all mailboxes, block sender/domain/URL/hash, identify who clicked or entered credentials (reset, revoke sessions), escalate to IR if compromise is confirmed, feed results into awareness metrics.
 
 ### Anomalous behavior recognition
 
@@ -378,7 +380,7 @@ An independent party's (or management's) formal opinion that a control or statem
 | **Situational awareness** | Notice surroundings: shoulder surfing, tailgating/piggybacking, strangers in secure areas, clean desk, screen locks. |
 | **Insider threat** | Recognize and report warning signs (unusual access, data hoarding, policy circumvention) through a confidential channel. |
 | **Password management** | Long unique passphrases, password manager, MFA, never share or reuse credentials. |
-| **Removable media and cables** | Do not plug in found USB drives or unknown charging cables (malicious cables/"juice jacking" can deliver keystroke-injection payloads); use only approved, encrypted media. |
+| **Removable media and cables** | Do not plug in found USB drives or unknown cables (a malicious cable or drive can pose as a keyboard and inject keystrokes); avoid public USB charging ports ('juice jacking' = data theft or malware through a compromised charging port) and use your own charger or a data blocker. Use only approved, encrypted media. |
 | **Social engineering** | Recognize pretexting, phishing/vishing/smishing, impersonation, urgency and authority tactics; verify out of band. |
 | **Operational security (OPSEC)** | Avoid leaking sensitive details (projects, travel, org charts) in conversation or on social media that attackers can use for reconnaissance. |
 | **Hybrid/remote work environments** | Secure home Wi-Fi, use VPN, avoid public Wi-Fi without VPN, lock screens, keep family off work devices, physical privacy for calls. |

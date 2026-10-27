@@ -121,7 +121,7 @@ Exploits trust and psychology, not technology. Mitigated primarily by **security
 | **Shoulder surfing** | Observing screens/keypads (physical/visual) |
 | **Dumpster diving** | Retrieving information from discarded materials |
 | **Quid pro quo** | Offering a service/benefit in exchange for information or access |
-| **Eliciting** | Extracting information through ordinary conversation |
+| **Elicitation** (eliciting information) | Extracting information through ordinary conversation |
 | **Identity fraud / theft** | Using stolen identity data to open accounts or impersonate |
 
 > **Exam tip:** Spear phishing (any specific person) vs whaling (executives) vs BEC (financial request via business email). Phishing = link click; **pharming** = redirected without clicking. **Typosquatting** = misspelled domain; **brand impersonation** = looks like the brand. **Watering hole** = target's usual site is compromised. Tailgating vs piggybacking: tailgating is unauthorised follow-through; **mantrap/access control vestibule** is the control.
@@ -135,9 +135,9 @@ Exploits trust and psychology, not technology. Mitigated primarily by **security
 ### Application
 | Vulnerability | Definition / keyword |
 |---|---|
-| **Memory injection** | Malicious code injected into a running process's memory |
+| **Memory injection** | Malicious code written into a legitimate running process's memory (DLL injection, process hollowing) so it runs with that process's rights and evades file-based AV; typical of fileless malware. Mitigate: EDR, DEP/ASLR, least privilege |
 | **Buffer overflow** | Input exceeds buffer size and overwrites adjacent memory; crashes or code execution; mitigate with bounds checking, ASLR, DEP |
-| **Race condition** | Outcome depends on timing of events; **TOC/TOU** (time-of-check to time-of-use) is the classic form |
+| **Race condition** | Outcome depends on timing of events; **TOC/TOU** (time-of-check to time-of-use) is the classic form. TOC = the moment a resource or permission is checked; TOU = the moment it is used; the attacker changes the resource in between (swap a checked file for a symlink, double-spend a balance before it updates). Mitigate with atomic operations and locking |
 | **Malicious update** | Update channel delivers tampered code; mitigate with code signing and hash verification |
 
 ### Operating system (OS)-based
@@ -154,7 +154,7 @@ Exploits trust and psychology, not technology. Mitigated primarily by **security
 | Vulnerability | Definition |
 |---|---|
 | **Firmware** | Outdated/malicious/unsigned firmware (BIOS/UEFI, device); mitigate with signed updates, secure boot |
-| **End-of-life** | Vendor no longer provides updates |
+| **End-of-life (EOL) / end-of-service-life (EOSL)** | EOL: vendor stops selling and winds down support; EOSL/EOS: no more security patches at all. Exam framing: an EOL/unsupported system is unpatchable, so replace, upgrade, or isolate it |
 | **Legacy** | Old but possibly still supported; poor security design, hard to patch |
 
 ### Virtualization
@@ -209,7 +209,8 @@ Exploits trust and psychology, not technology. Mitigated primarily by **security
 | **Logic bomb** | Dormant code triggered by a condition (date, event, account removal); typically insider |
 | **Rootkit** | Hides its presence at kernel/OS/firmware level, gives persistent privileged access; evades normal AV |
 | **Backdoor** (related) | Hidden access path bypassing authentication |
-| **Botnet / RAT** (related) | Compromised hosts under C2 control; DDoS, spam |
+| **Botnet** (related) | Many compromised hosts (bots) under C2 control; DDoS, spam, credential stuffing |
+| **RAT** (related) | Remote access trojan: a trojan that gives the attacker covert interactive control of one host (files, webcam, keystrokes) |
 | **Fileless** (related) | Runs in memory using legitimate tools (PowerShell, WMI); no file on disk; detect with EDR/behavioural analysis |
 | **Cryptojacking** (related) | Hijacked CPU/GPU used to mine crypto; high resource use |
 
