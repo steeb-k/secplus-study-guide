@@ -25,7 +25,7 @@ Want it all in one place? **[STUDY-GUIDE-FULL.md](STUDY-GUIDE-FULL.md)** is ever
 
 ## Companion practice site
 
-**https://steeb-k.github.io/sec-plus-test/**
+**[steeb-k.github.io/sec-plus-test](https://steeb-k.github.io/sec-plus-test/)**
 
 - Per-domain module quizzes in **practice mode** (instant feedback and explanation) or **exam mode** (feedback at the end)
 - **Missed-question drill**: re-quizzes only the questions you have gotten wrong
@@ -48,5 +48,5 @@ CompTIA is expected to release **SY0-801** around late 2026, with **SY0-701 reti
 ## About this repo
 
 The content was AI-generated (drafted, then independently reviewed by a second pass) and is maintained alongside
-the companion practice site in [steeb-k.github.io/sec-plus-test](https://github.com/steeb-k/steeb-k.github.io/tree/main/sec-plus-test).
+the companion practice site, live at **[steeb-k.github.io/sec-plus-test](https://steeb-k.github.io/sec-plus-test/)** ([source](https://github.com/steeb-k/steeb-k.github.io/tree/main/sec-plus-test)).
 Build notes (plan, question schema, design spec) are in [`meta/`](meta/). Corrections are welcome via issues or pull requests.
