@@ -126,6 +126,22 @@ def add_acronym_rows(body, anchors):
     return re.sub(r'<tr>\s*<td>(.*?)</td>', sub, body, flags=re.S)
 
 
+def acronym_meta(body, anchors):
+    """{KEY: {expansion, meaning, anchor}} from the rows of the 91 acronym tables ("IMAP (IMAP4)" registers both spellings)."""
+    meta = {}
+    row = re.compile(r'<tr id="(acr-[^"]+)">\s*<td>(.*?)</td>\s*<td>(.*?)</td>\s*<td>(.*?)</td>', re.S)
+    for m in row.finditer(body):
+        key, exp, mean = plain(m.group(2)), plain(m.group(3)), plain(m.group(4))
+        rec = {'expansion': exp, 'meaning': mean, 'anchor': m.group(1)}
+        names = [key]
+        alt = re.match(r'^(\S+) \((\S+)\)$', key)
+        if alt:
+            names += [alt.group(1), alt.group(2)]
+        for n in names:
+            meta.setdefault(n, rec)
+    return meta
+
+
 def fix_internal_links(body, slug):
     """Same-file '#x' anchors become SPA routes '#/<slug>/x'."""
     return re.sub(r'href="#([^/"][^"]*)"', lambda m: 'href="#/%s/%s"' % (slug, m.group(1)), body)
@@ -153,7 +169,7 @@ def main():
     if len(paths) != len(SLUGS):
         sys.exit('expected %d chapter files, found %d' % (len(SLUGS), len(paths)))
     sha = hashlib.sha256()
-    files, sections, anchors = [], [], {}
+    files, sections, anchors, meta = [], [], {}, {}
     for p in paths:
         raw = open(p, 'rb').read()
         sha.update(raw)
@@ -165,6 +181,7 @@ def main():
         body, heads = add_heading_ids(body)
         if fid == '91':
             body = add_acronym_rows(body, anchors)
+            meta = acronym_meta(body, anchors)
         body = fix_internal_links(body, slug)
         title = next(t for l, _, t in heads if l == 1)
         title = re.sub(r'\s*\(\d+%\)\s*$', '', title)
@@ -178,7 +195,7 @@ def main():
         'sourceCommit': commit,
         'sourceHash': sha.hexdigest(),
         'builtAt': built,
-        'files': files, 'sections': sections, 'acronymAnchors': anchors,
+        'files': files, 'sections': sections, 'acronymAnchors': anchors, 'acronymMeta': meta,
     }
     write_js(a.out, data)
     print('wrote %s: files=%d sections=%d acronymAnchors=%d (%d KB)' % (
@@ -223,7 +240,10 @@ def write_js(path, d):
     lines.append('  sections: [')
     lines.append(',\n'.join('    ' + js_str(s) for s in d['sections']))
     lines.append('  ],')
-    lines.append('  acronymAnchors: ' + js_str(d['acronymAnchors']))
+    lines.append('  acronymAnchors: ' + js_str(d['acronymAnchors']) + ',')
+    lines.append('  acronymMeta: {')
+    lines.append(',\n'.join('    %s: %s' % (js_str(k), js_str(v)) for k, v in d['acronymMeta'].items()))
+    lines.append('  }')
     lines.append('};')
     with open(path, 'w', encoding='utf-8') as f:
         f.write('\n'.join(lines) + '\n')

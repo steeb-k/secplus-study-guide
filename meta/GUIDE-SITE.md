@@ -109,3 +109,60 @@ python3 meta/build-site.py     # ../steeb-k.github.io/sec-plus-test/guide/data/g
 cd ../steeb-k.github.io/sec-plus-test && bash tests/guide-sync.sh && bash tests/smoke.sh guide/index.html
 ```
 Optional later: a GitHub Action in the guide repo that runs build-site.py and pushes guide.js to the Pages repo with a deploy key.
+
+## Addendum 2 (2026-11-04): tooltip meanings, paragraph highlights, Highlighted page
+
+### Tooltip meanings
+- `build-site.py` exports `acronymMeta: { KEY: { expansion, meaning, anchor } }` parsed from every row of 91-acronyms.md
+  (columns: Acronym | Expansion | Meaning). Keys like "IMAP (IMAP4)" register both spellings. `acronymAnchors` stays for compatibility.
+- Tooltip body: line 1 `<b>KEY</b> expansion`; line 2 the meaning in `--ink-2` (13px); line 3 the "Acronyms list ↗" link. Fallback to
+  `window.SEC_ACRONYMS[KEY]` (expansion only) when no 91 row exists. Keep max-width 320px; let the meaning wrap.
+
+### Paragraph highlights
+- Highlightable blocks inside `.g-doc`: `p`, `li`, `blockquote`, `tr` (table rows), excluding the AI banner and the footer. Each block
+  gets a stable key at render: `file + ':' + sectionId + ':' + hash(normalized text)` (hash = Engine-style string hash or FNV; the text
+  is the block's textContent lower-cased, whitespace-collapsed, first 240 chars). Store in `data-hl` on the element.
+- Gutter control: a `button.hl-btn` absolutely positioned in the left gutter of each block (left: -30px; 22px square; icon = inline SVG
+  highlighter/marker, no emoji; `aria-label="Highlight this paragraph"` / "Remove highlight"; `aria-pressed`). Visible on block hover and
+  on focus; on `(hover: none)` devices always visible at 45% opacity. Clicking toggles. For `tr`, position the button relative to the
+  row's first cell (use `position: relative` on the cell).
+- Highlighted style: `background: var(--hl-tint)`; `box-shadow: inset 3px 0 0 var(--hl)` (left bar); for `tr`, apply to its cells.
+  Tokens: dark `--hl: #f2d383; --hl-tint: rgba(242,211,131,.16)`; light `--hl: #9c7a1f; --hl-tint: rgba(156,122,31,.14)`.
+- Storage: `localStorage['secplus.highlights']` = `{ [key]: { file, section, heading, text, at } }` where `text` is the first 300 chars
+  of the block's textContent (for the Highlighted page and for orphans), `at` = ISO time. Guard every read/write with try/catch.
+- Section marks: any H2/H3 whose section contains ≥1 highlight gets a small mark after its text (`span.hl-mark`, the same marker icon at
+  14px in `--hl`, `title="N highlighted"`); the sidebar entry for that section and for its chapter shows a count badge `N` in `--hl` on
+  `--hl-tint`. Update marks live on toggle.
+- Highlighted page: route `#/highlights`. Sidebar: an entry "Highlighted (N)" directly under the search box (always present; N may be 0).
+  Content: grouped by chapter (file order) → section (document order), each item shows the saved text (clamped to ~6 lines), a "View in
+  context" link (`#/<file>/<sectionId>?hl=<key>`: navigates, scrolls the block into view below the header, flashes it 1.5s, marks the
+  section in the sidebar even when the block is too near the chapter end to reach the top; Back returns to the Highlighted page), and a
+  remove button.
+  Items whose block no longer exists in the current build (text changed) are listed in a final "No longer found" group with their saved
+  text, a remove button, and "View in context" (to the section, no flash) while their section still exists. "Highlighted (N)" counts
+  valid items plus orphans (exactly what the page lists). Toolbar: "Export as Markdown" (downloads `secplus-highlights.md`: `# Highlights`, `## <chapter>`, `### <section>`,
+  `> text` blocks) and "Clear all" (inline confirm; an unanswered confirm is reset when the page is left). Empty state explains how to
+  highlight. Export text is plain text made Markdown-safe: backslash, backtick, `*`, `<`, `[`, `]`, word-boundary `_`, entity-like `&` and a leading `#`, `>`,
+  `-`, `+` or `1.` are backslash-escaped, so "<script>" or "****-1234" render literally and the file never contains raw HTML.
+- Keyboard: when a block's button has focus, Space/Enter toggles. Escape closes nothing new.
+- Tests: guide-core gets pure helpers `hlKey(file, sectionId, text)`, `groupHighlights(store, data)` (chapter → section grouping, orphans
+  detection), `highlightsMarkdown(groups)` and `mdText(text)`, with unit tests. guide-ui test: toggle a paragraph, reload, still highlighted;
+  sidebar badge count; Highlighted page lists it and "View in context" lands within 8–24px below the header; remove clears everything;
+  corrupt storage is ignored; plus the regressions listed below.
+
+### Behaviour settled during verification (2026-11-04)
+- Block text for keys: a list item's own text is its child nodes concatenated with no separator (nested lists excluded). Joining with
+  spaces made the rendered page (text split around tooltip `<abbr>`s) disagree with the detached parse used for orphan detection, so
+  every highlighted list item containing an acronym showed under "No longer found", and keys would have shifted whenever the glossary
+  changed. Identical blocks in one section get `key~2`, `key~3` in document order.
+- Saved `text`: first 300 chars, ending in "…" when cut (the key still hashes the full normalized text).
+- Storage: the store is a prototype-less object; `__proto__` keys are dropped on load; `?hl=` lookups use own properties only (a crafted
+  `?hl=__proto__` used to throw). A refused write (quota, storage disabled) keeps the change for the visit and the live region says
+  "not saved". A `storage` event from another tab also redraws an open Highlighted page.
+- Table rows: the first cell of every highlightable row, and the first header cell, get 32px left padding on all devices; the button
+  sits in that padding and never covers the key text. A row's View-in-context flash is a cell background (accent tint), not per-cell
+  outlines; the acronym-list arrival flash also shows on a highlighted row.
+- Hover: a nested list item reveals only its own button (`:has()`), not its parent's too.
+- Contrast on the tint: links inside a highlighted block and on the Highlighted page use `--accent-hi` (light: `--accent` was 4.17:1);
+  light `--hl-ink` is `#6b5108` (badges on the active/hovered sidebar row were 4.11:1). Measured minimums after the change: dark 5.15
+  (muted tooltip-word ink on a doubly tinted nested item), light 5.15 (badge on the active row).
