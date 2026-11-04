@@ -5,6 +5,8 @@
 > by a human for accuracy**. Treat it as a study aid, not an authoritative source: cross-check anything surprising against the
 > official CompTIA objectives and a published study guide before relying on it.
 
+**Read it online:** [steeb-k.github.io/sec-plus-test/guide/](https://steeb-k.github.io/sec-plus-test/guide/) (sidebar navigation, acronym tooltips, search) · practice exams at [steeb-k.github.io/sec-plus-test/](https://steeb-k.github.io/sec-plus-test/).
+
 A compact, exam-focused study kit for CompTIA Security+ **SY0-701**. It assumes you already know most of the material: each file follows the official objective numbering, defines every sub-bullet the way the exam tests it, and flags commonly confused pairs. No fluff.
 
 ## File index
