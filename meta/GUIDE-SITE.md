@@ -166,3 +166,20 @@ Optional later: a GitHub Action in the guide repo that runs build-site.py and pu
 - Contrast on the tint: links inside a highlighted block and on the Highlighted page use `--accent-hi` (light: `--accent` was 4.17:1);
   light `--hl-ink` is `#6b5108` (badges on the active/hovered sidebar row were 4.11:1). Measured minimums after the change: dark 5.15
   (muted tooltip-word ink on a doubly tinted nested item), light 5.15 (badge on the active row).
+
+## Addendum 3 (2026-11-04): sidebar under the frosted header; favicon as the pill
+
+- The desktop sidebar's scroll box starts at the top of the viewport (sticky `top: 0`, negative top margin of the header
+  height, matching top padding and `scroll-padding-top`), so its rows slide beneath the translucent header exactly as the
+  main column does. `sideView()` in guide.js treats the header's bottom edge as the visible top when it auto-scrolls the
+  current heading into view. The phone drawer still opens flush under the header, above the backdrop.
+- Phone contents button: no longer in the header (the pill sits flush left). It is a 48px round, frosted button fixed at
+  the bottom-left of the viewport (16px in, safe-area aware), outside the header element because the header's
+  backdrop-filter would act as the containing block for a fixed child. z-index 45, above the drawer (40) and backdrop
+  (30). Closed it shows a hamburger (aria-label "Contents"); while the drawer is open it shows a back arrow (aria-label
+  "Back to the page") so the same button reads as "open the contents" and "go back". Icons are inline SVG swapped by
+  `aria-expanded` in CSS. Content and drawer get 88px bottom padding so their last rows clear the button.
+- Favicon (`icons/favicon.svg` + ico/png, generator `icons/make-favicon.py`): the header pill as a squircle. White
+  rounded square (outline and the "S" segment are one shape, as in the pill), black inner segment on the right carrying a
+  white "+", S side wider than the + side. Glyph outlines come from the self-hosted Plex Sans SemiBold.
+
