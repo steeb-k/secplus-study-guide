@@ -32,6 +32,16 @@ Want it all in one place? **[STUDY-GUIDE-FULL.md](STUDY-GUIDE-FULL.md)** is ever
 - **Full 90-question timed final** (90:00 clock, performance-based questions first, domain-weighted MCQs)
 - **Score history**: percent, estimated scaled score (pass line 750), per-domain breakdown
 
+## HTML version
+
+The same chapters are published as a searchable web guide at **[steeb-k.github.io/sec-plus-test/guide/](https://steeb-k.github.io/sec-plus-test/guide/)**: sidebar navigation, full-text search, acronym tooltips, and deep links from the practice quiz's objective lines. The Markdown files stay the only source; the site data is generated from them. After editing any chapter:
+
+```
+python3 meta/build-full.py     # STUDY-GUIDE-FULL.md
+python3 meta/build-site.py     # ../steeb-k.github.io/sec-plus-test/guide/data/guide.js
+cd ../steeb-k.github.io/sec-plus-test && bash tests/guide-sync.sh && bash tests/smoke.sh guide/index.html
+```
+
 ## Suggested study loop
 
 1. Read a domain file (start with `00-exam-overview.md`).
