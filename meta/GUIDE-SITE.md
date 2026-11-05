@@ -48,8 +48,10 @@ Strip the per-file "> **Note:** AI-generated…" line from each file (the page s
 
 ## Page behaviour
 - **Routes:** `#/` → Exam Overview. `#/<file-slug>` → that file. `#/<file-slug>/<heading-id>` → file + scroll to heading (offset for sticky header).
-  Unknown → Exam Overview. Document title = "<section title> · Sec+ 701 Guide".
-- **Sidebar (280px, sticky, own scrollbar):** search box at top (placeholder "Search guide… ( / )"), then the tree: each file as a top-level
+  `#/highlights` → Highlighted page. `#/how-to` → "How to use this guide" (static page from `<template id="g-howto">` in index.html, not
+  markdown; no AI banner, no highlight buttons). Unknown → Exam Overview. Document title = "<section title> · Sec+ 701 Guide".
+- **Sidebar (280px, sticky, own scrollbar):** search box at top (placeholder "Search guide… ( / )"), then two page links ("How to use
+  this guide", "Highlighted (n)"), then the tree: each file as a top-level
   entry; the current file expanded to show its H2s (and H3s under the active H2); other files collapsed. Scrollspy highlights the
   H2/H3 in view. Below the tree: "Weak spots" block (see Readiness). Phone (<900px): sidebar is an off-canvas drawer opened by a
   "Contents" button in the header; closes on navigation or Escape.
@@ -70,8 +72,10 @@ Strip the per-file "> **Note:** AI-generated…" line from each file (the page s
 - **Search:** index built from `sections` (title + text) and from the acronym glossary. Typing (debounced 80ms) shows a results panel
   under the box: first an "Acronyms" group (key or expansion match, up to 5), then "Sections" (up to 20) ranked by title match > count
   of query tokens in text > shorter section; each result shows the breadcrumb path and a snippet with the first match highlighted
-  (`<mark>`). ↑/↓ moves, Enter opens, Escape clears. Opening a section result navigates and, if the query matched body text, briefly
-  highlights the first match in the content (scroll to it). "/" focuses the box when not in an input.
+  (`<mark>`). ↑/↓ moves, Enter opens. Opening a result navigates and, if the query matched body text, briefly highlights the first
+  match in the content (scroll to it). The query and the results STAY in the sidebar after opening one (the opened item is the
+  selected one) so the reader can work through them; a row above the results shows "N results" and a "Back to outline" button.
+  Back to outline, Escape, or emptying the box restore the chapter tree. "/" focuses the box when not in an input.
 - **Readiness marks:** read `localStorage['secplus.attempts']` (same origin as the quiz). For each objective, take the last 5 attempts that
   include it and compute points/count → pct. In the sidebar, show a 7px dot before each objective H2: `--ok` ≥ 83%, `--warn` ≥ 70%,
   `--bad` < 70%, none without data; dot `title` = "72% over N questions". "Weak spots" block lists the bottom 5 objectives with data as
@@ -182,4 +186,19 @@ Optional later: a GitHub Action in the guide repo that runs build-site.py and pu
 - Favicon (`icons/favicon.svg` + ico/png, generator `icons/make-favicon.py`): the header pill as a squircle. White
   rounded square (outline and the "S" segment are one shape, as in the pill), black inner segment on the right carrying a
   white "+", S side wider than the + side. Glyph outlines come from the self-hosted Plex Sans SemiBold.
+
+## Addendum 4 (2026-11-04): persistent search results; How-to page
+
+- Search results no longer clear when a result is opened (see Search above). `#g-res-top` holds the count and the "Back to outline"
+  button; `backToOutline()` is the single path used by the button, Escape, and the input's own Escape.
+- "How to use this guide": `#/how-to`, linked first in the sidebar (above Highlighted) with a question-mark icon in the accent colour.
+  Content lives in `<template id="g-howto">` in guide/index.html, written conversationally, and is NOT built from the markdown repo:
+  edit it there when features change. Styled by `.g-howto` (h1/h2/p/li/kbd). `page` in guide.js is 'highlights' | 'howto' | null.
+
+## Addendum 5 (2026-11-05): shared header
+
+The guide's header grid (`.g-hwrap`/`.g-hnav`) moved to `css/style.css` as `.hwrap`/`.hnav` and is used by every page; see
+DESIGN.md "Site header". The guide's "Practice" link opens in the same tab (one site); the pill goes to `../index.html`; the
+phone contents button is unchanged (outside the header). Tokens `--page-w`, `--side-w`, `--col-w` drive both the header and
+`.g-layout`.
 

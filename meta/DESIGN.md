@@ -90,3 +90,14 @@ followed by rsvg-convert / magick. Shape: a 512px squircle (rx 133) in `#f0f0f0`
 the right (clipped to the inner rounded rect), "S" in Plex Sans SemiBold on the white side, "+" in white on the black side.
 Same idea as the header pill: the white outline and the "S" segment are a single shape.
 
+## Site header (2026-11-05: one header for guide and practice)
+
+Both pages (and tests/dev.html) carry the same markup: `header.site-header > div.hwrap > a.brand + div.hnav > nav`. `.hwrap` is a
+1240px grid of `--side-w` (280px) + content column, the pill 16px into the first column, the nav right-aligned inside an
+`--col-w` (820px) box centred in the content column. The practice page has no sidebar but uses the same grid, so the pill and
+the links sit at identical pixel positions on every page (guide-ui.test.js checks this at 1280, 1000 and 390). Below 900px the
+wrapper is a flex row with 16px gutters. Nav links: Guide, Practice (same tab; `aria-current="page"` marks the section you are
+in), GitHub (study-guide repo, new tab, external icon). History and Settings live on the practice home page only. The pill
+always goes to the practice home (the site root). The reading column on practice pages is `--col-w` with 24px gutters, like the
+guide's content column; `main` no longer has its own 920px width.
+
