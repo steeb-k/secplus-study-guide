@@ -202,3 +202,11 @@ DESIGN.md "Site header". The guide's "Practice" link opens in the same tab (one 
 phone contents button is unchanged (outside the header). Tokens `--page-w`, `--side-w`, `--col-w` drive both the header and
 `.g-layout`.
 
+## Addendum 6 (2026-11-05): no chapter banner; last section remembered
+
+- The AI-generated banner above each chapter is gone (the How-to page's caveat, the README and the markdown notes stay).
+- `localStorage['secplus.guide.last']` holds the last section in view (`#/<slug>/<heading-id>`, written by the scrollspy when it
+  changes) or `#/highlights` / `#/how-to`. Opening the guide with no hash (the shared header's Guide link) restores it via
+  `history.replaceState` before the first route render; an explicit `#/` still opens the overview. Deep links are unaffected.
+- The practice home's "Security+ SY0-701 practice" heading is visually hidden (`.sr`), kept for screen readers.
+
