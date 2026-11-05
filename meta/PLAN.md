@@ -57,7 +57,7 @@ Everything must work from `file://` AND from GitHub Pages: therefore **no fetch(
 ### Question schema
 See `QUESTION-SCHEMA.md` (authoritative). Validator: `node tests/validate-bank.js`.
 
-### App behaviour spec
+### App behavior spec
 **Screens (hash routes):** `#/` home · `#/module/:d` module quiz setup · `#/final` final setup · `#/drill` missed drill ·
 `#/quiz` active session · `#/results/:attemptId` results · `#/history` dashboard · `#/settings` export/import/reset.
 
@@ -81,7 +81,7 @@ sort by seen asc with random tie-break, take N, then shuffle order. Option order
 **Session UI:** question counter `Q 12 / 25`, domain + objective tag (hidden in Final exam mode? No — show the objective
 tag only in Practice mode; exam mode hides it to match the real test), stem, options as large click targets (radio for
 single, checkbox for multi with "Choose N" hint), Flag button, Prev/Next, "Review" button opening the review grid
-(numbers coloured: answered / unanswered / flagged), Submit with confirmation listing unanswered count.
+(numbers colored: answered / unanswered / flagged), Submit with confirmation listing unanswered count.
 Keyboard: 1–6 select option, F flag, ←/→ navigate, Enter next/submit.
 **Every answer change persists immediately** to `sec.session` in localStorage. On load, if a session exists, home shows a
 "Resume in-progress <type>" banner; the session screen restores position, answers, flags, timer.

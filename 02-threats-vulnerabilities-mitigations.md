@@ -42,7 +42,7 @@ Objectives 2.1–2.5. Heaviest conceptual domain after Domain 4; most questions 
 | **Disruption/chaos** | Unskilled attackers, hacktivists |
 | **War** | Nation-state; attacks on military/critical infrastructure, cyberwarfare |
 
-> **Exam tip:** Hat colours: **white/authorized** = ethical pen tester; **black/unauthorized** = malicious; **gray/semi-authorized** = finds flaws without permission, may disclose them (no malicious intent, still unauthorized). **Blue team** defends, **red team** attacks, **purple team** combines both.
+> **Exam tip:** Hat colors: **white/authorized** = ethical pen tester; **black/unauthorized** = malicious; **gray/semi-authorized** = finds flaws without permission, may disclose them (no malicious intent, still unauthorized). **Blue team** defends, **red team** attacks, **purple team** combines both.
 
 ---
 
@@ -104,7 +104,7 @@ Exploits trust and psychology, not technology. Mitigated primarily by **security
 | Technique | Distinguishing keyword |
 |---|---|
 | **Phishing** | Mass, generic email lures; link/attachment/credential request |
-| **Spear phishing** | Targeted at a specific person/group with personalised details |
+| **Spear phishing** | Targeted at a specific person/group with personalized details |
 | **Whaling** | Targets senior executives (C-suite) |
 | **Vishing** | Voice/phone call |
 | **Smishing** | SMS/text message |
@@ -117,14 +117,14 @@ Exploits trust and psychology, not technology. Mitigated primarily by **security
 | **Typosquatting** | Look-alike misspelled domain (gooogle.com); "URL hijacking" |
 | **Pharming** | Redirects legitimate domain traffic to a fake site (DNS poisoning/hosts file); no click on a bad link needed |
 | **Baiting** | Free/tempting item (infected USB, free download) |
-| **Tailgating / piggybacking** | Following an authorised person through a secure door; tailgating = without their knowledge/consent, piggybacking = they knowingly let you in (e.g. holding the door) |
+| **Tailgating / piggybacking** | Following an authorized person through a secure door; tailgating = without their knowledge/consent, piggybacking = they knowingly let you in (e.g. holding the door) |
 | **Shoulder surfing** | Observing screens/keypads (physical/visual) |
 | **Dumpster diving** | Retrieving information from discarded materials |
 | **Quid pro quo** | Offering a service/benefit in exchange for information or access |
 | **Elicitation** (eliciting information) | Extracting information through ordinary conversation |
 | **Identity fraud / theft** | Using stolen identity data to open accounts or impersonate |
 
-> **Exam tip:** Spear phishing (any specific person) vs whaling (executives) vs BEC (financial request via business email). Phishing = link click; **pharming** = redirected without clicking. **Typosquatting** = misspelled domain; **brand impersonation** = looks like the brand. **Watering hole** = target's usual site is compromised. Tailgating vs piggybacking: tailgating is unauthorised follow-through; **mantrap/access control vestibule** is the control.
+> **Exam tip:** Spear phishing (any specific person) vs whaling (executives) vs BEC (financial request via business email). Phishing = link click; **pharming** = redirected without clicking. **Typosquatting** = misspelled domain; **brand impersonation** = looks like the brand. **Watering hole** = target's usual site is compromised. Tailgating vs piggybacking: tailgating is unauthorized follow-through; **mantrap/access control vestibule** is the control.
 
 **Principles of social engineering (why it works):** authority, intimidation, consensus/social proof, scarcity, familiarity/liking, trust, urgency.
 
@@ -187,7 +187,7 @@ Exploits trust and psychology, not technology. Mitigated primarily by **security
 | **Jailbreaking** (iOS) / **Rooting** (Android) | Removes manufacturer restrictions; defeats the security model; MDM should detect and block/quarantine |
 
 ### Zero-day
-- A vulnerability unknown to the vendor (no patch exists). Patching can't help; use layered defenses: segmentation, IPS/behavioural detection, EDR, least privilege, virtual patching, threat intelligence.
+- A vulnerability unknown to the vendor (no patch exists). Patching can't help; use layered defenses: segmentation, IPS/behavioral detection, EDR, least privilege, virtual patching, threat intelligence.
 
 > **Exam tip:** "No patch available / vendor unaware" = **zero-day**. "Guest to host" = **VM escape**. "Leftover data on new VM" = **resource reuse**. "Check then use gap" = **race condition/TOCTOU**. "Database query manipulated" = SQLi; "script runs in victim's browser" = XSS. "Rooted/jailbroken" = defeats mobile controls; "unofficial app source" = **side loading**.
 
@@ -211,7 +211,7 @@ Exploits trust and psychology, not technology. Mitigated primarily by **security
 | **Backdoor** (related) | Hidden access path bypassing authentication |
 | **Botnet** (related) | Many compromised hosts (bots) under C2 control; DDoS, spam, credential stuffing |
 | **RAT** (related) | Remote access trojan: a trojan that gives the attacker covert interactive control of one host (files, webcam, keystrokes) |
-| **Fileless** (related) | Runs in memory using legitimate tools (PowerShell, WMI); no file on disk; detect with EDR/behavioural analysis |
+| **Fileless** (related) | Runs in memory using legitimate tools (PowerShell, WMI); no file on disk; detect with EDR/behavioral analysis |
 | **Cryptojacking** (related) | Hijacked CPU/GPU used to mine crypto; high resource use |
 
 > **Exam tip:** Worm vs virus: worm spreads **on its own**; virus needs a **host and user action**. Trojan = disguised, no self-replication. Logic bomb = **condition-triggered**. Rootkit = **concealment + persistence**. Fileless = **memory-only / living-off-the-land**.
@@ -228,7 +228,7 @@ Exploits trust and psychology, not technology. Mitigated primarily by **security
 |---|---|
 | **DDoS — amplified** | Small spoofed request yields large response sent to victim (DNS, NTP amplification) |
 | **DDoS — reflected** | Spoofed source IP makes third-party servers send responses to the victim |
-| **DNS attacks** | DNS poisoning/spoofing, DNS hijacking, domain hijacking, tunnelling; users redirected to fake sites |
+| **DNS attacks** | DNS poisoning/spoofing, DNS hijacking, domain hijacking, tunneling; users redirected to fake sites |
 | **Wireless** | Rogue AP, **evil twin** (lookalike SSID), deauthentication, WPS/weak-key attacks |
 | **On-path** (formerly MITM) | Attacker intercepts/alters traffic between two parties; ARP poisoning, rogue AP; mitigate with TLS, DAI |
 | **Credential replay** | Captured valid credentials/tokens/hashes reused (pass-the-hash, session replay); mitigate with nonces, timestamps, short-lived tokens, Kerberos protections |
@@ -272,7 +272,7 @@ Exploits trust and psychology, not technology. Mitigated primarily by **security
 | **Impossible travel** | Logins from geographically distant locations within an impossible time: compromised credentials |
 | **Resource consumption** | Unexplained CPU/memory/disk/bandwidth spikes: malware, cryptojacking, botnet, exfiltration |
 | **Resource inaccessibility** | Services/files unavailable: DoS, ransomware, destructive attack |
-| **Out-of-cycle logging** | Activity or log entries at unusual times: unauthorised access, scheduled malicious tasks |
+| **Out-of-cycle logging** | Activity or log entries at unusual times: unauthorized access, scheduled malicious tasks |
 | **Published/documented** | Attack details appear in public sources (breach notices, paste sites, dark web, vendor advisories): data already leaked or technique known |
 | **Missing logs** | Log gaps, cleared or disabled logging: attacker covering tracks (anti-forensics) |
 
@@ -323,7 +323,7 @@ Exploits trust and psychology, not technology. Mitigated primarily by **security
 - Separate a compromised/risky system from the network (quarantine VLAN, air gap, disconnecting an infected host); used in incident containment and for legacy/unsupported systems.
 
 ### Patching
-- Apply vendor fixes for known vulnerabilities; follow test → deploy → verify; prioritise by severity and exposure (CVSS). Counters known-vulnerability exploitation, not zero-days.
+- Apply vendor fixes for known vulnerabilities; follow test → deploy → verify; prioritize by severity and exposure (CVSS). Counters known-vulnerability exploitation, not zero-days.
 
 ### Encryption
 - Protect confidentiality of data at rest, in transit, and in use (disk, file, TLS, VPN); makes stolen data unusable.
@@ -338,7 +338,7 @@ Exploits trust and psychology, not technology. Mitigated primarily by **security
 - Maintain systems at an approved baseline: group policy, MDM, configuration management, compliance checks (e.g. NAC posture assessment), auto-remediation of drift. Compare to the secure baseline.
 
 ### Decommissioning
-- Securely retire assets: sanitise/destroy media (wipe, degauss, shred), remove from inventory/DNS/AD, revoke credentials and certificates, update asset records. Prevents data leakage and orphaned (zombie) systems.
+- Securely retire assets: sanitize/destroy media (wipe, degauss, shred), remove from inventory/DNS/AD, revoke credentials and certificates, update asset records. Prevents data leakage and orphaned (zombie) systems.
 
 ### Hardening techniques
 | Technique | What it does |
@@ -346,7 +346,7 @@ Exploits trust and psychology, not technology. Mitigated primarily by **security
 | **Encryption** | Protect data/communications |
 | **Installation of endpoint protection** | AV/anti-malware, EDR, XDR, host-based firewall, HIDS/HIPS |
 | **Host-based firewall** | Filters traffic to/from a single host |
-| **Host-based intrusion prevention system (HIPS)** | Detects and blocks malicious behaviour on the host |
+| **Host-based intrusion prevention system (HIPS)** | Detects and blocks malicious behavior on the host |
 | **Disabling ports/protocols** | Closes unneeded listeners and insecure protocols (Telnet, FTP, SMBv1) |
 | **Default password changes** | Replace vendor defaults |
 | **Removal of unnecessary software** | Fewer services/apps = smaller attack surface (also removes bloatware) |
@@ -360,7 +360,7 @@ Exploits trust and psychology, not technology. Mitigated primarily by **security
 | Phishing / social engineering | Awareness training, email filtering (SPF/DKIM/DMARC), MFA, simulations |
 | Ransomware | Offline/immutable backups, patching, EDR, least privilege, segmentation, email filtering |
 | Worm | Patching, segmentation, host firewall, disabling unused services |
-| Zero-day | Defense in depth: segmentation, IPS/EDR behavioural detection, least privilege, application allow list |
+| Zero-day | Defense in depth: segmentation, IPS/EDR behavioral detection, least privilege, application allow list |
 | Unsupported/legacy system | Replace; otherwise isolate/segment, restrict access, virtual patching |
 | SQL injection | Parameterized queries, input validation, WAF, least-privilege DB account |
 | XSS | Output encoding, input sanitization, Content Security Policy |
@@ -385,7 +385,7 @@ Exploits trust and psychology, not technology. Mitigated primarily by **security
 | Default credentials | Change at deployment, hardening baselines |
 | Rooted/jailbroken, side-loaded apps | MDM compliance enforcement, app allow list, restrict stores |
 | Rootkit / fileless | EDR, secure boot/integrity checks, application allow list, restrict scripting |
-| Log tampering | Centralised/immutable logging (SIEM), restricted log access, hashing |
+| Log tampering | Centralized/immutable logging (SIEM), restricted log access, hashing |
 | Data leakage via shadow IT | CASB, DLP, policy, approved alternatives |
 
 ---
@@ -397,7 +397,7 @@ Exploits trust and psychology, not technology. Mitigated primarily by **security
 - Phishing (mass) / spear phishing (targeted) / whaling (executives) / vishing (voice) / smishing (SMS) / BEC (financial request via business email).
 - Typosquatting (misspelled domain) vs pharming (DNS redirect) vs watering hole (compromised site target frequents) vs brand impersonation.
 - Pretexting (invented story) vs impersonation (pretending to be someone) vs elicitation (conversation) vs baiting (tempting item).
-- Tailgating (without the person's knowledge/consent) vs piggybacking (authorised person knowingly lets you in); mitigated by access control vestibule.
+- Tailgating (without the person's knowledge/consent) vs piggybacking (authorized person knowingly lets you in); mitigated by access control vestibule.
 - Client-based vs agentless software vectors; unsupported systems cannot be patched, so isolate or replace.
 - Zero-day = no patch exists; patching can't fix it, so defense in depth.
 - SQL injection (database) vs XSS (victim's browser) vs CSRF (forged authenticated request) vs directory traversal (`../`) vs buffer overflow (memory).
@@ -408,6 +408,6 @@ Exploits trust and psychology, not technology. Mitigated primarily by **security
 - Amplified (response bigger than request) vs reflected (spoofed source bounces traffic to victim) DDoS.
 - On-path (intercept/alter) vs replay (resend captured valid data) vs credential replay (reuse hashes/tokens).
 - Downgrade (force weaker protocol) vs collision (same hash, two inputs) vs birthday (probabilistic collision search).
-- Indicators: impossible travel and concurrent sessions = credential compromise; account lockout = guessing; missing logs = cover-up; resource consumption = malware/cryptojacking; resource inaccessibility = DoS/ransomware; out-of-cycle logging = unauthorised activity.
+- Indicators: impossible travel and concurrent sessions = credential compromise; account lockout = guessing; missing logs = cover-up; resource consumption = malware/cryptojacking; resource inaccessibility = DoS/ransomware; out-of-cycle logging = unauthorized activity.
 - Allow list (default deny) vs block list (known bad); segmentation (contain) vs isolation (cut off); hardening (reduce surface) vs configuration enforcement (prevent drift).
-- Decommissioning = sanitise data, remove from inventory, revoke credentials; patching = known flaws only.
+- Decommissioning = sanitize data, remove from inventory, revoke credentials; patching = known flaws only.

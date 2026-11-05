@@ -104,7 +104,7 @@ Continuous collection of logs and telemetry from hardened resources (SIEM, EDR, 
   - Also tag/barcode/RFID, lifecycle tracking, license tracking.
 - **Disposal/decommissioning:**
   - **Sanitization:** make data unrecoverable, normally so the media can be reused (overwrite, cryptographic erase, ATA/NVMe secure erase for SSDs). Standard: NIST SP 800-88 (clear, purge, destroy).
-  - **Destruction:** physically destroy media (shred, pulverize, incinerate, disintegrate). Required for highest sensitivity or non-sanitizable media. **Degaussing** (strong magnetic field) erases magnetic media; it also wipes an HDD's servo tracks, so the drive is unusable afterwards (tape survives). Useless on SSDs/flash.
+  - **Destruction:** physically destroy media (shred, pulverize, incinerate, disintegrate). Required for highest sensitivity or non-sanitizable media. **Degaussing** (strong magnetic field) erases magnetic media; it also wipes an HDD's servo tracks, so the drive is unusable afterward (tape survives). Useless on SSDs/flash.
   - **Certification:** documented proof (certificate of destruction/sanitization), often from a third-party vendor, for audit/compliance.
   - **Data retention:** keep data only as long as legal/business need requires, then dispose per policy; retain disposal records. Over-retention = liability; premature deletion = compliance violation (and legal hold overrides schedules).
 
@@ -383,7 +383,7 @@ Note: RBAC = Role-based; rule-based is a different thing though abbreviations co
 ### Privileged access management (PAM)
 - **Just-in-time (JIT) permissions:** elevate only when needed, expire automatically (no standing privilege).
 - **Password vaulting:** privileged credentials stored in vault, checked out, rotated, session recorded.
-- **Ephemeral credentials:** short-lived, auto-generated credentials (temporary accounts/tokens) created for one session or task and destroyed afterwards, so nothing persistent can be stolen.
+- **Ephemeral credentials:** short-lived, auto-generated credentials (temporary accounts/tokens) created for one session or task and destroyed afterward, so nothing persistent can be stolen.
 - Also: session monitoring, approval workflows, break-glass accounts.
 
 ---

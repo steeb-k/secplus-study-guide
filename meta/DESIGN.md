@@ -32,11 +32,11 @@ Light (neutral paper, same structure)
 --accent:#2f6f9f  --accent-hi:#265d86  --accent-ink:#ffffff  --accent-tint:rgba(47,111,159,.10)
 --ok:#2b7a45  --bad:#a8404b  --warn:#7d5f0a  (tints .10–.12)
 ```
-Rationale: fully neutral greys (no hue cast), near-black depth and brighter ink for separation; pastels only on accent/status.
+Rationale: fully neutral grays (no hue cast), near-black depth and brighter ink for separation; pastels only on accent/status.
 To revisit, open `sec-plus-test/tests/palette-sampler.html` and report the code shown in the top-right.
 
 ## Type scale
-Base 16px / line-height 1.55, body colour `--ink`. h1 26px/600 letter-spacing -0.01em; h2 20px/600; h3 16px/600;
+Base 16px / line-height 1.55, body color `--ink`. h1 26px/600 letter-spacing -0.01em; h2 20px/600; h3 16px/600;
 small/meta 13.5px `--ink-2`; uppercase labels 11.5px/500, letter-spacing .07em, `--ink-3`.
 Mono (`--font-mono`): timer, question counter, keyboard number chips, acronym keys, scores in tables, code/log snippets in stems
 (render stems' `code`-like lines in mono if the app marks them; otherwise leave).
@@ -55,7 +55,7 @@ Spacing scale 4/8/12/16/24/32/48. Content column max 920px, 16px side gutters at
   `--bad-tint`/`--bad`, neutral `--bg-3`/`--ink-2`). Final Exam card gets a 3px top rule in `--accent` (not a full border).
 - Question card: stem 17px; options are full-width rows on `--bg-2`, 1px `--line`; hover `--line-strong`; keyboard chip (mono,
   `--bg-3`, `--ink-2`) left; selected = `--accent` border + `--accent-tint` bg; correct = `--ok` border + `--ok-tint`; incorrect =
-  `--bad` border + `--bad-tint`; ✓/✗ glyphs in the matching colour at the right (use text glyphs or inline SVG, no emoji).
+  `--bad` border + `--bad-tint`; ✓/✗ glyphs in the matching color at the right (use text glyphs or inline SVG, no emoji).
 - Feedback panel: left 3px rule in `--ok` or `--bad`, bg = matching tint, "Correct"/"Incorrect" 600 in the hue, explanation `--ink`,
   objective line `--ink-2`, acronym block: label uppercase style, keys in mono 600 `--ink`, expansions `--ink-2`, separators `--ink-3`.
 - Review grid: 36px cells, mono numbers; answered = `--accent-tint` bg + `--accent` border; unanswered = dashed `--line-strong`;
@@ -75,11 +75,11 @@ Spacing scale 4/8/12/16/24/32/48. Content column max 920px, 16px side gutters at
 - `.brand-pill`: inline-flex, border-radius 999px, 1.5px solid outline in "white" (`--ink`, i.e. off-white #e6e4dd in dark;
   in light theme also use `--ink` so the pill is a dark/paper inversion with the same structure), overflow hidden so the
   segments clip to the pill shape, font-weight 600, 14px, line-height 1, letter-spacing .01em.
-- `.brand-l` ("Sec+"): background `--ink` (white segment), text colour `--bg-0` (page background), padding 5px 10px 5px 12px.
-- `.brand-r` ("701"): background `--bg-0` (dark segment), text colour `--ink`, padding 5px 12px 5px 10px, font-family `--font-mono`.
-- The outline runs around the whole pill; there is no inner divider line beyond the colour change (the "|" in the request is the
+- `.brand-l` ("Sec+"): background `--ink` (white segment), text color `--bg-0` (page background), padding 5px 10px 5px 12px.
+- `.brand-r` ("701"): background `--bg-0` (dark segment), text color `--ink`, padding 5px 12px 5px 10px, font-family `--font-mono`.
+- The outline runs around the whole pill; there is no inner divider line beyond the color change (the "|" in the request is the
   segment boundary, not a literal character).
-- No hover colour change; the whole link gets the standard focus ring. Replace every remaining "Security+ Practice"/"Sec+ Prep"
+- No hover color change; the whole link gets the standard focus ring. Replace every remaining "Security+ Practice"/"Sec+ Prep"
   string; the home h1 reads "Security+ SY0-701 practice" in normal heading style under the header.
 
 ## Favicon
@@ -94,7 +94,7 @@ Same idea as the header pill: the white outline and the "S" segment are a single
 
 Both pages (and tests/dev.html) carry the same markup: `header.site-header > div.hwrap > a.brand + div.hnav > nav`. `.hwrap` is a
 1240px grid of `--side-w` (280px) + content column, the pill 16px into the first column, the nav right-aligned inside an
-`--col-w` (820px) box centred in the content column. The practice page has no sidebar but uses the same grid, so the pill and
+`--col-w` (820px) box centered in the content column. The practice page has no sidebar but uses the same grid, so the pill and
 the links sit at identical pixel positions on every page (guide-ui.test.js checks this at 1280, 1000 and 390). Below 900px the
 wrapper is a flex row with 16px gutters. Nav links: Guide, Practice (same tab; `aria-current="page"` marks the section you are
 in), GitHub (study-guide repo, new tab, external icon). History and Settings live on the practice home page only. The pill

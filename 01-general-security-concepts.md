@@ -8,7 +8,7 @@ Objectives 1.1–1.4. Smallest domain by weight, but the vocabulary (control typ
 
 ## 1.1 Compare and contrast various types of security controls
 
-Two independent axes: **category** (who/what implements it) and **type** (what it does / when it acts). Every control has one category and one or more types (CCTV is physical; detective and deterrent). The exam asks for the type the stem emphasises.
+Two independent axes: **category** (who/what implements it) and **type** (what it does / when it acts). Every control has one category and one or more types (CCTV is physical; detective and deterrent). The exam asks for the type the stem emphasizes.
 
 ### Categories (how it is implemented)
 
@@ -19,7 +19,7 @@ Two independent axes: **category** (who/what implements it) and **type** (what i
 | Operational | Carried out day to day by people (processes), not by a technology alone | Security awareness training, guard duty, change-control procedures, incident-response procedure execution, backups run by staff |
 | Physical | Controls that act on the physical world | Fences, locks, bollards, badges, cameras, guards, mantraps |
 
-> **Exam tip:** "Managerial" = plan/policy/assess/oversee. "Operational" = people executing a procedure. If a question says a *policy or risk assessment*, it is managerial; if it says *training or staff carrying out a procedure*, it is operational. A lock is physical even though it is "preventive". Guards are ambiguous: listed under physical security in 1.2, but treated as operational when the stem stresses the person performing a procedure (patrols, checking IDs). Pick the category the stem emphasises.
+> **Exam tip:** "Managerial" = plan/policy/assess/oversee. "Operational" = people executing a procedure. If a question says a *policy or risk assessment*, it is managerial; if it says *training or staff carrying out a procedure*, it is operational. A lock is physical even though it is "preventive". Guards are ambiguous: listed under physical security in 1.2, but treated as operational when the stem stresses the person performing a procedure (patrols, checking IDs). Pick the category the stem emphasizes.
 
 ### Types (what it does)
 
@@ -30,7 +30,7 @@ Two independent axes: **category** (who/what implements it) and **type** (what i
 | Detective | Identifies and alerts that an event occurred or is occurring | During/after |
 | Corrective | Limits damage and restores the system after an event | After |
 | Compensating | Alternative control used when the primary control is impractical or fails; gives equivalent protection | Substitute |
-| Directive | Directs/mandates behaviour; establishes what must or must not be done | Before |
+| Directive | Directs/mandates behavior; establishes what must or must not be done | Before |
 
 > **Exam tip:** Deterrent vs preventive: a "Beware of dog" or "Cameras in use" sign deters; a locked door prevents. Directive vs deterrent: a policy/AUP/procedure *tells people what to do* (directive). For signs and banners, one that threatens consequences ('Cameras in use', 'Trespassers prosecuted') discourages (deterrent); a sign that instructs ('Authorized personnel only', 'Visitors must sign in') is directive. Look at the wording, not the medium. Compensating keywords: "cannot patch / legacy system / cannot implement X, so they did Y instead" (e.g., network segmentation for an unpatchable device).
 
@@ -42,7 +42,7 @@ Two independent axes: **category** (who/what implements it) and **type** (what i
 |---|---|---|---|---|---|---|
 | **Technical** | Firewall rule, ACL, encryption, MFA, IPS (block mode), routine patching of a known flaw | Login warning banner / splash screen | IDS, SIEM alerts, log monitoring, FIM | Restore from backup, EDR isolates host, patch deployment after an incident | Network segmentation for unpatchable system, WAF in front of vulnerable app | File-storage or acceptable-use notice pushed to systems telling users where/how to store data |
 | **Managerial** | Risk assessment gating deployment, separation-of-duties design | Sanctions/disciplinary policy | Audits, pen tests, vulnerability scan reviews | Incident-response plan lessons learned, corrective action plan | Added management review when SoD is impossible | Security policy, standards, AUP |
-| **Operational** | Awareness training, onboarding/offboarding procedures | Publicised consequences, security reminders | Guard reviewing logs, user-activity reviews, job rotation / mandatory vacation (uncovers fraud) | Incident handling by IR team, backup restoration procedure | Manual review of transactions when automation unavailable | Procedures, SOPs, playbooks |
+| **Operational** | Awareness training, onboarding/offboarding procedures | Publicized consequences, security reminders | Guard reviewing logs, user-activity reviews, job rotation / mandatory vacation (uncovers fraud) | Incident handling by IR team, backup restoration procedure | Manual review of transactions when automation unavailable | Procedures, SOPs, playbooks |
 | **Physical** | Locks, fences, bollards, vestibule, badge reader | "Cameras in use" signs, visible guards, lighting | CCTV, motion/infrared sensors, alarms | Fire suppression, switching to alternate site | Guard stationed at a door whose reader is broken | "Authorized personnel only" signage, visitor-escort rules |
 
 > **Exam tip:** Most matrix cells are judgment calls; the exam asks you to pick the *best* category and type. Anchor on the verb: stops = preventive, warns = deterrent, notices = detective, fixes = corrective, substitutes = compensating, mandates = directive.
@@ -100,7 +100,7 @@ Principle: **never trust, always verify**; no implicit trust based on network lo
 
 | Component | Role |
 |---|---|
-| Adaptive identity | Authentication that adapts to context/risk (device posture, location, behaviour) |
+| Adaptive identity | Authentication that adapts to context/risk (device posture, location, behavior) |
 | Threat scope reduction | Limit the blast radius: microsegmentation, least privilege, narrow access |
 | Policy-driven access control | Access decisions made from defined policy, not network location |
 | Policy Administrator (PA) | Establishes/shuts down the session path; instructs the PEP (issues tokens/credentials) |
@@ -140,7 +140,7 @@ Flow: Subject -> PEP -> (asks PA -> asks PE) -> decision returned -> PEP opens o
 | Microwave | Emits microwaves and detects reflected change (Doppler) from movement; covers larger area, can pass through thin walls |
 | Ultrasonic | Emits ultrasonic sound and detects reflected change from movement; indoor, affected by airflow |
 
-> **Exam tip:** Vestibule/mantrap = tailgating/piggybacking defence. Bollards = vehicle. Lighting = deterrent. Badge reader alone does not stop tailgating; guard or vestibule does.
+> **Exam tip:** Vestibule/mantrap = tailgating/piggybacking defense. Bollards = vehicle. Lighting = deterrent. Badge reader alone does not stop tailgating; guard or vestibule does.
 
 ### Deception and disruption technology
 
@@ -171,7 +171,7 @@ Change management ensures modifications are requested, assessed, approved, teste
 | Impact analysis | Assess what the change affects (systems, security, users, dependencies) and the risk |
 | Test results | Evidence the change works and is safe, tested in non-production first |
 | Backout plan | Steps to revert to the prior state if the change fails |
-| Maintenance window | Scheduled time for changes to minimise business disruption |
+| Maintenance window | Scheduled time for changes to minimize business disruption |
 | Standard operating procedure (SOP) | Documented, repeatable steps for routine tasks/changes |
 
 > **Exam tip:** Typical sequence: request -> impact analysis -> approval -> test -> schedule in maintenance window (with backout plan) -> implement -> document. "Revert if something goes wrong" -> backout plan. Pre-approved low-risk routine changes are "standard changes".
@@ -181,7 +181,7 @@ Change management ensures modifications are requested, assessed, approved, teste
 | Item | Concern |
 |---|---|
 | Allow lists / deny lists | Updating application or IP lists; wrong entries block legit use or permit malware |
-| Restricted activities | Some changes need extra authorisation (privileged operations) |
+| Restricted activities | Some changes need extra authorization (privileged operations) |
 | Downtime | Planned outages affect availability; coordinate with stakeholders |
 | Service restart | Brief interruption; sessions dropped; may be needed to apply config |
 | Application restart | Same as above, scoped to the application; state lost |
@@ -196,9 +196,9 @@ Change management ensures modifications are requested, assessed, approved, teste
 
 ### Version control
 
-Tracks changes to code, configs, and documents over time (e.g., Git): who changed what and when, ability to revert, branch/merge, and prevent unauthorised/uncontrolled changes. Supports integrity, accountability, and rollback (backout).
+Tracks changes to code, configs, and documents over time (e.g., Git): who changed what and when, ability to revert, branch/merge, and prevent unauthorized/uncontrolled changes. Supports integrity, accountability, and rollback (backout).
 
-> **Exam tip:** Undocumented/unauthorised changes ("shadow changes", config drift) are a security risk; the fix is formal change control plus version control and configuration baselines.
+> **Exam tip:** Undocumented/unauthorized changes ("shadow changes", config drift) are a security risk; the fix is formal change control plus version control and configuration baselines.
 
 ---
 
@@ -229,7 +229,7 @@ System of CAs, certificates, keys, and policies that binds public keys to identi
 
 States of data: **at rest**, **in transit**, **in use** (memory/processing; secure enclave, homomorphic encryption).
 
-> **Exam tip:** TDE protects database files at rest (theft of storage), not data from an authorised DB user. Column/cell-level encryption protects specific sensitive fields; when the keys are held by the application or client rather than the database server, it protects them even from DBAs.
+> **Exam tip:** TDE protects database files at rest (theft of storage), not data from an authorized DB user. Column/cell-level encryption protects specific sensitive fields; when the keys are held by the application or client rather than the database server, it protects them even from DBAs.
 
 ### Encryption: symmetric vs asymmetric
 
@@ -275,7 +275,7 @@ Longer keys increase brute-force cost. Rules of thumb: AES-128 is acceptable, AE
 |---|---|
 | TPM (Trusted Platform Module) | Chip on the motherboard that stores keys, measures boot integrity, and enables full-disk encryption (BitLocker), attestation; tied to that device |
 | HSM (Hardware Security Module) | Dedicated tamper-resistant appliance/card for generating, storing, and using keys; high-performance crypto; used by CAs and payment systems; FIPS 140 |
-| KMS (Key Management System/Service) | Centralised service for creating, storing, rotating, and controlling keys, often cloud-based (and may be backed by HSMs) |
+| KMS (Key Management System/Service) | Centralized service for creating, storing, rotating, and controlling keys, often cloud-based (and may be backed by HSMs) |
 | Secure enclave | Isolated, protected processor area (CPU/SoC) that protects sensitive operations and data even if the OS is compromised (e.g., Apple Secure Enclave, Intel SGX) |
 
 > **Exam tip:** TPM = one device, motherboard, disk encryption/boot. HSM = enterprise key storage, removable/network appliance. KMS = management service. Secure enclave = protects data *in use* / isolated execution.
@@ -312,7 +312,7 @@ Hash the message, then encrypt the hash with the **sender's private key**; recei
 
 ### Blockchain / open public ledger
 
-Distributed, append-only ledger of blocks linked by hashes; each block contains the previous block's hash, so altering one breaks the chain. Consensus across many nodes; transparent and tamper-evident; used for cryptocurrency, provenance, audit trails. Provides integrity and non-repudiation in a decentralised way.
+Distributed, append-only ledger of blocks linked by hashes; each block contains the previous block's hash, so altering one breaks the chain. Consensus across many nodes; transparent and tamper-evident; used for cryptocurrency, provenance, audit trails. Provides integrity and non-repudiation in a decentralized way.
 
 **Open public ledger:** the shared blockchain record itself; anyone can view and verify every transaction, no central authority owns it (transparency + tamper evidence, not confidentiality).
 
@@ -351,7 +351,7 @@ Why: asymmetric crypto solves key distribution and authentication but is slow; s
 
 ## Most-tested distinctions
 
-- Category (technical/managerial/operational/physical) vs type (preventive/deterrent/detective/corrective/compensating/directive) are separate axes; every control has one category and one or more types (CCTV is physical; detective and deterrent). The exam asks for the type the stem emphasises.
+- Category (technical/managerial/operational/physical) vs type (preventive/deterrent/detective/corrective/compensating/directive) are separate axes; every control has one category and one or more types (CCTV is physical; detective and deterrent). The exam asks for the type the stem emphasizes.
 - Deterrent discourages (signs, banners, visible cameras); preventive blocks (locks, firewall rules); directive mandates (policy, procedure).
 - Detective notices (IDS, logs, CCTV); corrective fixes after (restore, patch, isolate); compensating substitutes for a control that cannot be used.
 - Managerial = policy, risk assessment, oversight; operational = people executing procedures (training, guards).

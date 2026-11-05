@@ -164,7 +164,7 @@ Forensics: legal hold, chain of custody, hash (write blocker) before analysis, w
 | 3 | Confidential | Sensitive / Private / Internal |
 | 4 | Unclassified (CUI for controlled unclassified data; replaces FOUO) | Public |
 
-SY0-701 data classification terms: **sensitive, confidential, public, restricted, private, critical** (no fixed order across organisations; see Domain 3 for the exam-framed label definitions). Other terms: PII, PHI, financial, trade secret, intellectual property, regulated; owner (accountable), custodian (day-to-day), steward, controller (decides purposes), processor (handles on behalf of controller), DPO.
+SY0-701 data classification terms: **sensitive, confidential, public, restricted, private, critical** (no fixed order across organizations; see Domain 3 for the exam-framed label definitions). Other terms: PII, PHI, financial, trade secret, intellectual property, regulated; owner (accountable), custodian (day-to-day), steward, controller (decides purposes), processor (handles on behalf of controller), DPO.
 
 ## Compliance frameworks and laws
 
@@ -180,7 +180,7 @@ SY0-701 data classification terms: **sensitive, confidential, public, restricted
 | **CCPA/CPRA** | California consumer privacy |
 | **NIST CSF** | Voluntary framework: Identify, Protect, Detect, Respond, Recover (+ Govern in CSF 2.0) |
 | **NIST RMF (SP 800-37)** | Risk management framework for federal systems: prepare, categorize, select, implement, assess, authorize, monitor |
-| **NIST SP 800-53** | Security and privacy control catalogue |
+| **NIST SP 800-53** | Security and privacy control catalog |
 | **ISO/IEC 27001** | International ISMS standard (certifiable); **27002** control guidance; **27701** privacy; **27017/27018** cloud |
 | **CIS Controls / Benchmarks** | Prioritized safeguards; configuration hardening benchmarks per OS/app |
 | **SOC 2** | System and Organization Controls (AICPA; formerly Service Organization Controls), trust services criteria; Type I = design at a point in time, Type II = operating effectiveness over a period |

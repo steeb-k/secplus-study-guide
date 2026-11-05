@@ -26,7 +26,7 @@
 | AAA (network access) | RADIUS UDP **1812** (auth), **1813** (accounting); legacy 1645/1646 | RADIUS over TLS (RadSec) TCP 2083 | Only encrypts the password field. UDP |
 | Logging | Syslog UDP 514 | **Syslog over TLS** TCP **6514** | Syslog UDP is unreliable and unencrypted |
 | DHCP | UDP 67 (server), 68 (client) | DHCP snooping on switches | Rogue DHCP risk |
-| VoIP signalling | SIP UDP/TCP 5060 | **SIP TLS** 5061 (SIPS); SRTP for media | SRTP secures the media |
+| VoIP signaling | SIP UDP/TCP 5060 | **SIP TLS** 5061 (SIPS); SRTP for media | SRTP secures the media |
 | SQL Server | TCP 1433 | Same, with TLS | |
 | MySQL / MariaDB | TCP 3306 | Same, with TLS | |
 | PostgreSQL | TCP 5432 | Same, with TLS | |
@@ -100,7 +100,7 @@
 |---|---|---|---|
 | **EAP-TLS** | Yes | Yes | Mutual certificate auth; strongest; needs PKI |
 | **PEAP** | No | Yes | TLS tunnel then inner auth (MSCHAPv2); username/password |
-| **EAP-TTLS** | Optional (usually no) | Yes | Tunnelled TLS; supports more inner methods |
+| **EAP-TTLS** | Optional (usually no) | Yes | Tunneled TLS; supports more inner methods |
 | **EAP-FAST** | No (PAC) | Optional | Cisco; uses Protected Access Credential |
 | **EAP-MD5** | No | No | Weak; no mutual auth |
 | **LEAP** | No | No | Cisco legacy; broken |

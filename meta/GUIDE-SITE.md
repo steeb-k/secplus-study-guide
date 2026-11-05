@@ -46,7 +46,7 @@ Heading ids: stable and readable. Objective headings matching `^## (\d)\.(\d+) `
 every other heading gets a slug of its text, de-duplicated per file with `-2`, `-3`. In 91, give every table row `<tr id="acr-<key lowercased, non-alnum→'-'>">`.
 Strip the per-file "> **Note:** AI-generated…" line from each file (the page shows one banner instead). Keep everything else.
 
-## Page behaviour
+## Page behavior
 - **Routes:** `#/` → Exam Overview. `#/<file-slug>` → that file. `#/<file-slug>/<heading-id>` → file + scroll to heading (offset for sticky header).
   `#/highlights` → Highlighted page. `#/how-to` → "How to use this guide" (static page from `<template id="g-howto">` in index.html, not
   markdown; no AI banner, no highlight buttons). Unknown → Exam Overview. Document title = "<section title> · Sec+ 701 Guide".
@@ -68,7 +68,7 @@ Strip the per-file "> **Note:** AI-generated…" line from each file (the page s
   - Tooltip UI: one floating `div.tooltip` reused; show on mouseenter/focus of `.tip`, hide on mouseleave/blur/Escape/scroll; on touch,
     tap toggles. Positioned below the word, flipped above near the viewport bottom, clamped to the viewport horizontally, 8px gap, small
     caret. Content: `<b>KEY</b> expansion` + a "Acronyms list ↗" link to `#/acronyms/<acr-id>` when an anchor exists. Dotted underline on `.tip`
-    (`text-decoration: underline dotted; text-decoration-thickness: 1px; text-underline-offset: 3px; cursor: help`), colour `--ink-2`→`--ink` on hover.
+    (`text-decoration: underline dotted; text-decoration-thickness: 1px; text-underline-offset: 3px; cursor: help`), color `--ink-2`→`--ink` on hover.
 - **Search:** index built from `sections` (title + text) and from the acronym glossary. Typing (debounced 80ms) shows a results panel
   under the box: first an "Acronyms" group (key or expansion match, up to 5), then "Sections" (up to 20) ranked by title match > count
   of query tokens in text > shorter section; each result shows the breadcrumb path and a snippet with the first match highlighted
@@ -154,7 +154,7 @@ Optional later: a GitHub Action in the guide repo that runs build-site.py and pu
   sidebar badge count; Highlighted page lists it and "View in context" lands within 8–24px below the header; remove clears everything;
   corrupt storage is ignored; plus the regressions listed below.
 
-### Behaviour settled during verification (2026-11-04)
+### Behavior settled during verification (2026-11-04)
 - Block text for keys: a list item's own text is its child nodes concatenated with no separator (nested lists excluded). Joining with
   spaces made the rendered page (text split around tooltip `<abbr>`s) disagree with the detached parse used for orphan detection, so
   every highlighted list item containing an acronym showed under "No longer found", and keys would have shifted whenever the glossary
@@ -191,7 +191,7 @@ Optional later: a GitHub Action in the guide repo that runs build-site.py and pu
 
 - Search results no longer clear when a result is opened (see Search above). `#g-res-top` holds the count and the "Back to outline"
   button; `backToOutline()` is the single path used by the button, Escape, and the input's own Escape.
-- "How to use this guide": `#/how-to`, linked first in the sidebar (above Highlighted) with a question-mark icon in the accent colour.
+- "How to use this guide": `#/how-to`, linked first in the sidebar (above Highlighted) with a question-mark icon in the accent color.
   Content lives in `<template id="g-howto">` in guide/index.html, written conversationally, and is NOT built from the markdown repo:
   edit it there when features change. Styled by `.g-howto` (h1/h2/p/li/kbd). `page` in guide.js is 'highlights' | 'howto' | null.
 

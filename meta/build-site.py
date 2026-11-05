@@ -74,7 +74,7 @@ BQ_SPLIT = '<!--bq-split-->'
 
 def split_blockquotes(md_text):
     """python-markdown merges '> a' + blank + '> b' into ONE blockquote; GitHub renders two callouts. Put a raw-HTML
-    marker between them (outside fenced code) so they stay separate; convert() strips the marker afterwards."""
+    marker between them (outside fenced code) so they stay separate; convert() strips the marker afterward."""
     out, fence, last = [], False, ''
     for line in md_text.split('\n'):
         if line.lstrip().startswith('```'):

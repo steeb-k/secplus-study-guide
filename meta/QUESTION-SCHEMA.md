@@ -30,7 +30,7 @@ window.SEC_BANK.push(
 ```
 Rules for writers:
 - **Style = real exam.** Mostly scenario stems ("A company…", "Which of the following BEST…", "…MOST likely…", "FIRST", "LEAST").
-  Capitalise the qualifier word (BEST/MOST/FIRST/LEAST/NOT) exactly as CompTIA does. Target mix per domain: ~25% difficulty 1,
+  Capitalize the qualifier word (BEST/MOST/FIRST/LEAST/NOT) exactly as CompTIA does. Target mix per domain: ~25% difficulty 1,
   ~55% difficulty 2, ~20% difficulty 3. ~15% of questions `multi` ("Choose TWO." / "Choose THREE." must appear at the end of
   the stem, exactly in that form).
 - Distractors must be plausible items from the same objective family (not obviously wrong, never jokes). No "All of the above",

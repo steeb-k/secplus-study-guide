@@ -279,7 +279,7 @@ Defines what is allowed in testing/assessment of the vendor: scope, targets, tim
 | **Due diligence** | Investigating/understanding risk *before* acting (research, vetting). |
 | **Due care** | Acting responsibly on an ongoing basis; doing what a reasonable person would to protect assets (applying controls, patching). |
 | **Attestation** | Formal statement (by management or auditor) that controls are in place and operating. |
-| **Acknowledgement** | Individual confirms they read and understood a policy (AUP signing). |
+| **Acknowledgment** | Individual confirms they read and understood a policy (AUP signing). |
 | **Internal vs external** | Internal monitoring by compliance team/internal audit; external by regulators and independent auditors. |
 | **Automation** | Continuous control monitoring, policy-as-code, automated evidence collection, and dashboards reduce manual effort and drift. |
 
@@ -418,7 +418,7 @@ Metrics: completion rates, phishing click/report rates, incident counts, time to
 - **MOU vs MOA**: non-binding intent vs binding commitment. **MSA vs SOW**: umbrella vs specific project.
 - **SLA vs NDA vs BPA**: performance; confidentiality; business partnership.
 - **Due diligence vs due care**: before/investigate vs ongoing/maintain.
-- **Attestation vs acknowledgement**: formal statement about controls vs a user confirming they read a policy.
+- **Attestation vs acknowledgment**: formal statement about controls vs a user confirming they read a policy.
 - **Self-assessment vs internal audit vs external audit**: increasing independence; external third-party gives customer assurance.
 - **Known vs partially known vs unknown environment**: white vs gray vs black box.
 - **Offensive vs defensive vs integrated testing**: red; blue; purple.

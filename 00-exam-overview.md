@@ -30,7 +30,7 @@ Domain 4 plus Domain 2 is half the exam. Domain 1 is smallest but its content (c
 
 ## Performance-based questions (PBQs)
 
-- Simulations: firewall rule tables, matching/ordering, log analysis, configuring a device, drag-and-drop labelling, network diagram placement.
+- Simulations: firewall rule tables, matching/ordering, log analysis, configuring a device, drag-and-drop labeling, network diagram placement.
 - Typically **a handful (about 3-6) at the start** of the exam; they take far longer than MCQs.
 - **Skip and return.** Flag the PBQs, answer all MCQs first, then come back with the remaining time. Early MCQs build momentum and bank points.
 - **Partial credit** is possible: fill in everything you can; never leave a PBQ blank.
@@ -66,7 +66,7 @@ Domain 4 plus Domain 2 is half the exam. Domain 1 is smallest but its content (c
 1. Eliminate answers that are the wrong category (technical control offered where a managerial one is asked, etc.).
 2. Eliminate absolutes ("always", "never", "all") unless they are the definition.
 3. Eliminate answers that are overkill or violate a stated constraint (cost, downtime, no code changes).
-4. Between two survivors, find the stem keyword that favours one.
+4. Between two survivors, find the stem keyword that favors one.
 5. Prefer the answer that is least privilege, defense in depth, or addresses the root cause rather than the symptom.
 6. In incident questions, containment before eradication before recovery; do not jump to forensics or blame first.
 7. Policy/process answers beat purely technical ones for governance-flavoured stems; vice versa for hands-on stems.
@@ -84,11 +84,11 @@ Domain 4 plus Domain 2 is half the exam. Domain 1 is smallest but its content (c
 | Topic | Details |
 |---|---|
 | Scheduling | Buy a voucher from CompTIA (or a reseller), schedule through Pearson VUE |
-| Options | In-person at a Pearson VUE test centre, or **online proctored** at home |
+| Options | In-person at a Pearson VUE test center, or **online proctored** at home |
 | ID | Valid, unexpired government-issued photo ID with signature; name must match registration exactly (some countries require a second ID; check current policy) |
-| Test centre | Arrive about 15 minutes early; lockers for belongings; whiteboard or notepad provided; palm/ID checks |
+| Test center | Arrive about 15 minutes early; lockers for belongings; whiteboard or notepad provided; palm/ID checks |
 | Online | Quiet, clear room and desk; webcam, mic, stable connection; system test beforehand; photos of ID and room; no breaks that leave camera view (check current rules); no notes, second monitors, or phones in reach |
-| Online risks | Connectivity or proctor interruptions; choose a test centre if your home setup is unreliable |
+| Online risks | Connectivity or proctor interruptions; choose a test center if your home setup is unreliable |
 | Rescheduling | Reschedule or cancel well ahead (typically 24+ hours) to avoid forfeiting the fee |
 | Discounts | Student/academic pricing, retake and bundle offers |
 | Renewal | Valid 3 years; renew via CE credits (50 CEUs) or higher-level certification |

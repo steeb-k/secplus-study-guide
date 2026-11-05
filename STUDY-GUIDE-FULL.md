@@ -46,7 +46,7 @@ Domain 4 plus Domain 2 is half the exam. Domain 1 is smallest but its content (c
 
 ### Performance-based questions (PBQs)
 
-- Simulations: firewall rule tables, matching/ordering, log analysis, configuring a device, drag-and-drop labelling, network diagram placement.
+- Simulations: firewall rule tables, matching/ordering, log analysis, configuring a device, drag-and-drop labeling, network diagram placement.
 - Typically **a handful (about 3-6) at the start** of the exam; they take far longer than MCQs.
 - **Skip and return.** Flag the PBQs, answer all MCQs first, then come back with the remaining time. Early MCQs build momentum and bank points.
 - **Partial credit** is possible: fill in everything you can; never leave a PBQ blank.
@@ -82,7 +82,7 @@ Domain 4 plus Domain 2 is half the exam. Domain 1 is smallest but its content (c
 1. Eliminate answers that are the wrong category (technical control offered where a managerial one is asked, etc.).
 2. Eliminate absolutes ("always", "never", "all") unless they are the definition.
 3. Eliminate answers that are overkill or violate a stated constraint (cost, downtime, no code changes).
-4. Between two survivors, find the stem keyword that favours one.
+4. Between two survivors, find the stem keyword that favors one.
 5. Prefer the answer that is least privilege, defense in depth, or addresses the root cause rather than the symptom.
 6. In incident questions, containment before eradication before recovery; do not jump to forensics or blame first.
 7. Policy/process answers beat purely technical ones for governance-flavoured stems; vice versa for hands-on stems.
@@ -100,11 +100,11 @@ Domain 4 plus Domain 2 is half the exam. Domain 1 is smallest but its content (c
 | Topic | Details |
 |---|---|
 | Scheduling | Buy a voucher from CompTIA (or a reseller), schedule through Pearson VUE |
-| Options | In-person at a Pearson VUE test centre, or **online proctored** at home |
+| Options | In-person at a Pearson VUE test center, or **online proctored** at home |
 | ID | Valid, unexpired government-issued photo ID with signature; name must match registration exactly (some countries require a second ID; check current policy) |
-| Test centre | Arrive about 15 minutes early; lockers for belongings; whiteboard or notepad provided; palm/ID checks |
+| Test center | Arrive about 15 minutes early; lockers for belongings; whiteboard or notepad provided; palm/ID checks |
 | Online | Quiet, clear room and desk; webcam, mic, stable connection; system test beforehand; photos of ID and room; no breaks that leave camera view (check current rules); no notes, second monitors, or phones in reach |
-| Online risks | Connectivity or proctor interruptions; choose a test centre if your home setup is unreliable |
+| Online risks | Connectivity or proctor interruptions; choose a test center if your home setup is unreliable |
 | Rescheduling | Reschedule or cancel well ahead (typically 24+ hours) to avoid forfeiting the fee |
 | Discounts | Student/academic pricing, retake and bundle offers |
 | Renewal | Valid 3 years; renew via CE credits (50 CEUs) or higher-level certification |
@@ -143,7 +143,7 @@ Objectives 1.1–1.4. Smallest domain by weight, but the vocabulary (control typ
 
 ### 1.1 Compare and contrast various types of security controls
 
-Two independent axes: **category** (who/what implements it) and **type** (what it does / when it acts). Every control has one category and one or more types (CCTV is physical; detective and deterrent). The exam asks for the type the stem emphasises.
+Two independent axes: **category** (who/what implements it) and **type** (what it does / when it acts). Every control has one category and one or more types (CCTV is physical; detective and deterrent). The exam asks for the type the stem emphasizes.
 
 #### Categories (how it is implemented)
 
@@ -154,7 +154,7 @@ Two independent axes: **category** (who/what implements it) and **type** (what i
 | Operational | Carried out day to day by people (processes), not by a technology alone | Security awareness training, guard duty, change-control procedures, incident-response procedure execution, backups run by staff |
 | Physical | Controls that act on the physical world | Fences, locks, bollards, badges, cameras, guards, mantraps |
 
-> **Exam tip:** "Managerial" = plan/policy/assess/oversee. "Operational" = people executing a procedure. If a question says a *policy or risk assessment*, it is managerial; if it says *training or staff carrying out a procedure*, it is operational. A lock is physical even though it is "preventive". Guards are ambiguous: listed under physical security in 1.2, but treated as operational when the stem stresses the person performing a procedure (patrols, checking IDs). Pick the category the stem emphasises.
+> **Exam tip:** "Managerial" = plan/policy/assess/oversee. "Operational" = people executing a procedure. If a question says a *policy or risk assessment*, it is managerial; if it says *training or staff carrying out a procedure*, it is operational. A lock is physical even though it is "preventive". Guards are ambiguous: listed under physical security in 1.2, but treated as operational when the stem stresses the person performing a procedure (patrols, checking IDs). Pick the category the stem emphasizes.
 
 #### Types (what it does)
 
@@ -165,7 +165,7 @@ Two independent axes: **category** (who/what implements it) and **type** (what i
 | Detective | Identifies and alerts that an event occurred or is occurring | During/after |
 | Corrective | Limits damage and restores the system after an event | After |
 | Compensating | Alternative control used when the primary control is impractical or fails; gives equivalent protection | Substitute |
-| Directive | Directs/mandates behaviour; establishes what must or must not be done | Before |
+| Directive | Directs/mandates behavior; establishes what must or must not be done | Before |
 
 > **Exam tip:** Deterrent vs preventive: a "Beware of dog" or "Cameras in use" sign deters; a locked door prevents. Directive vs deterrent: a policy/AUP/procedure *tells people what to do* (directive). For signs and banners, one that threatens consequences ('Cameras in use', 'Trespassers prosecuted') discourages (deterrent); a sign that instructs ('Authorized personnel only', 'Visitors must sign in') is directive. Look at the wording, not the medium. Compensating keywords: "cannot patch / legacy system / cannot implement X, so they did Y instead" (e.g., network segmentation for an unpatchable device).
 
@@ -177,7 +177,7 @@ Two independent axes: **category** (who/what implements it) and **type** (what i
 |---|---|---|---|---|---|---|
 | **Technical** | Firewall rule, ACL, encryption, MFA, IPS (block mode), routine patching of a known flaw | Login warning banner / splash screen | IDS, SIEM alerts, log monitoring, FIM | Restore from backup, EDR isolates host, patch deployment after an incident | Network segmentation for unpatchable system, WAF in front of vulnerable app | File-storage or acceptable-use notice pushed to systems telling users where/how to store data |
 | **Managerial** | Risk assessment gating deployment, separation-of-duties design | Sanctions/disciplinary policy | Audits, pen tests, vulnerability scan reviews | Incident-response plan lessons learned, corrective action plan | Added management review when SoD is impossible | Security policy, standards, AUP |
-| **Operational** | Awareness training, onboarding/offboarding procedures | Publicised consequences, security reminders | Guard reviewing logs, user-activity reviews, job rotation / mandatory vacation (uncovers fraud) | Incident handling by IR team, backup restoration procedure | Manual review of transactions when automation unavailable | Procedures, SOPs, playbooks |
+| **Operational** | Awareness training, onboarding/offboarding procedures | Publicized consequences, security reminders | Guard reviewing logs, user-activity reviews, job rotation / mandatory vacation (uncovers fraud) | Incident handling by IR team, backup restoration procedure | Manual review of transactions when automation unavailable | Procedures, SOPs, playbooks |
 | **Physical** | Locks, fences, bollards, vestibule, badge reader | "Cameras in use" signs, visible guards, lighting | CCTV, motion/infrared sensors, alarms | Fire suppression, switching to alternate site | Guard stationed at a door whose reader is broken | "Authorized personnel only" signage, visitor-escort rules |
 
 > **Exam tip:** Most matrix cells are judgment calls; the exam asks you to pick the *best* category and type. Anchor on the verb: stops = preventive, warns = deterrent, notices = detective, fixes = corrective, substitutes = compensating, mandates = directive.
@@ -235,7 +235,7 @@ Principle: **never trust, always verify**; no implicit trust based on network lo
 
 | Component | Role |
 |---|---|
-| Adaptive identity | Authentication that adapts to context/risk (device posture, location, behaviour) |
+| Adaptive identity | Authentication that adapts to context/risk (device posture, location, behavior) |
 | Threat scope reduction | Limit the blast radius: microsegmentation, least privilege, narrow access |
 | Policy-driven access control | Access decisions made from defined policy, not network location |
 | Policy Administrator (PA) | Establishes/shuts down the session path; instructs the PEP (issues tokens/credentials) |
@@ -275,7 +275,7 @@ Flow: Subject -> PEP -> (asks PA -> asks PE) -> decision returned -> PEP opens o
 | Microwave | Emits microwaves and detects reflected change (Doppler) from movement; covers larger area, can pass through thin walls |
 | Ultrasonic | Emits ultrasonic sound and detects reflected change from movement; indoor, affected by airflow |
 
-> **Exam tip:** Vestibule/mantrap = tailgating/piggybacking defence. Bollards = vehicle. Lighting = deterrent. Badge reader alone does not stop tailgating; guard or vestibule does.
+> **Exam tip:** Vestibule/mantrap = tailgating/piggybacking defense. Bollards = vehicle. Lighting = deterrent. Badge reader alone does not stop tailgating; guard or vestibule does.
 
 #### Deception and disruption technology
 
@@ -306,7 +306,7 @@ Change management ensures modifications are requested, assessed, approved, teste
 | Impact analysis | Assess what the change affects (systems, security, users, dependencies) and the risk |
 | Test results | Evidence the change works and is safe, tested in non-production first |
 | Backout plan | Steps to revert to the prior state if the change fails |
-| Maintenance window | Scheduled time for changes to minimise business disruption |
+| Maintenance window | Scheduled time for changes to minimize business disruption |
 | Standard operating procedure (SOP) | Documented, repeatable steps for routine tasks/changes |
 
 > **Exam tip:** Typical sequence: request -> impact analysis -> approval -> test -> schedule in maintenance window (with backout plan) -> implement -> document. "Revert if something goes wrong" -> backout plan. Pre-approved low-risk routine changes are "standard changes".
@@ -316,7 +316,7 @@ Change management ensures modifications are requested, assessed, approved, teste
 | Item | Concern |
 |---|---|
 | Allow lists / deny lists | Updating application or IP lists; wrong entries block legit use or permit malware |
-| Restricted activities | Some changes need extra authorisation (privileged operations) |
+| Restricted activities | Some changes need extra authorization (privileged operations) |
 | Downtime | Planned outages affect availability; coordinate with stakeholders |
 | Service restart | Brief interruption; sessions dropped; may be needed to apply config |
 | Application restart | Same as above, scoped to the application; state lost |
@@ -331,9 +331,9 @@ Change management ensures modifications are requested, assessed, approved, teste
 
 #### Version control
 
-Tracks changes to code, configs, and documents over time (e.g., Git): who changed what and when, ability to revert, branch/merge, and prevent unauthorised/uncontrolled changes. Supports integrity, accountability, and rollback (backout).
+Tracks changes to code, configs, and documents over time (e.g., Git): who changed what and when, ability to revert, branch/merge, and prevent unauthorized/uncontrolled changes. Supports integrity, accountability, and rollback (backout).
 
-> **Exam tip:** Undocumented/unauthorised changes ("shadow changes", config drift) are a security risk; the fix is formal change control plus version control and configuration baselines.
+> **Exam tip:** Undocumented/unauthorized changes ("shadow changes", config drift) are a security risk; the fix is formal change control plus version control and configuration baselines.
 
 ---
 
@@ -364,7 +364,7 @@ System of CAs, certificates, keys, and policies that binds public keys to identi
 
 States of data: **at rest**, **in transit**, **in use** (memory/processing; secure enclave, homomorphic encryption).
 
-> **Exam tip:** TDE protects database files at rest (theft of storage), not data from an authorised DB user. Column/cell-level encryption protects specific sensitive fields; when the keys are held by the application or client rather than the database server, it protects them even from DBAs.
+> **Exam tip:** TDE protects database files at rest (theft of storage), not data from an authorized DB user. Column/cell-level encryption protects specific sensitive fields; when the keys are held by the application or client rather than the database server, it protects them even from DBAs.
 
 #### Encryption: symmetric vs asymmetric
 
@@ -410,7 +410,7 @@ Longer keys increase brute-force cost. Rules of thumb: AES-128 is acceptable, AE
 |---|---|
 | TPM (Trusted Platform Module) | Chip on the motherboard that stores keys, measures boot integrity, and enables full-disk encryption (BitLocker), attestation; tied to that device |
 | HSM (Hardware Security Module) | Dedicated tamper-resistant appliance/card for generating, storing, and using keys; high-performance crypto; used by CAs and payment systems; FIPS 140 |
-| KMS (Key Management System/Service) | Centralised service for creating, storing, rotating, and controlling keys, often cloud-based (and may be backed by HSMs) |
+| KMS (Key Management System/Service) | Centralized service for creating, storing, rotating, and controlling keys, often cloud-based (and may be backed by HSMs) |
 | Secure enclave | Isolated, protected processor area (CPU/SoC) that protects sensitive operations and data even if the OS is compromised (e.g., Apple Secure Enclave, Intel SGX) |
 
 > **Exam tip:** TPM = one device, motherboard, disk encryption/boot. HSM = enterprise key storage, removable/network appliance. KMS = management service. Secure enclave = protects data *in use* / isolated execution.
@@ -447,7 +447,7 @@ Hash the message, then encrypt the hash with the **sender's private key**; recei
 
 #### Blockchain / open public ledger
 
-Distributed, append-only ledger of blocks linked by hashes; each block contains the previous block's hash, so altering one breaks the chain. Consensus across many nodes; transparent and tamper-evident; used for cryptocurrency, provenance, audit trails. Provides integrity and non-repudiation in a decentralised way.
+Distributed, append-only ledger of blocks linked by hashes; each block contains the previous block's hash, so altering one breaks the chain. Consensus across many nodes; transparent and tamper-evident; used for cryptocurrency, provenance, audit trails. Provides integrity and non-repudiation in a decentralized way.
 
 **Open public ledger:** the shared blockchain record itself; anyone can view and verify every transaction, no central authority owns it (transparency + tamper evidence, not confidentiality).
 
@@ -486,7 +486,7 @@ Why: asymmetric crypto solves key distribution and authentication but is slow; s
 
 ### Most-tested distinctions
 
-- Category (technical/managerial/operational/physical) vs type (preventive/deterrent/detective/corrective/compensating/directive) are separate axes; every control has one category and one or more types (CCTV is physical; detective and deterrent). The exam asks for the type the stem emphasises.
+- Category (technical/managerial/operational/physical) vs type (preventive/deterrent/detective/corrective/compensating/directive) are separate axes; every control has one category and one or more types (CCTV is physical; detective and deterrent). The exam asks for the type the stem emphasizes.
 - Deterrent discourages (signs, banners, visible cameras); preventive blocks (locks, firewall rules); directive mandates (policy, procedure).
 - Detective notices (IDS, logs, CCTV); corrective fixes after (restore, patch, isolate); compensating substitutes for a control that cannot be used.
 - Managerial = policy, risk assessment, oversight; operational = people executing procedures (training, guards).
@@ -551,7 +551,7 @@ Objectives 2.1–2.5. Heaviest conceptual domain after Domain 4; most questions 
 | **Disruption/chaos** | Unskilled attackers, hacktivists |
 | **War** | Nation-state; attacks on military/critical infrastructure, cyberwarfare |
 
-> **Exam tip:** Hat colours: **white/authorized** = ethical pen tester; **black/unauthorized** = malicious; **gray/semi-authorized** = finds flaws without permission, may disclose them (no malicious intent, still unauthorized). **Blue team** defends, **red team** attacks, **purple team** combines both.
+> **Exam tip:** Hat colors: **white/authorized** = ethical pen tester; **black/unauthorized** = malicious; **gray/semi-authorized** = finds flaws without permission, may disclose them (no malicious intent, still unauthorized). **Blue team** defends, **red team** attacks, **purple team** combines both.
 
 ---
 
@@ -613,7 +613,7 @@ Exploits trust and psychology, not technology. Mitigated primarily by **security
 | Technique | Distinguishing keyword |
 |---|---|
 | **Phishing** | Mass, generic email lures; link/attachment/credential request |
-| **Spear phishing** | Targeted at a specific person/group with personalised details |
+| **Spear phishing** | Targeted at a specific person/group with personalized details |
 | **Whaling** | Targets senior executives (C-suite) |
 | **Vishing** | Voice/phone call |
 | **Smishing** | SMS/text message |
@@ -626,14 +626,14 @@ Exploits trust and psychology, not technology. Mitigated primarily by **security
 | **Typosquatting** | Look-alike misspelled domain (gooogle.com); "URL hijacking" |
 | **Pharming** | Redirects legitimate domain traffic to a fake site (DNS poisoning/hosts file); no click on a bad link needed |
 | **Baiting** | Free/tempting item (infected USB, free download) |
-| **Tailgating / piggybacking** | Following an authorised person through a secure door; tailgating = without their knowledge/consent, piggybacking = they knowingly let you in (e.g. holding the door) |
+| **Tailgating / piggybacking** | Following an authorized person through a secure door; tailgating = without their knowledge/consent, piggybacking = they knowingly let you in (e.g. holding the door) |
 | **Shoulder surfing** | Observing screens/keypads (physical/visual) |
 | **Dumpster diving** | Retrieving information from discarded materials |
 | **Quid pro quo** | Offering a service/benefit in exchange for information or access |
 | **Elicitation** (eliciting information) | Extracting information through ordinary conversation |
 | **Identity fraud / theft** | Using stolen identity data to open accounts or impersonate |
 
-> **Exam tip:** Spear phishing (any specific person) vs whaling (executives) vs BEC (financial request via business email). Phishing = link click; **pharming** = redirected without clicking. **Typosquatting** = misspelled domain; **brand impersonation** = looks like the brand. **Watering hole** = target's usual site is compromised. Tailgating vs piggybacking: tailgating is unauthorised follow-through; **mantrap/access control vestibule** is the control.
+> **Exam tip:** Spear phishing (any specific person) vs whaling (executives) vs BEC (financial request via business email). Phishing = link click; **pharming** = redirected without clicking. **Typosquatting** = misspelled domain; **brand impersonation** = looks like the brand. **Watering hole** = target's usual site is compromised. Tailgating vs piggybacking: tailgating is unauthorized follow-through; **mantrap/access control vestibule** is the control.
 
 **Principles of social engineering (why it works):** authority, intimidation, consensus/social proof, scarcity, familiarity/liking, trust, urgency.
 
@@ -696,7 +696,7 @@ Exploits trust and psychology, not technology. Mitigated primarily by **security
 | **Jailbreaking** (iOS) / **Rooting** (Android) | Removes manufacturer restrictions; defeats the security model; MDM should detect and block/quarantine |
 
 #### Zero-day
-- A vulnerability unknown to the vendor (no patch exists). Patching can't help; use layered defenses: segmentation, IPS/behavioural detection, EDR, least privilege, virtual patching, threat intelligence.
+- A vulnerability unknown to the vendor (no patch exists). Patching can't help; use layered defenses: segmentation, IPS/behavioral detection, EDR, least privilege, virtual patching, threat intelligence.
 
 > **Exam tip:** "No patch available / vendor unaware" = **zero-day**. "Guest to host" = **VM escape**. "Leftover data on new VM" = **resource reuse**. "Check then use gap" = **race condition/TOCTOU**. "Database query manipulated" = SQLi; "script runs in victim's browser" = XSS. "Rooted/jailbroken" = defeats mobile controls; "unofficial app source" = **side loading**.
 
@@ -720,7 +720,7 @@ Exploits trust and psychology, not technology. Mitigated primarily by **security
 | **Backdoor** (related) | Hidden access path bypassing authentication |
 | **Botnet** (related) | Many compromised hosts (bots) under C2 control; DDoS, spam, credential stuffing |
 | **RAT** (related) | Remote access trojan: a trojan that gives the attacker covert interactive control of one host (files, webcam, keystrokes) |
-| **Fileless** (related) | Runs in memory using legitimate tools (PowerShell, WMI); no file on disk; detect with EDR/behavioural analysis |
+| **Fileless** (related) | Runs in memory using legitimate tools (PowerShell, WMI); no file on disk; detect with EDR/behavioral analysis |
 | **Cryptojacking** (related) | Hijacked CPU/GPU used to mine crypto; high resource use |
 
 > **Exam tip:** Worm vs virus: worm spreads **on its own**; virus needs a **host and user action**. Trojan = disguised, no self-replication. Logic bomb = **condition-triggered**. Rootkit = **concealment + persistence**. Fileless = **memory-only / living-off-the-land**.
@@ -737,7 +737,7 @@ Exploits trust and psychology, not technology. Mitigated primarily by **security
 |---|---|
 | **DDoS — amplified** | Small spoofed request yields large response sent to victim (DNS, NTP amplification) |
 | **DDoS — reflected** | Spoofed source IP makes third-party servers send responses to the victim |
-| **DNS attacks** | DNS poisoning/spoofing, DNS hijacking, domain hijacking, tunnelling; users redirected to fake sites |
+| **DNS attacks** | DNS poisoning/spoofing, DNS hijacking, domain hijacking, tunneling; users redirected to fake sites |
 | **Wireless** | Rogue AP, **evil twin** (lookalike SSID), deauthentication, WPS/weak-key attacks |
 | **On-path** (formerly MITM) | Attacker intercepts/alters traffic between two parties; ARP poisoning, rogue AP; mitigate with TLS, DAI |
 | **Credential replay** | Captured valid credentials/tokens/hashes reused (pass-the-hash, session replay); mitigate with nonces, timestamps, short-lived tokens, Kerberos protections |
@@ -781,7 +781,7 @@ Exploits trust and psychology, not technology. Mitigated primarily by **security
 | **Impossible travel** | Logins from geographically distant locations within an impossible time: compromised credentials |
 | **Resource consumption** | Unexplained CPU/memory/disk/bandwidth spikes: malware, cryptojacking, botnet, exfiltration |
 | **Resource inaccessibility** | Services/files unavailable: DoS, ransomware, destructive attack |
-| **Out-of-cycle logging** | Activity or log entries at unusual times: unauthorised access, scheduled malicious tasks |
+| **Out-of-cycle logging** | Activity or log entries at unusual times: unauthorized access, scheduled malicious tasks |
 | **Published/documented** | Attack details appear in public sources (breach notices, paste sites, dark web, vendor advisories): data already leaked or technique known |
 | **Missing logs** | Log gaps, cleared or disabled logging: attacker covering tracks (anti-forensics) |
 
@@ -832,7 +832,7 @@ Exploits trust and psychology, not technology. Mitigated primarily by **security
 - Separate a compromised/risky system from the network (quarantine VLAN, air gap, disconnecting an infected host); used in incident containment and for legacy/unsupported systems.
 
 #### Patching
-- Apply vendor fixes for known vulnerabilities; follow test → deploy → verify; prioritise by severity and exposure (CVSS). Counters known-vulnerability exploitation, not zero-days.
+- Apply vendor fixes for known vulnerabilities; follow test → deploy → verify; prioritize by severity and exposure (CVSS). Counters known-vulnerability exploitation, not zero-days.
 
 #### Encryption
 - Protect confidentiality of data at rest, in transit, and in use (disk, file, TLS, VPN); makes stolen data unusable.
@@ -847,7 +847,7 @@ Exploits trust and psychology, not technology. Mitigated primarily by **security
 - Maintain systems at an approved baseline: group policy, MDM, configuration management, compliance checks (e.g. NAC posture assessment), auto-remediation of drift. Compare to the secure baseline.
 
 #### Decommissioning
-- Securely retire assets: sanitise/destroy media (wipe, degauss, shred), remove from inventory/DNS/AD, revoke credentials and certificates, update asset records. Prevents data leakage and orphaned (zombie) systems.
+- Securely retire assets: sanitize/destroy media (wipe, degauss, shred), remove from inventory/DNS/AD, revoke credentials and certificates, update asset records. Prevents data leakage and orphaned (zombie) systems.
 
 #### Hardening techniques
 | Technique | What it does |
@@ -855,7 +855,7 @@ Exploits trust and psychology, not technology. Mitigated primarily by **security
 | **Encryption** | Protect data/communications |
 | **Installation of endpoint protection** | AV/anti-malware, EDR, XDR, host-based firewall, HIDS/HIPS |
 | **Host-based firewall** | Filters traffic to/from a single host |
-| **Host-based intrusion prevention system (HIPS)** | Detects and blocks malicious behaviour on the host |
+| **Host-based intrusion prevention system (HIPS)** | Detects and blocks malicious behavior on the host |
 | **Disabling ports/protocols** | Closes unneeded listeners and insecure protocols (Telnet, FTP, SMBv1) |
 | **Default password changes** | Replace vendor defaults |
 | **Removal of unnecessary software** | Fewer services/apps = smaller attack surface (also removes bloatware) |
@@ -869,7 +869,7 @@ Exploits trust and psychology, not technology. Mitigated primarily by **security
 | Phishing / social engineering | Awareness training, email filtering (SPF/DKIM/DMARC), MFA, simulations |
 | Ransomware | Offline/immutable backups, patching, EDR, least privilege, segmentation, email filtering |
 | Worm | Patching, segmentation, host firewall, disabling unused services |
-| Zero-day | Defense in depth: segmentation, IPS/EDR behavioural detection, least privilege, application allow list |
+| Zero-day | Defense in depth: segmentation, IPS/EDR behavioral detection, least privilege, application allow list |
 | Unsupported/legacy system | Replace; otherwise isolate/segment, restrict access, virtual patching |
 | SQL injection | Parameterized queries, input validation, WAF, least-privilege DB account |
 | XSS | Output encoding, input sanitization, Content Security Policy |
@@ -894,7 +894,7 @@ Exploits trust and psychology, not technology. Mitigated primarily by **security
 | Default credentials | Change at deployment, hardening baselines |
 | Rooted/jailbroken, side-loaded apps | MDM compliance enforcement, app allow list, restrict stores |
 | Rootkit / fileless | EDR, secure boot/integrity checks, application allow list, restrict scripting |
-| Log tampering | Centralised/immutable logging (SIEM), restricted log access, hashing |
+| Log tampering | Centralized/immutable logging (SIEM), restricted log access, hashing |
 | Data leakage via shadow IT | CASB, DLP, policy, approved alternatives |
 
 ---
@@ -906,7 +906,7 @@ Exploits trust and psychology, not technology. Mitigated primarily by **security
 - Phishing (mass) / spear phishing (targeted) / whaling (executives) / vishing (voice) / smishing (SMS) / BEC (financial request via business email).
 - Typosquatting (misspelled domain) vs pharming (DNS redirect) vs watering hole (compromised site target frequents) vs brand impersonation.
 - Pretexting (invented story) vs impersonation (pretending to be someone) vs elicitation (conversation) vs baiting (tempting item).
-- Tailgating (without the person's knowledge/consent) vs piggybacking (authorised person knowingly lets you in); mitigated by access control vestibule.
+- Tailgating (without the person's knowledge/consent) vs piggybacking (authorized person knowingly lets you in); mitigated by access control vestibule.
 - Client-based vs agentless software vectors; unsupported systems cannot be patched, so isolate or replace.
 - Zero-day = no patch exists; patching can't fix it, so defense in depth.
 - SQL injection (database) vs XSS (victim's browser) vs CSRF (forged authenticated request) vs directory traversal (`../`) vs buffer overflow (memory).
@@ -917,9 +917,9 @@ Exploits trust and psychology, not technology. Mitigated primarily by **security
 - Amplified (response bigger than request) vs reflected (spoofed source bounces traffic to victim) DDoS.
 - On-path (intercept/alter) vs replay (resend captured valid data) vs credential replay (reuse hashes/tokens).
 - Downgrade (force weaker protocol) vs collision (same hash, two inputs) vs birthday (probabilistic collision search).
-- Indicators: impossible travel and concurrent sessions = credential compromise; account lockout = guessing; missing logs = cover-up; resource consumption = malware/cryptojacking; resource inaccessibility = DoS/ransomware; out-of-cycle logging = unauthorised activity.
+- Indicators: impossible travel and concurrent sessions = credential compromise; account lockout = guessing; missing logs = cover-up; resource consumption = malware/cryptojacking; resource inaccessibility = DoS/ransomware; out-of-cycle logging = unauthorized activity.
 - Allow list (default deny) vs block list (known bad); segmentation (contain) vs isolation (cut off); hardening (reduce surface) vs configuration enforcement (prevent drift).
-- Decommissioning = sanitise data, remove from inventory, revoke credentials; patching = known flaws only.
+- Decommissioning = sanitize data, remove from inventory, revoke credentials; patching = known flaws only.
 
 ---
 
@@ -1433,7 +1433,7 @@ Continuous collection of logs and telemetry from hardened resources (SIEM, EDR, 
   - Also tag/barcode/RFID, lifecycle tracking, license tracking.
 - **Disposal/decommissioning:**
   - **Sanitization:** make data unrecoverable, normally so the media can be reused (overwrite, cryptographic erase, ATA/NVMe secure erase for SSDs). Standard: NIST SP 800-88 (clear, purge, destroy).
-  - **Destruction:** physically destroy media (shred, pulverize, incinerate, disintegrate). Required for highest sensitivity or non-sanitizable media. **Degaussing** (strong magnetic field) erases magnetic media; it also wipes an HDD's servo tracks, so the drive is unusable afterwards (tape survives). Useless on SSDs/flash.
+  - **Destruction:** physically destroy media (shred, pulverize, incinerate, disintegrate). Required for highest sensitivity or non-sanitizable media. **Degaussing** (strong magnetic field) erases magnetic media; it also wipes an HDD's servo tracks, so the drive is unusable afterward (tape survives). Useless on SSDs/flash.
   - **Certification:** documented proof (certificate of destruction/sanitization), often from a third-party vendor, for audit/compliance.
   - **Data retention:** keep data only as long as legal/business need requires, then dispose per policy; retain disposal records. Over-retention = liability; premature deletion = compliance violation (and legal hold overrides schedules).
 
@@ -1712,7 +1712,7 @@ Note: RBAC = Role-based; rule-based is a different thing though abbreviations co
 #### Privileged access management (PAM)
 - **Just-in-time (JIT) permissions:** elevate only when needed, expire automatically (no standing privilege).
 - **Password vaulting:** privileged credentials stored in vault, checked out, rotated, session recorded.
-- **Ephemeral credentials:** short-lived, auto-generated credentials (temporary accounts/tokens) created for one session or task and destroyed afterwards, so nothing persistent can be stolen.
+- **Ephemeral credentials:** short-lived, auto-generated credentials (temporary accounts/tokens) created for one session or task and destroyed afterward, so nothing persistent can be stolen.
 - Also: session monitoring, approval workflows, break-glass accounts.
 
 ---
@@ -2137,7 +2137,7 @@ Defines what is allowed in testing/assessment of the vendor: scope, targets, tim
 | **Due diligence** | Investigating/understanding risk *before* acting (research, vetting). |
 | **Due care** | Acting responsibly on an ongoing basis; doing what a reasonable person would to protect assets (applying controls, patching). |
 | **Attestation** | Formal statement (by management or auditor) that controls are in place and operating. |
-| **Acknowledgement** | Individual confirms they read and understood a policy (AUP signing). |
+| **Acknowledgment** | Individual confirms they read and understood a policy (AUP signing). |
 | **Internal vs external** | Internal monitoring by compliance team/internal audit; external by regulators and independent auditors. |
 | **Automation** | Continuous control monitoring, policy-as-code, automated evidence collection, and dashboards reduce manual effort and drift. |
 
@@ -2276,7 +2276,7 @@ Metrics: completion rates, phishing click/report rates, incident counts, time to
 - **MOU vs MOA**: non-binding intent vs binding commitment. **MSA vs SOW**: umbrella vs specific project.
 - **SLA vs NDA vs BPA**: performance; confidentiality; business partnership.
 - **Due diligence vs due care**: before/investigate vs ongoing/maintain.
-- **Attestation vs acknowledgement**: formal statement about controls vs a user confirming they read a policy.
+- **Attestation vs acknowledgment**: formal statement about controls vs a user confirming they read a policy.
 - **Self-assessment vs internal audit vs external audit**: increasing independence; external third-party gives customer assurance.
 - **Known vs partially known vs unknown environment**: white vs gray vs black box.
 - **Offensive vs defensive vs integrated testing**: red; blue; purple.
@@ -2312,7 +2312,7 @@ Metrics: completion rates, phishing click/report rates, incident counts, time to
 | AAA (network access) | RADIUS UDP **1812** (auth), **1813** (accounting); legacy 1645/1646 | RADIUS over TLS (RadSec) TCP 2083 | Only encrypts the password field. UDP |
 | Logging | Syslog UDP 514 | **Syslog over TLS** TCP **6514** | Syslog UDP is unreliable and unencrypted |
 | DHCP | UDP 67 (server), 68 (client) | DHCP snooping on switches | Rogue DHCP risk |
-| VoIP signalling | SIP UDP/TCP 5060 | **SIP TLS** 5061 (SIPS); SRTP for media | SRTP secures the media |
+| VoIP signaling | SIP UDP/TCP 5060 | **SIP TLS** 5061 (SIPS); SRTP for media | SRTP secures the media |
 | SQL Server | TCP 1433 | Same, with TLS | |
 | MySQL / MariaDB | TCP 3306 | Same, with TLS | |
 | PostgreSQL | TCP 5432 | Same, with TLS | |
@@ -2386,7 +2386,7 @@ Metrics: completion rates, phishing click/report rates, incident counts, time to
 |---|---|---|---|
 | **EAP-TLS** | Yes | Yes | Mutual certificate auth; strongest; needs PKI |
 | **PEAP** | No | Yes | TLS tunnel then inner auth (MSCHAPv2); username/password |
-| **EAP-TTLS** | Optional (usually no) | Yes | Tunnelled TLS; supports more inner methods |
+| **EAP-TTLS** | Optional (usually no) | Yes | Tunneled TLS; supports more inner methods |
 | **EAP-FAST** | No (PAC) | Optional | Cisco; uses Protected Access Credential |
 | **EAP-MD5** | No | No | Weak; no mutual auth |
 | **LEAP** | No | No | Cisco legacy; broken |
@@ -2421,7 +2421,7 @@ Jump: [A](#a) [B](#b) [C](#c) [D](#d) [E](#e) [F](#f) [G](#g) [H](#h) [I](#i) [J
 | AES | Advanced Encryption Standard | Symmetric block cipher, 128/192/256-bit keys |
 | AES-256 | Advanced Encryption Standard 256-bit | AES with a 256-bit key |
 | AH | Authentication Header | IPSec protocol for integrity/authentication without encryption |
-| AI | Artificial Intelligence | Machine-based systems that simulate intelligent behaviour |
+| AI | Artificial Intelligence | Machine-based systems that simulate intelligent behavior |
 | AIS | Automated Indicator Sharing | CISA service for exchanging threat indicators |
 | ALE | Annualized Loss Expectancy | SLE x ARO |
 | AML | Anti-Money Laundering | Financial-sector compliance rules; often paired with KYC checks |
@@ -2432,7 +2432,7 @@ Jump: [A](#a) [B](#b) [C](#c) [D](#d) [E](#e) [F](#f) [G](#g) [H](#h) [I](#i) [J
 | ARO | Annualized Rate of Occurrence | Expected number of incidents per year |
 | ARP | Address Resolution Protocol | Maps IP addresses to MAC addresses |
 | ASLR | Address Space Layout Randomization | Randomizes memory addresses to hinder exploits |
-| ATT&CK | Adversarial Tactics, Techniques, and Common Knowledge | MITRE knowledge base of attacker behaviour |
+| ATT&CK | Adversarial Tactics, Techniques, and Common Knowledge | MITRE knowledge base of attacker behavior |
 | AUP | Acceptable Use Policy | Defines permitted use of organization resources |
 | AV | Antivirus (also Asset Value) | Software that detects and removes malware; in risk math, AV = asset value (SLE = AV x EF) |
 | AWS | Amazon Web Services | Major cloud service provider (IaaS/PaaS/SaaS examples in questions) |
@@ -2681,7 +2681,7 @@ Jump: [A](#a) [B](#b) [C](#c) [D](#d) [E](#e) [F](#f) [G](#g) [H](#h) [I](#i) [J
 | KEK | Key Encryption Key | Key that encrypts other keys |
 | KMS | Key Management System/Service | Centralized creation, storage, rotation, and revocation of cryptographic keys (e.g. cloud KMS) |
 | KPI | Key Performance Indicator | Metric tracking performance against a goal; compare KRI (risk indicator) |
-| KRI | Key Risk Indicator | Metric signalling rising risk exposure |
+| KRI | Key Risk Indicator | Metric signaling rising risk exposure |
 | KYC | Know Your Customer | Identity-verification due diligence required in regulated industries |
 
 ### L
@@ -2896,7 +2896,7 @@ Jump: [A](#a) [B](#b) [C](#c) [D](#d) [E](#e) [F](#f) [G](#g) [H](#h) [I](#i) [J
 | SHTTP | Secure Hypertext Transfer Protocol | Obsolete message-level HTTP security |
 | SIEM | Security Information and Event Management | Aggregates and correlates logs |
 | SIM | Subscriber Identity Module | Mobile network identity card |
-| SIP | Session Initiation Protocol | VoIP signalling |
+| SIP | Session Initiation Protocol | VoIP signaling |
 | SLA | Service-level Agreement | Contracted service performance levels |
 | SLE | Single Loss Expectancy | AV x EF |
 | SLO | Service Level Objective | Specific measurable target within an SLA |
@@ -2956,7 +2956,7 @@ Jump: [A](#a) [B](#b) [C](#c) [D](#d) [E](#e) [F](#f) [G](#g) [H](#h) [I](#i) [J
 | TOTP | Time-based One-Time Password | OTP derived from time |
 | TPM | Trusted Platform Module | Hardware chip for keys, measured boot, attestation |
 | TSIG | Transaction Signature | Authenticates DNS updates |
-| TTP | Tactics, Techniques, and Procedures | Attacker behaviour patterns |
+| TTP | Tactics, Techniques, and Procedures | Attacker behavior patterns |
 | TXT | Text | DNS record type carrying arbitrary text; hosts SPF, DKIM, and DMARC records |
 
 ### U
@@ -3197,7 +3197,7 @@ Forensics: legal hold, chain of custody, hash (write blocker) before analysis, w
 | 3 | Confidential | Sensitive / Private / Internal |
 | 4 | Unclassified (CUI for controlled unclassified data; replaces FOUO) | Public |
 
-SY0-701 data classification terms: **sensitive, confidential, public, restricted, private, critical** (no fixed order across organisations; see Domain 3 for the exam-framed label definitions). Other terms: PII, PHI, financial, trade secret, intellectual property, regulated; owner (accountable), custodian (day-to-day), steward, controller (decides purposes), processor (handles on behalf of controller), DPO.
+SY0-701 data classification terms: **sensitive, confidential, public, restricted, private, critical** (no fixed order across organizations; see Domain 3 for the exam-framed label definitions). Other terms: PII, PHI, financial, trade secret, intellectual property, regulated; owner (accountable), custodian (day-to-day), steward, controller (decides purposes), processor (handles on behalf of controller), DPO.
 
 ### Compliance frameworks and laws
 
@@ -3213,7 +3213,7 @@ SY0-701 data classification terms: **sensitive, confidential, public, restricted
 | **CCPA/CPRA** | California consumer privacy |
 | **NIST CSF** | Voluntary framework: Identify, Protect, Detect, Respond, Recover (+ Govern in CSF 2.0) |
 | **NIST RMF (SP 800-37)** | Risk management framework for federal systems: prepare, categorize, select, implement, assess, authorize, monitor |
-| **NIST SP 800-53** | Security and privacy control catalogue |
+| **NIST SP 800-53** | Security and privacy control catalog |
 | **ISO/IEC 27001** | International ISMS standard (certifiable); **27002** control guidance; **27701** privacy; **27017/27018** cloud |
 | **CIS Controls / Benchmarks** | Prioritized safeguards; configuration hardening benchmarks per OS/app |
 | **SOC 2** | System and Organization Controls (AICPA; formerly Service Organization Controls), trust services criteria; Type I = design at a point in time, Type II = operating effectiveness over a period |

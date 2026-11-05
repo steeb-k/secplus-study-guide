@@ -17,7 +17,7 @@ Jump: [A](#a) [B](#b) [C](#c) [D](#d) [E](#e) [F](#f) [G](#g) [H](#h) [I](#i) [J
 | AES | Advanced Encryption Standard | Symmetric block cipher, 128/192/256-bit keys |
 | AES-256 | Advanced Encryption Standard 256-bit | AES with a 256-bit key |
 | AH | Authentication Header | IPSec protocol for integrity/authentication without encryption |
-| AI | Artificial Intelligence | Machine-based systems that simulate intelligent behaviour |
+| AI | Artificial Intelligence | Machine-based systems that simulate intelligent behavior |
 | AIS | Automated Indicator Sharing | CISA service for exchanging threat indicators |
 | ALE | Annualized Loss Expectancy | SLE x ARO |
 | AML | Anti-Money Laundering | Financial-sector compliance rules; often paired with KYC checks |
@@ -28,7 +28,7 @@ Jump: [A](#a) [B](#b) [C](#c) [D](#d) [E](#e) [F](#f) [G](#g) [H](#h) [I](#i) [J
 | ARO | Annualized Rate of Occurrence | Expected number of incidents per year |
 | ARP | Address Resolution Protocol | Maps IP addresses to MAC addresses |
 | ASLR | Address Space Layout Randomization | Randomizes memory addresses to hinder exploits |
-| ATT&CK | Adversarial Tactics, Techniques, and Common Knowledge | MITRE knowledge base of attacker behaviour |
+| ATT&CK | Adversarial Tactics, Techniques, and Common Knowledge | MITRE knowledge base of attacker behavior |
 | AUP | Acceptable Use Policy | Defines permitted use of organization resources |
 | AV | Antivirus (also Asset Value) | Software that detects and removes malware; in risk math, AV = asset value (SLE = AV x EF) |
 | AWS | Amazon Web Services | Major cloud service provider (IaaS/PaaS/SaaS examples in questions) |
@@ -277,7 +277,7 @@ Jump: [A](#a) [B](#b) [C](#c) [D](#d) [E](#e) [F](#f) [G](#g) [H](#h) [I](#i) [J
 | KEK | Key Encryption Key | Key that encrypts other keys |
 | KMS | Key Management System/Service | Centralized creation, storage, rotation, and revocation of cryptographic keys (e.g. cloud KMS) |
 | KPI | Key Performance Indicator | Metric tracking performance against a goal; compare KRI (risk indicator) |
-| KRI | Key Risk Indicator | Metric signalling rising risk exposure |
+| KRI | Key Risk Indicator | Metric signaling rising risk exposure |
 | KYC | Know Your Customer | Identity-verification due diligence required in regulated industries |
 
 ## L
@@ -492,7 +492,7 @@ Jump: [A](#a) [B](#b) [C](#c) [D](#d) [E](#e) [F](#f) [G](#g) [H](#h) [I](#i) [J
 | SHTTP | Secure Hypertext Transfer Protocol | Obsolete message-level HTTP security |
 | SIEM | Security Information and Event Management | Aggregates and correlates logs |
 | SIM | Subscriber Identity Module | Mobile network identity card |
-| SIP | Session Initiation Protocol | VoIP signalling |
+| SIP | Session Initiation Protocol | VoIP signaling |
 | SLA | Service-level Agreement | Contracted service performance levels |
 | SLE | Single Loss Expectancy | AV x EF |
 | SLO | Service Level Objective | Specific measurable target within an SLA |
@@ -552,7 +552,7 @@ Jump: [A](#a) [B](#b) [C](#c) [D](#d) [E](#e) [F](#f) [G](#g) [H](#h) [I](#i) [J
 | TOTP | Time-based One-Time Password | OTP derived from time |
 | TPM | Trusted Platform Module | Hardware chip for keys, measured boot, attestation |
 | TSIG | Transaction Signature | Authenticates DNS updates |
-| TTP | Tactics, Techniques, and Procedures | Attacker behaviour patterns |
+| TTP | Tactics, Techniques, and Procedures | Attacker behavior patterns |
 | TXT | Text | DNS record type carrying arbitrary text; hosts SPF, DKIM, and DMARC records |
 
 ## U

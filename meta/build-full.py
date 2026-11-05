@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Concatenate the study guide into one markdown file: STUDY-GUIDE-FULL.md
 Order: 00, 01-05, 90, 91, 92. Each file's headings are demoted one level under a single H1.
-The per-file 'AI-generated' note is dropped in favour of one disclaimer at the top."""
+The per-file 'AI-generated' note is dropped in favor of one disclaimer at the top."""
 import re, glob, os
 os.chdir(os.path.dirname(os.path.abspath(__file__)) + '/..')
 files = sorted(glob.glob('[0-9][0-9]-*.md'))
