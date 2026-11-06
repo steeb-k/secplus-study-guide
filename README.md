@@ -61,4 +61,4 @@ CompTIA is expected to release **SY0-801** around late 2026, with **SY0-701 reti
 
 The content was AI-generated (drafted, then independently reviewed by a second pass) and is maintained alongside
 the companion practice site, live at **[steeb-k.github.io/sec-plus-test](https://steeb-k.github.io/sec-plus-test/)** ([source](https://github.com/steeb-k/steeb-k.github.io/tree/main/sec-plus-test)).
-Build notes (plan, question schema, design spec) are in [`meta/`](meta/). Corrections are welcome via issues or pull requests.
+Specs (overview, question schema, visual design, guide site) are in [`meta/`](meta/). Corrections are welcome via issues or pull requests.

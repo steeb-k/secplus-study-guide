@@ -28,7 +28,7 @@ window.SEC_BANK.push(
   // ...
 );
 ```
-Rules for writers:
+Rules for every question (the validator, `node tests/validate-bank.js`, enforces the mechanical ones):
 - **Style = real exam.** Mostly scenario stems ("A company…", "Which of the following BEST…", "…MOST likely…", "FIRST", "LEAST").
   Capitalize the qualifier word (BEST/MOST/FIRST/LEAST/NOT) exactly as CompTIA does. Target mix per domain: ~25% difficulty 1,
   ~55% difficulty 2, ~20% difficulty 3. ~15% of questions `multi` ("Choose TWO." / "Choose THREE." must appear at the end of
@@ -97,12 +97,12 @@ window.SEC_PBQ.push(
   }
 );
 ```
-PBQ writer rules: ~20 PBQs total, at least 3 per domain, mix of the three types (≥ 5 of each). Keep each solvable in 2–4
+PBQ rules: at least 18 PBQs total and at least 3 per domain (validator limits), a mix of the three types. Keep each solvable in 2–4
 minutes. Every PBQ has an `explanation`. For `config`, every row's `answer` keys must be a subset of column keys and every
 answer value must be in that column's `choices`. For `order`, `answer` must be a permutation of all item indexes. For `match`,
 `answer.length === left.length` and each value indexes `right`.
 
-## `data/objectives.js` (already written; shape is fixed)
+## `data/objectives.js` (shape is fixed)
 ```js
 window.SEC_OBJECTIVES = {
   1: { name: "General Security Concepts", weight: 0.12, objectives: { "1.1": "Compare and contrast various types of security controls", ... } },
